@@ -1,0 +1,13 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "d:\\Study\\Java\\Linh tinh\\RojeruSan.parte1.jar",
+    "c:\\Program Files\\NetBeans-17\\netbeans\\java\\modules\\ext\\AbsoluteLayout.jar",
+    "d:\\Study\\Java\\Linh tinh\\mysql-connector-java-8.0.11.jar",
+    "d:\\Study\\Java\\Linh tinh\\KControls-2.0.jar",
+    "d:\\Study\\Java\\Linh tinh\\jcommon-1.0.23.jar",
+    "d:\\Study\\Java\\Linh tinh\\RSCalendar.jar",
+    "d:\\Study\\Java\\Linh tinh\\lib\\jcalendar-1.4.jar",
+    "d:\\Study\\Java\\Linh tinh\\jfreechart-1.5.4.jar"
+  ]
+}
