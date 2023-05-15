@@ -184,7 +184,7 @@ public class ManageBook extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setLabelFor(removeButton);
         jLabel11.setText("Remove");
-        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 590, -1, -1));
+        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 590, -1, -1));
 
         removeButton.setAlignmentX(0.5F);
         removeButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -204,14 +204,14 @@ public class ManageBook extends javax.swing.JFrame {
                 removeButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 580, 120, 40));
+        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 100, 40));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(36, 36, 36));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setLabelFor(updateButton);
         jLabel12.setText("Update");
-        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 590, -1, -1));
+        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 590, -1, -1));
 
         updateButton.setAlignmentX(0.5F);
         updateButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -231,14 +231,14 @@ public class ManageBook extends javax.swing.JFrame {
                 updateButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 580, 130, 40));
+        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 580, 110, 40));
 
         jLabel13.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(36, 36, 36));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setLabelFor(addButton);
         jLabel13.setText("Add");
-        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 590, -1, -1));
+        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 590, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -258,7 +258,7 @@ public class ManageBook extends javax.swing.JFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 580, 130, 40));
+        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 90, 40));
 
         jLabel4.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -342,8 +342,14 @@ public class ManageBook extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(bookDetailsTable);
+        if (bookDetailsTable.getColumnModel().getColumnCount() > 0) {
+            bookDetailsTable.getColumnModel().getColumn(0).setResizable(false);
+            bookDetailsTable.getColumnModel().getColumn(1).setResizable(false);
+            bookDetailsTable.getColumnModel().getColumn(2).setResizable(false);
+            bookDetailsTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
-        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 400, 460));
+        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 460));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
         jLabel25.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -351,7 +357,7 @@ public class ManageBook extends javax.swing.JFrame {
         jLabel25.setText("Book List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 440, 530));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 570, 530));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -359,14 +365,14 @@ public class ManageBook extends javax.swing.JFrame {
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder2.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 370, -1));
+        panelBorder2.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
         txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder2.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 370, -1));
+        panelBorder2.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 250, -1));
 
         jLabel24.setBackground(new java.awt.Color(36, 36, 36));
         jLabel24.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -377,13 +383,13 @@ public class ManageBook extends javax.swing.JFrame {
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(36, 36, 36));
-        jLabel26.setText("Student details");
-        panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        jLabel26.setText("Book details");
+        panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 370, -1));
+        panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, -1));
 
         jLabel27.setBackground(new java.awt.Color(36, 36, 36));
         jLabel27.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -396,7 +402,7 @@ public class ManageBook extends javax.swing.JFrame {
         txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 370, -1));
+        panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
 
         jLabel28.setBackground(new java.awt.Color(36, 36, 36));
         jLabel28.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -410,7 +416,7 @@ public class ManageBook extends javax.swing.JFrame {
         jLabel29.setText("Author");
         panelBorder2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, 430, 470));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 320, 470));
 
         getContentPane().add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 730));
 

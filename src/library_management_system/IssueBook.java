@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package library_management_system;
 
 import java.util.Date;
 
@@ -25,10 +25,6 @@ public class IssueBook {
         this.return_date = return_date;
         this.status = status;
     }
-
-    public IssueBook() {
-    }
-    
 
     public Books getBook() {
         return book;

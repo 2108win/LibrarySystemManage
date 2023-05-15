@@ -119,11 +119,7 @@ public class ManageStudents extends javax.swing.JFrame {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, student_id);
             int rs = pst.executeUpdate();
-            if (rs > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return rs > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -231,7 +227,7 @@ public class ManageStudents extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(studentDetailsTable);
 
-        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 540, 460));
+        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 460));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
         jLabel25.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -239,7 +235,7 @@ public class ManageStudents extends javax.swing.JFrame {
         jLabel25.setText("Student List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 580, 530));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 570, 530));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -298,7 +294,7 @@ public class ManageStudents extends javax.swing.JFrame {
         txt_branch.setOpaque(true);
         panelBorder2.add(txt_branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 320, 480));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 320, 470));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
