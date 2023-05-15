@@ -15,6 +15,11 @@ public class Students {
     private String branch;
     private String year;
 
+    @Override
+    public String toString() {
+        return "Students{" + "student_id=" + student_id + ", student_name=" + student_name + ", branch=" + branch + ", year=" + year + '}';
+    }
+
     public Students(int student_id, String student_name, String branch, String year) {
         this.student_id = student_id;
         this.student_name = student_name;

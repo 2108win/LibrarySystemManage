@@ -16,11 +16,20 @@ public class Users {
     private String password;
     private String contact;
 
-    public Users(int id, String name, String email, String password, String contact) {
+    @Override
+    public String toString() {
+        return "Users{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", contact="
+                + contact + '}';
+    }
+
+    public Users() {
+    }
+
+    public Users(int id, String name, String password, String email, String contact) {
         this.id = id;
         this.name = name;
-        this.email = email;
         this.password = password;
+        this.email = email;
         this.contact = contact;
     }
 
@@ -64,6 +73,4 @@ public class Users {
         this.contact = contact;
     }
 
-    public Users() {
-    }
 }

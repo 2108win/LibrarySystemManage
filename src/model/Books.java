@@ -15,6 +15,11 @@ public class Books {
     private String author;
     private int quantity;
 
+    @Override
+    public String toString() {
+        return "Books{" + "book_id=" + book_id + ", book_name=" + book_name + ", author=" + author + ", quantity=" + quantity + '}';
+    }
+
     public Books(int book_id, String book_name, String author, int quantity) {
         this.book_id = book_id;
         this.book_name = book_name;

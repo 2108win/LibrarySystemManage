@@ -14,6 +14,11 @@ public class ReturnBook {
     private Students students;
     private Books books;
 
+    @Override
+    public String toString() {
+        return "ReturnBook{" + "issueBook=" + issueBook + ", students=" + students + ", books=" + books + '}';
+    }
+
     public ReturnBook(IssueBook issueBook, Students students, Books books) {
         this.issueBook = issueBook;
         this.students = students;
