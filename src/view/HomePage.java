@@ -4,17 +4,13 @@
  */
 package view;
 
-import dao.DBConnection;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Date;
-import java.util.Random;
+// import dao.DBConnection;
+// import java.sql.Connection;
+// import java.sql.ResultSet;
+// import java.sql.Statement;
+// import java.util.Date;
 
-import javax.swing.table.DefaultTableModel;
+// import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,17 +21,19 @@ public class HomePage extends javax.swing.JFrame {
     /**
      * Creates new form HomePage
      */
-    String book_name, author, student_name, branch, year, status;
-    int book_id, quantity, student_id, issue_id;
-    Date issue_date, due_date;
+    // String book_name, author, student_name, branch, year, status;
+    // int book_id, quantity, student_id, issue_id;
+    // Date issue_date, due_date;
 
     public HomePage() {
         initComponents();
+
+        // loadDataUser();
         loadDataUser();
-        setBookDetailToTable();
-        setStudentDetailToTable();
-        setStatusBookDetails();
-        setIssueBookDetails();
+        // setBookDetailToTable();
+        // setStudentDetailToTable();
+        // setStatusBookDetails();
+        // setIssueBookDetails();
         // showPieChart();
     }
 
@@ -85,7 +83,16 @@ public class HomePage extends javax.swing.JFrame {
 
     public void loadDataUser() {
         // connect to database get data user login
-
+        if (LoginPage.currentUser == null) {
+            LoginPage loginPage = new LoginPage();
+            loginPage.setVisible(true);
+            this.dispose();
+        }
+        String name = LoginPage.currentUser.getName();
+        currentNameLabel.setText(name);
+        components.HomePage home = new components.HomePage();
+        mainPanel.removeAll();
+        mainPanel.add(home).setVisible(true);
     }
 
     public void setDataUser() {
@@ -93,96 +100,100 @@ public class HomePage extends javax.swing.JFrame {
 
     }
 
-    public void setStudentDetailToTable() {
-        // connect to database
-        int countStudent = 0;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from student_details");
-            while (rs.next()) {
-                countStudent++;
-                // student_id = rs.getInt("student_id");
-                // student_name = rs.getString("student_name");
-                // branch = rs.getString("branch");
-                // year = rs.getString("year");
-                // DefaultTableModel model = (DefaultTableModel) tableStudent.getModel();
-                // model.addRow(new Object[] { student_id, student_name, branch, year });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        countStudentLabel.setText(" " + String.valueOf(countStudent));
-    }
+    // public void setStudentDetailToTable() {
+    // // connect to database
+    // int countStudent = 0;
+    // try {
+    // Class.forName("com.mysql.cj.jdbc.Driver");
+    // Connection con = DBConnection.getConnection();
+    // Statement st = con.createStatement();
+    // ResultSet rs = st.executeQuery("select * from student_details");
+    // while (rs.next()) {
+    // countStudent++;
+    // // student_id = rs.getInt("student_id");
+    // // student_name = rs.getString("student_name");
+    // // branch = rs.getString("branch");
+    // // year = rs.getString("year");
+    // // DefaultTableModel model = (DefaultTableModel) tableStudent.getModel();
+    // // model.addRow(new Object[] { student_id, student_name, branch, year });
+    // }
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // countStudentLabel.setText(" " + String.valueOf(countStudent));
+    // }
 
-    public void setBookDetailToTable() {
-        // connect to database
-        int countBook = 0;
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM book_details");
-            while (rs.next()) {
-                countBook++;
-                // book_id = rs.getInt("book_id");
-                // book_name = rs.getString("book_name");
-                // author = rs.getString("author");
-                // quantity = rs.getInt("quantity");
-                // DefaultTableModel model = (DefaultTableModel) tableBook.getModel();
-                // model.addRow(new Object[] { book_id, book_name, author, quantity });
-            }
+    // public void setBookDetailToTable() {
+    // // connect to database
+    // int countBook = 0;
+    // try {
+    // Connection con = DBConnection.getConnection();
+    // Statement st = con.createStatement();
+    // ResultSet rs = st.executeQuery("SELECT * FROM book_details");
+    // while (rs.next()) {
+    // countBook++;
+    // // book_id = rs.getInt("book_id");
+    // // book_name = rs.getString("book_name");
+    // // author = rs.getString("author");
+    // // quantity = rs.getInt("quantity");
+    // // DefaultTableModel model = (DefaultTableModel) tableBook.getModel();
+    // // model.addRow(new Object[] { book_id, book_name, author, quantity });
+    // }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        countBookLabel.setText(" " + String.valueOf(countBook));
-    }
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // countBookLabel.setText(" " + String.valueOf(countBook));
+    // }
 
-    public void setStatusBookDetails() {
-        int countPending = 0;
-        int countReturn = 0;
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM issue_book_details where status='Pending'");
-            while (rs.next()) {
-                countPending++;
-            }
-            ResultSet rs1 = st.executeQuery("SELECT * FROM issue_book_details where status='Returned'");
-            while (rs1.next()) {
-                countReturn++;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        countPendingLabel.setText(" " + String.valueOf(countPending));
-        countReturnLabel.setText(" " + String.valueOf(countReturn));
-    }
+    // public void setStatusBookDetails() {
+    // int countPending = 0;
+    // int countReturn = 0;
+    // try {
+    // Connection con = DBConnection.getConnection();
+    // Statement st = con.createStatement();
+    // ResultSet rs = st.executeQuery("SELECT * FROM issue_book_details where
+    // status='Pending'");
+    // while (rs.next()) {
+    // countPending++;
+    // }
+    // ResultSet rs1 = st.executeQuery("SELECT * FROM issue_book_details where
+    // status='Returned'");
+    // while (rs1.next()) {
+    // countReturn++;
+    // }
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // countPendingLabel.setText(" " + String.valueOf(countPending));
+    // countReturnLabel.setText(" " + String.valueOf(countReturn));
+    // }
 
-    public void setIssueBookDetails() {
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM issue_book_details");
-            while (rs.next()) {
-                issue_id = rs.getInt("issue_id");
-                book_id = rs.getInt("book_id");
-                book_name = rs.getString("book_name");
-                student_id = rs.getInt("student_id");
-                student_name = rs.getString("student_name");
-                issue_date = rs.getDate("issue_date");
-                due_date = rs.getDate("due_date");
-                status = rs.getString("status");
-                DefaultTableModel model = (DefaultTableModel) IssueBookDetailsTable.getModel();
-                model.addRow(new Object[] { issue_id, book_id, book_name, student_id, student_name, issue_date,
-                        due_date, status });
-            }
+    // public void setIssueBookDetails() {
+    // try {
+    // Connection con = DBConnection.getConnection();
+    // Statement st = con.createStatement();
+    // ResultSet rs = st.executeQuery("SELECT * FROM issue_book_details");
+    // while (rs.next()) {
+    // issue_id = rs.getInt("issue_id");
+    // book_id = rs.getInt("book_id");
+    // book_name = rs.getString("book_name");
+    // student_id = rs.getInt("student_id");
+    // student_name = rs.getString("student_name");
+    // issue_date = rs.getDate("issue_date");
+    // due_date = rs.getDate("due_date");
+    // status = rs.getString("status");
+    // DefaultTableModel model = (DefaultTableModel)
+    // IssueBookDetailsTable.getModel();
+    // model.addRow(new Object[] { issue_id, book_id, book_name, student_id,
+    // student_name, issue_date,
+    // due_date, status });
+    // }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,11 +225,15 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        currentNameLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -242,25 +257,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         logoutButton = new com.k33ptoo.components.KButton();
         viewIssueBooksButton = new com.k33ptoo.components.KButton();
-        kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
-        panelBorder4 = new components.PanelBorder();
-        countReturnLabel = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        panelBorder3 = new components.PanelBorder();
-        countPendingLabel = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        panelBorder2 = new components.PanelBorder();
-        countStudentLabel = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        panelBorder1 = new components.PanelBorder();
-        countBookLabel = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        panelBorder5 = new components.PanelBorder();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        IssueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
-        jLabel25 = new javax.swing.JLabel();
-        seeMoreViewIssueBooksButton = new com.k33ptoo.components.KButton();
-        jLabel26 = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -270,13 +267,13 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 80));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("DVN-Poppins ExtBd", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(247, 171, 10));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
-        jLabel1.setText("Win Lã");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, -1, -1));
+        currentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        currentNameLabel.setForeground(new java.awt.Color(247, 171, 10));
+        currentNameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
+        currentNameLabel.setText("Win Lã");
+        jPanel1.add(currentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("DVN-Poppins ExtBd", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(247, 171, 10));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logoMain.png"))); // NOI18N
         jLabel2.setText("Library");
@@ -344,6 +341,11 @@ public class HomePage extends javax.swing.JFrame {
         homePageButton.setkHoverStartColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkStartColor(new java.awt.Color(247, 171, 10));
+        homePageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homePageButtonActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(homePageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -544,6 +546,11 @@ public class HomePage extends javax.swing.JFrame {
         logoutButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         logoutButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         logoutButton.setkStartColor(new java.awt.Color(255, 255, 255));
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 230, -1));
 
         viewIssueBooksButton.setBorder(null);
@@ -564,166 +571,46 @@ public class HomePage extends javax.swing.JFrame {
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 250, 730));
 
-        kGradientPanel2.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        kGradientPanel2.setkBorderRadius(0);
-        kGradientPanel2.setkEndColor(new java.awt.Color(204, 204, 204));
-        kGradientPanel2.setkStartColor(new java.awt.Color(245, 246, 241));
-        kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        panelBorder4.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 950, Short.MAX_VALUE));
+        mainPanelLayout.setVerticalGroup(
+                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 730, Short.MAX_VALUE));
 
-        countReturnLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countReturnLabel.setForeground(new java.awt.Color(36, 36, 36));
-        countReturnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
-        countReturnLabel.setText("   100");
-        panelBorder4.add(countReturnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel21.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("Return books");
-        panelBorder4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        kGradientPanel2.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 200, 110));
-
-        panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        countPendingLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countPendingLabel.setForeground(new java.awt.Color(36, 36, 36));
-        countPendingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pending.png"))); // NOI18N
-        countPendingLabel.setText("   100");
-        panelBorder3.add(countPendingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel19.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setText("Pending books");
-        panelBorder3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 200, 110));
-
-        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        countStudentLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countStudentLabel.setForeground(new java.awt.Color(36, 36, 36));
-        countStudentLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/member.png"))); // NOI18N
-        countStudentLabel.setText("   100");
-        panelBorder2.add(countStudentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel17.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setText("Students");
-        panelBorder2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 200, 110));
-
-        panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        countBookLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countBookLabel.setForeground(new java.awt.Color(36, 36, 36));
-        countBookLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book.png"))); // NOI18N
-        countBookLabel.setText("   100");
-        panelBorder1.add(countBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setText("Total books");
-        panelBorder1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 200, 110));
-
-        panelBorder5.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane4.setBorder(null);
-        jScrollPane4.setForeground(new java.awt.Color(255, 255, 255));
-
-        IssueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        IssueBookDetailsTable.setToolTipText("");
-        IssueBookDetailsTable.setAlignmentX(0.0F);
-        IssueBookDetailsTable.setAlignmentY(0.0F);
-        IssueBookDetailsTable.setColorBackgoundHead(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorFilasBackgound1(new java.awt.Color(245, 246, 241));
-        IssueBookDetailsTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorFilasForeground1(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorFilasForeground2(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorForegroundHead(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorSelBackgound(new java.awt.Color(255, 204, 204));
-        IssueBookDetailsTable.setColorSelForeground(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setDragEnabled(true);
-        IssueBookDetailsTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        IssueBookDetailsTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        IssueBookDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        IssueBookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        IssueBookDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setRowHeight(34);
-        IssueBookDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane4.setViewportView(IssueBookDetailsTable);
-        if (IssueBookDetailsTable.getColumnModel().getColumnCount() > 0) {
-            IssueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(40);
-        }
-
-        panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 850, 200));
-
-        jLabel25.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 0, 15)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel25.setLabelFor(seeMoreViewIssueBooksButton);
-        jLabel25.setText("See more >");
-        panelBorder5.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 20));
-
-        seeMoreViewIssueBooksButton.setBorder(null);
-        seeMoreViewIssueBooksButton.setAlignmentX(0.5F);
-        seeMoreViewIssueBooksButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
-        seeMoreViewIssueBooksButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        seeMoreViewIssueBooksButton.setIconTextGap(2);
-        seeMoreViewIssueBooksButton.setkBackGroundColor(new java.awt.Color(247, 171, 10));
-        seeMoreViewIssueBooksButton.setkBorderRadius(20);
-        seeMoreViewIssueBooksButton.setkEndColor(new java.awt.Color(204, 204, 204));
-        seeMoreViewIssueBooksButton.setkForeGround(new java.awt.Color(36, 36, 36));
-        seeMoreViewIssueBooksButton.setkHoverEndColor(new java.awt.Color(247, 171, 10));
-        seeMoreViewIssueBooksButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        seeMoreViewIssueBooksButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
-        seeMoreViewIssueBooksButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
-        seeMoreViewIssueBooksButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        panelBorder5.add(seeMoreViewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 140, 20));
-
-        jLabel26.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel26.setText("Issue List");
-        panelBorder5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 890, 270));
-
-        getContentPane().add(kGradientPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 950, 730));
+        getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 950, 730));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homePageButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homePageButtonActionPerformed
+        // TODO add your handling code here:
+        components.HomePage home = new components.HomePage();
+        mainPanel.removeAll();
+        mainPanel.add(home).setVisible(true);
+
+    }// GEN-LAST:event_homePageButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        LoginPage loginPage = new LoginPage();
+        loginPage.setVisible(true);
+        dispose();
+    }// GEN-LAST:event_logoutButtonActionPerformed
+
+    // private void
+    // seeMoreViewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt)
+    // {// GEN-FIRST:event_seeMoreViewIssueBooksButtonActionPerformed
+    // // TODO add your handling code here:
+    // IssueBook ib = new IssueBook();
+    // ib.setVisible(true);
+    // dispose();
+    // }// GEN-LAST:event_seeMoreViewIssueBooksButtonActionPerformed
 
     private void manageBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_manageBookButtonActionPerformed
         ManageBook mb = new ManageBook();
@@ -805,27 +692,16 @@ public class HomePage extends javax.swing.JFrame {
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojeru_san.complementos.RSTableMetro IssueBookDetailsTable;
-    private javax.swing.JLabel countBookLabel;
-    private javax.swing.JLabel countPendingLabel;
-    private javax.swing.JLabel countReturnLabel;
-    private javax.swing.JLabel countStudentLabel;
+    private javax.swing.JLabel currentNameLabel;
     private com.k33ptoo.components.KButton dashboardButton;
     private com.k33ptoo.components.KButton defaultListButton;
     private com.k33ptoo.components.KButton homePageButton;
     private com.k33ptoo.components.KButton issueBookButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -834,19 +710,12 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
-    private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private com.k33ptoo.components.KButton logoutButton;
+    private javax.swing.JPanel mainPanel;
     private com.k33ptoo.components.KButton manageBookButton;
     private com.k33ptoo.components.KButton manageStudentsButton;
-    private components.PanelBorder panelBorder1;
-    private components.PanelBorder panelBorder2;
-    private components.PanelBorder panelBorder3;
-    private components.PanelBorder panelBorder4;
-    private components.PanelBorder panelBorder5;
     private com.k33ptoo.components.KButton returnBookButton;
-    private com.k33ptoo.components.KButton seeMoreViewIssueBooksButton;
     private com.k33ptoo.components.KButton viewIssueBooksButton;
     private com.k33ptoo.components.KButton viewRecordsButton;
     // End of variables declaration//GEN-END:variables

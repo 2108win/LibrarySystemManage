@@ -330,7 +330,7 @@ public class ManageBook extends javax.swing.JFrame {
         bookDetailsTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         bookDetailsTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         bookDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        bookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
+        bookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         bookDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
         bookDetailsTable.setRowHeight(34);
         bookDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
@@ -352,7 +352,7 @@ public class ManageBook extends javax.swing.JFrame {
         panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 460));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
         jLabel25.setText("Book List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
@@ -381,7 +381,7 @@ public class ManageBook extends javax.swing.JFrame {
         panelBorder2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel26.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(36, 36, 36));
         jLabel26.setText("Book details");
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));

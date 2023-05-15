@@ -3,16 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Study/Java/Library_Management_System/src/model/Books.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/jframe/LoginPage.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/main/main.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/jframe/ManageBook.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/model/ReturnBook.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/jframe/ManageStudents.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/model/IssueBook.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/model/Students.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/model/Users.java</file>
-            <file>file:/D:/Study/Java/Library_Management_System/src/connect_database/DBConnection.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/model/Users.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/view/LoginPage.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/model/Books.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/dao/IssueBookDao.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/model/Students.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/model/IssueBook.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/dao/StudentsDao.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/model/ReturnBook.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/view/HomePage.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/dao/UsersDao.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/dao/BooksDao.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/dao/DBConnection.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/view/ManageBook.java</file>
+            <file>file:/Users/winlax/Study/java/LibrarySystemManage/src/view/IssueBook.java</file>
         </group>
     </open-files>
 </project-private>

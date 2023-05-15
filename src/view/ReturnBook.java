@@ -9,7 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -78,9 +77,11 @@ public class ReturnBook extends javax.swing.JFrame {
             while (pst1.executeQuery().next()) {
                 quantity = pst1.executeQuery().getInt("quantity");
             }
-            PreparedStatement pst = con.prepareStatement("update book_details set quantity=? where book_id=?");
+            PreparedStatement pst = con
+                    .prepareStatement("update book_details set quantity=? where book_id=? and status=?");
             pst.setInt(1, quantity + 1);
             pst.setInt(2, bookID);
+            pst.setString(3, "Returned");
             pst.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,25 +118,12 @@ public class ReturnBook extends javax.swing.JFrame {
             pst.setString(1, "Returned");
             pst.setInt(2, issueID);
             pst.executeUpdate();
+            updateBookQuantity();
             isReturned = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return isReturned;
-    }
-
-    public void updateBookQuantity(int quantity) {
-        int bookID = Integer.parseInt(txt_BookID.getText());
-
-        try {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement pst = con.prepareStatement("update book_details set quantity=? where book_id=?");
-            pst.setInt(1, quantity + 1);
-            pst.setInt(2, bookID);
-            pst.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public boolean isIssued() {
@@ -187,13 +175,14 @@ public class ReturnBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="coll∆apsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -231,7 +220,8 @@ public class ReturnBook extends javax.swing.JFrame {
         kGradientPanel2.setkStartColor(new java.awt.Color(245, 246, 241));
         kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        kGradientPanel9.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        kGradientPanel9
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         kGradientPanel9.setForeground(new java.awt.Color(255, 255, 255));
         kGradientPanel9.setkBorderRadius(20);
         kGradientPanel9.setkEndColor(new java.awt.Color(255, 255, 255));
@@ -254,7 +244,8 @@ public class ReturnBook extends javax.swing.JFrame {
         txt_BookName.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         kGradientPanel9.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 290, -1));
 
@@ -262,7 +253,8 @@ public class ReturnBook extends javax.swing.JFrame {
         txt_IssueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_IssueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_IssueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_IssueDate
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_IssueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         kGradientPanel9.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 290, -1));
 
@@ -270,7 +262,8 @@ public class ReturnBook extends javax.swing.JFrame {
         txt_DueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_DueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_DueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_DueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_DueDate
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_DueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         kGradientPanel9.add(txt_DueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 290, -1));
 
@@ -284,7 +277,8 @@ public class ReturnBook extends javax.swing.JFrame {
         txt_StudentName.setBackground(new java.awt.Color(255, 255, 255));
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         kGradientPanel9.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 290, -1));
 
@@ -302,7 +296,8 @@ public class ReturnBook extends javax.swing.JFrame {
 
         txt_ComboIssueID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboIssueID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboIssueID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboIssueID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboIssueID.setOpaque(true);
         txt_ComboIssueID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -377,7 +372,8 @@ public class ReturnBook extends javax.swing.JFrame {
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_StudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -388,7 +384,8 @@ public class ReturnBook extends javax.swing.JFrame {
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_BookID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -459,6 +456,7 @@ public class ReturnBook extends javax.swing.JFrame {
         if (returnBook() == true) {
             loadBookIssueDetails();
             JOptionPane.showMessageDialog(null, "Book returned");
+            loadComboIssueID();
         } else {
             JOptionPane.showMessageDialog(null, "Book Return Failed");
         }

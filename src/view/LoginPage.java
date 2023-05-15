@@ -14,6 +14,8 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form SignupPage
      */
+    public static Users currentUser = null;
+
     public LoginPage() {
         initComponents();
     }
@@ -46,6 +48,7 @@ public class LoginPage extends javax.swing.JFrame {
         if (user == null) {
             checkErrorLabel.setText("*Invalid username or password");
         } else {
+            LoginPage.currentUser = user;
             JOptionPane.showMessageDialog(LoginPage.this, "Login Successful");
             HomePage home = new HomePage();
             home.setVisible(true);
@@ -76,7 +79,7 @@ public class LoginPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -115,7 +118,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("DVN-Poppins ExtBd", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(36, 36, 36));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Hey, hello!!");
@@ -155,8 +158,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 350, 60));
 
         txt_username.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_username
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusLost(evt);
@@ -183,8 +185,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 32, 32));
 
         txt_password.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_password
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_password.setMargin(new java.awt.Insets(2, 12, 2, 12));
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
