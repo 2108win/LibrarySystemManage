@@ -5,7 +5,6 @@
 package components;
 
 import dao.DBConnection;
-import view.IssueBook;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,6 +28,9 @@ public class HomePage extends javax.swing.JInternalFrame {
 
     public HomePage() {
         initComponents();
+        // set border null
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         setStudentDetailToTable();
         setBookDetailToTable();
         setStatusBookDetails();
@@ -133,7 +135,10 @@ public class HomePage extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -156,12 +161,23 @@ public class HomePage extends javax.swing.JInternalFrame {
         seeMoreViewIssueBooksButton = new com.k33ptoo.components.KButton();
         jLabel26 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(0, 0, 0));
         setBorder(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAlignmentX(0.0F);
+        setAlignmentY(0.0F);
+        setFocusable(false);
+        setOpaque(true);
+        setPreferredSize(new java.awt.Dimension(950, 730));
+        setRequestFocusEnabled(false);
+        setVerifyInputWhenFocusTarget(false);
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         kGradientPanel2.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         kGradientPanel2.setkBorderRadius(0);
         kGradientPanel2.setkEndColor(new java.awt.Color(204, 204, 204));
         kGradientPanel2.setkStartColor(new java.awt.Color(245, 246, 241));
+        kGradientPanel2.setPreferredSize(new java.awt.Dimension(950, 730));
         kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBorder4.setBackground(new java.awt.Color(255, 255, 255));
@@ -237,19 +253,18 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         IssueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         IssueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][] {
 
-            },
-            new String [] {
-                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                },
+                new String[] {
+                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         IssueBookDetailsTable.setToolTipText("");
@@ -304,7 +319,8 @@ public class HomePage extends javax.swing.JInternalFrame {
                 seeMoreViewIssueBooksButtonActionPerformed(evt);
             }
         });
-        panelBorder5.add(seeMoreViewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 140, 20));
+        panelBorder5.add(seeMoreViewIssueBooksButton,
+                new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 140, 20));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -314,16 +330,7 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 890, 270));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(kGradientPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

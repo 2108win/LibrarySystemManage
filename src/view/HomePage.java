@@ -4,6 +4,10 @@
  */
 package view;
 
+import java.awt.Color;
+
+import components.TopBar;
+
 // import dao.DBConnection;
 // import java.sql.Connection;
 // import java.sql.ResultSet;
@@ -24,10 +28,13 @@ public class HomePage extends javax.swing.JFrame {
     // String book_name, author, student_name, branch, year, status;
     // int book_id, quantity, student_id, issue_id;
     // Date issue_date, due_date;
+    Color pressColor = new Color(247, 171, 10);
+    Color defaultStartColor = new Color(255, 255, 255);
+    Color defaultEndColor = new Color(204, 204, 204);
 
     public HomePage() {
         initComponents();
-
+        topBar1.initMoving(this);
         // loadDataUser();
         loadDataUser();
         // setBookDetailToTable();
@@ -229,12 +236,17 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        currentNameLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -257,29 +269,14 @@ public class HomePage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         logoutButton = new com.k33ptoo.components.KButton();
         viewIssueBooksButton = new com.k33ptoo.components.KButton();
+        currentNameLabel = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
+        topBar1 = new components.TopBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(245, 246, 241)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 80));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        currentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
-        currentNameLabel.setForeground(new java.awt.Color(247, 171, 10));
-        currentNameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
-        currentNameLabel.setText("Win Lã");
-        jPanel1.add(currentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 20, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(247, 171, 10));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logoMain.png"))); // NOI18N
-        jLabel2.setText("Library");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 70));
 
         kGradientPanel1.setkBorderRadius(0);
         kGradientPanel1.setkEndColor(new java.awt.Color(255, 255, 255));
@@ -292,7 +289,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setLabelFor(dashboardButton);
         jLabel13.setText("Future");
-        kGradientPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        kGradientPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(36, 36, 36));
@@ -300,7 +297,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboard.png"))); // NOI18N
         jLabel3.setLabelFor(dashboardButton);
         jLabel3.setText("   Dashboard");
-        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         dashboardButton.setBorder(null);
         dashboardButton.setAlignmentX(0.5F);
@@ -316,7 +313,7 @@ public class HomePage extends javax.swing.JFrame {
         dashboardButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         dashboardButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         dashboardButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel1.add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, -1));
+        kGradientPanel1.add(dashboardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, -1));
 
         jLabel4.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -324,7 +321,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/home.png"))); // NOI18N
         jLabel4.setLabelFor(homePageButton);
         jLabel4.setText("   Home Page");
-        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         homePageButton.setBorder(null);
         homePageButton.setAlignmentX(0.5F);
@@ -341,12 +338,17 @@ public class HomePage extends javax.swing.JFrame {
         homePageButton.setkHoverStartColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkStartColor(new java.awt.Color(247, 171, 10));
+        homePageButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                homePageButtonMousePressed(evt);
+            }
+        });
         homePageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homePageButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(homePageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 230, -1));
+        kGradientPanel1.add(homePageButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 230, -1));
 
         jLabel5.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(36, 36, 36));
@@ -354,7 +356,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book.png"))); // NOI18N
         jLabel5.setLabelFor(manageBookButton);
         jLabel5.setText("   Manage Book");
-        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         manageBookButton.setBorder(null);
         manageBookButton.setAlignmentX(0.5F);
@@ -370,12 +372,17 @@ public class HomePage extends javax.swing.JFrame {
         manageBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         manageBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         manageBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
+        manageBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageBookButtonMousePressed(evt);
+            }
+        });
         manageBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageBookButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(manageBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 230, -1));
+        kGradientPanel1.add(manageBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, -1));
 
         jLabel6.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(36, 36, 36));
@@ -383,7 +390,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/member.png"))); // NOI18N
         jLabel6.setLabelFor(manageStudentsButton);
         jLabel6.setText("   Manage Students");
-        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         manageStudentsButton.setBorder(null);
         manageStudentsButton.setAlignmentX(0.5F);
@@ -399,12 +406,17 @@ public class HomePage extends javax.swing.JFrame {
         manageStudentsButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         manageStudentsButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         manageStudentsButton.setkStartColor(new java.awt.Color(255, 255, 255));
+        manageStudentsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                manageStudentsButtonMousePressed(evt);
+            }
+        });
         manageStudentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStudentsButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(manageStudentsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 230, -1));
+        kGradientPanel1.add(manageStudentsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, -1));
 
         jLabel7.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(36, 36, 36));
@@ -412,7 +424,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/issue.png"))); // NOI18N
         jLabel7.setLabelFor(issueBookButton);
         jLabel7.setText("   Issue Book");
-        kGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        kGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         issueBookButton.setBorder(null);
         issueBookButton.setAlignmentX(0.5F);
@@ -428,12 +440,17 @@ public class HomePage extends javax.swing.JFrame {
         issueBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         issueBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         issueBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
+        issueBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                issueBookButtonMousePressed(evt);
+            }
+        });
         issueBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 issueBookButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(issueBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, -1));
+        kGradientPanel1.add(issueBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 230, -1));
 
         jLabel8.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(36, 36, 36));
@@ -441,7 +458,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         jLabel8.setLabelFor(returnBookButton);
         jLabel8.setText("   Return Book");
-        kGradientPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+        kGradientPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         returnBookButton.setBorder(null);
         returnBookButton.setAlignmentX(0.5F);
@@ -457,12 +474,17 @@ public class HomePage extends javax.swing.JFrame {
         returnBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         returnBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         returnBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
+        returnBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                returnBookButtonMousePressed(evt);
+            }
+        });
         returnBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnBookButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(returnBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 230, -1));
+        kGradientPanel1.add(returnBookButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 230, -1));
 
         jLabel9.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(36, 36, 36));
@@ -470,7 +492,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/record.png"))); // NOI18N
         jLabel9.setLabelFor(viewRecordsButton);
         jLabel9.setText("   View Records");
-        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         viewRecordsButton.setBorder(null);
         viewRecordsButton.setAlignmentX(0.5F);
@@ -491,7 +513,7 @@ public class HomePage extends javax.swing.JFrame {
                 viewRecordsButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(viewRecordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 230, -1));
+        kGradientPanel1.add(viewRecordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 230, -1));
 
         jLabel10.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(36, 36, 36));
@@ -499,7 +521,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/issue.png"))); // NOI18N
         jLabel10.setLabelFor(viewIssueBooksButton);
         jLabel10.setText("   View Issue Books");
-        kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+        kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(36, 36, 36));
@@ -507,7 +529,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/scope.png"))); // NOI18N
         jLabel11.setLabelFor(defaultListButton);
         jLabel11.setText("   Default List");
-        kGradientPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
+        kGradientPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
 
         defaultListButton.setBorder(null);
         defaultListButton.setAlignmentX(0.5F);
@@ -523,7 +545,7 @@ public class HomePage extends javax.swing.JFrame {
         defaultListButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         defaultListButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         defaultListButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel1.add(defaultListButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 230, -1));
+        kGradientPanel1.add(defaultListButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 230, -1));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(36, 36, 36));
@@ -567,83 +589,135 @@ public class HomePage extends javax.swing.JFrame {
         viewIssueBooksButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         viewIssueBooksButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         viewIssueBooksButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel1.add(viewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 230, -1));
+        kGradientPanel1.add(viewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 230, -1));
+
+        currentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 22)); // NOI18N
+        currentNameLabel.setForeground(new java.awt.Color(247, 171, 10));
+        currentNameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
+        currentNameLabel.setText("Win Lã");
+        kGradientPanel1.add(currentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         getContentPane().add(kGradientPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 250, 730));
 
         mainPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
-        mainPanel.setLayout(mainPanelLayout);
-        mainPanelLayout.setHorizontalGroup(
-                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 950, Short.MAX_VALUE));
-        mainPanelLayout.setVerticalGroup(
-                mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 730, Short.MAX_VALUE));
-
+        mainPanel.setLayout(new java.awt.BorderLayout());
         getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 950, 730));
+        getContentPane().add(topBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 70));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void homePageButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homePageButtonActionPerformed
+    private void homePageButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_homePageButtonMousePressed
         // TODO add your handling code here:
-        components.HomePage home = new components.HomePage();
-        mainPanel.removeAll();
-        mainPanel.add(home).setVisible(true);
+        homePageButton.setkStartColor(pressColor);
+        homePageButton.setkEndColor(pressColor);
+        manageBookButton.setkStartColor(defaultStartColor);
+        manageBookButton.setkEndColor(defaultEndColor);
+        manageStudentsButton.setkStartColor(defaultStartColor);
+        manageStudentsButton.setkEndColor(defaultEndColor);
+        issueBookButton.setkStartColor(defaultStartColor);
+        issueBookButton.setkEndColor(defaultEndColor);
+        returnBookButton.setkStartColor(defaultStartColor);
+        returnBookButton.setkEndColor(defaultEndColor);
+    }// GEN-LAST:event_homePageButtonMousePressed
 
+    private void manageBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_manageBookButtonMousePressed
+        // TODO add your handling code here:
+        homePageButton.setkStartColor(defaultStartColor);
+        homePageButton.setkEndColor(defaultEndColor);
+        manageBookButton.setkStartColor(pressColor);
+        manageBookButton.setkEndColor(pressColor);
+        manageStudentsButton.setkStartColor(defaultStartColor);
+        manageStudentsButton.setkEndColor(defaultEndColor);
+        issueBookButton.setkStartColor(defaultStartColor);
+        issueBookButton.setkEndColor(defaultEndColor);
+        returnBookButton.setkStartColor(defaultStartColor);
+        returnBookButton.setkEndColor(defaultEndColor);
+    }// GEN-LAST:event_manageBookButtonMousePressed
+
+    private void manageStudentsButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_manageStudentsButtonMousePressed
+        // TODO add your handling code here:
+        homePageButton.setkStartColor(defaultStartColor);
+        homePageButton.setkEndColor(defaultEndColor);
+        manageBookButton.setkStartColor(defaultStartColor);
+        manageBookButton.setkEndColor(defaultEndColor);
+        manageStudentsButton.setkStartColor(pressColor);
+        manageStudentsButton.setkEndColor(pressColor);
+        issueBookButton.setkStartColor(defaultStartColor);
+        issueBookButton.setkEndColor(defaultEndColor);
+        returnBookButton.setkStartColor(defaultStartColor);
+        returnBookButton.setkEndColor(defaultEndColor);
+    }// GEN-LAST:event_manageStudentsButtonMousePressed
+
+    private void issueBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_issueBookButtonMousePressed
+        // TODO add your handling code here:
+        homePageButton.setkStartColor(defaultStartColor);
+        homePageButton.setkEndColor(defaultEndColor);
+        manageBookButton.setkStartColor(defaultStartColor);
+        manageBookButton.setkEndColor(defaultEndColor);
+        manageStudentsButton.setkStartColor(defaultStartColor);
+        manageStudentsButton.setkEndColor(defaultEndColor);
+        issueBookButton.setkStartColor(pressColor);
+        issueBookButton.setkEndColor(pressColor);
+        returnBookButton.setkStartColor(defaultStartColor);
+        returnBookButton.setkEndColor(defaultEndColor);
+    }// GEN-LAST:event_issueBookButtonMousePressed
+
+    private void returnBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_returnBookButtonMousePressed
+        // TODO add your handling code here:
+        homePageButton.setkStartColor(defaultStartColor);
+        homePageButton.setkEndColor(defaultEndColor);
+        manageBookButton.setkStartColor(defaultStartColor);
+        manageBookButton.setkEndColor(defaultEndColor);
+        manageStudentsButton.setkStartColor(defaultStartColor);
+        manageStudentsButton.setkEndColor(defaultEndColor);
+        issueBookButton.setkStartColor(defaultStartColor);
+        issueBookButton.setkEndColor(defaultEndColor);
+        returnBookButton.setkStartColor(pressColor);
+        returnBookButton.setkEndColor(pressColor);
+    }// GEN-LAST:event_returnBookButtonMousePressed
+
+    private void issueBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_issueBookButtonActionPerformed
+        // TODO add your handling code here:
+        components.IssueBook page = new components.IssueBook();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
+    }// GEN-LAST:event_issueBookButtonActionPerformed
+
+    private void homePageButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_homePageButtonActionPerformed
+        components.HomePage page = new components.HomePage();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_homePageButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
         LoginPage loginPage = new LoginPage();
         loginPage.setVisible(true);
         dispose();
     }// GEN-LAST:event_logoutButtonActionPerformed
 
-    // private void
-    // seeMoreViewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt)
-    // {// GEN-FIRST:event_seeMoreViewIssueBooksButtonActionPerformed
-    // // TODO add your handling code here:
-    // IssueBook ib = new IssueBook();
-    // ib.setVisible(true);
-    // dispose();
-    // }// GEN-LAST:event_seeMoreViewIssueBooksButtonActionPerformed
-
     private void manageBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_manageBookButtonActionPerformed
-        ManageBook mb = new ManageBook();
-        mb.setVisible(true);
-        this.dispose();
-
+        components.ManageBook page = new components.ManageBook();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_manageBookButtonActionPerformed
 
     private void manageStudentsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_manageStudentsButtonActionPerformed
-        ManageStudents ms = new ManageStudents();
-        ms.setVisible(true);
-        this.dispose();
+        components.ManageStudents page = new components.ManageStudents();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_manageStudentsButtonActionPerformed
 
-    private void issueBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_issueBookButtonActionPerformed
-        IssueBook ib = new IssueBook();
-        ib.setVisible(true);
-        this.dispose();
-    }// GEN-LAST:event_issueBookButtonActionPerformed
-
     private void returnBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_returnBookButtonActionPerformed
-        ReturnBook rb = new ReturnBook();
-        rb.setVisible(true);
-        this.dispose();
+        components.ReturnBook page = new components.ReturnBook();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_returnBookButtonActionPerformed
 
     private void viewRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewRecordsButtonActionPerformed
         // TODO add your handling code here:
     }// GEN-LAST:event_viewRecordsButtonActionPerformed
-
-    private void viewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewIssueBooksButtonActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_viewIssueBooksButtonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -701,7 +775,6 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -709,13 +782,13 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private com.k33ptoo.components.KButton logoutButton;
     private javax.swing.JPanel mainPanel;
     private com.k33ptoo.components.KButton manageBookButton;
     private com.k33ptoo.components.KButton manageStudentsButton;
     private com.k33ptoo.components.KButton returnBookButton;
+    private components.TopBar topBar1;
     private com.k33ptoo.components.KButton viewIssueBooksButton;
     private com.k33ptoo.components.KButton viewRecordsButton;
     // End of variables declaration//GEN-END:variables
