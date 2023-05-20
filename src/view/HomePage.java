@@ -7,6 +7,7 @@ package view;
 import java.awt.Color;
 
 import components.TopBar;
+import view.LoginPage;
 
 // import dao.DBConnection;
 // import java.sql.Connection;
@@ -34,7 +35,7 @@ public class HomePage extends javax.swing.JFrame {
 
     public HomePage() {
         initComponents();
-        topBar1.initMoving(this);
+        topBar.initMoving(this);
         // loadDataUser();
         loadDataUser();
         // setBookDetailToTable();
@@ -244,7 +245,7 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -271,7 +272,7 @@ public class HomePage extends javax.swing.JFrame {
         viewIssueBooksButton = new com.k33ptoo.components.KButton();
         currentNameLabel = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
-        topBar1 = new components.TopBar();
+        topBar = new components.TopBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -602,7 +603,7 @@ public class HomePage extends javax.swing.JFrame {
         mainPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         mainPanel.setLayout(new java.awt.BorderLayout());
         getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 950, 730));
-        getContentPane().add(topBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 70));
+        getContentPane().add(topBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 70));
 
         pack();
         setLocationRelativeTo(null);
@@ -788,7 +789,7 @@ public class HomePage extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton manageBookButton;
     private com.k33ptoo.components.KButton manageStudentsButton;
     private com.k33ptoo.components.KButton returnBookButton;
-    private components.TopBar topBar1;
+    private components.TopBar topBar;
     private com.k33ptoo.components.KButton viewIssueBooksButton;
     private com.k33ptoo.components.KButton viewRecordsButton;
     // End of variables declaration//GEN-END:variables

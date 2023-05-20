@@ -4,16 +4,11 @@
  */
 package components;
 
-/**
- *
- * @author dangc
- */
 import dao.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -36,22 +31,20 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     }
 
     public void loadComboIssueID() {
+        txt_ComboIssueID.removeAllItems();
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select issue_id from issue_book_details where status='Pending'");
-
             while (rs.next()) {
                 txt_ComboIssueID.addItem(rs.getString("issue_id"));
             }
             if (txt_ComboIssueID.getItemCount() > 0) {
                 fetchBookIssueDetails();
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Connection Error");
         }
-
     }
 
     // to fetch data book_details from database
@@ -99,23 +92,35 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     // }
 
     public void loadBookIssueDetails() {
-        int issueID = Integer.parseInt(txt_ComboIssueID.getSelectedItem().toString());
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(
-                    "select * from issue_book_details where issue_id=" + issueID + " and status='Pending'");
-            while (rs.next()) {
-                txt_BookName.setText(rs.getString("book_name"));
-                txt_StudentName.setText(rs.getString("student_name"));
-                txt_IssueDate.setText(rs.getString("issue_date"));
-                txt_DueDate.setText(rs.getString("due_date"));
-                txt_BookID.setText(rs.getString("book_id"));
-                txt_StudentID.setText(rs.getString("student_id"));
-            }
+        txt_BookName.setText("");
+        txt_StudentName.setText("");
+        txt_IssueDate.setText("");
+        txt_DueDate.setText("");
+        txt_BookID.setText("");
+        txt_StudentID.setText("");
+        if (txt_ComboIssueID.getItemCount() > 0) {
+            if (txt_ComboIssueID.getSelectedItem().toString().equals("")) {
+                JOptionPane.showMessageDialog(null, "Please select issue id");
+            } else {
+                int issueID = Integer.parseInt(txt_ComboIssueID.getSelectedItem().toString());
+                try {
+                    Connection con = DBConnection.getConnection();
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery(
+                            "select * from issue_book_details where issue_id=" + issueID + " and status='Pending'");
+                    while (rs.next()) {
+                        txt_BookName.setText(rs.getString("book_name"));
+                        txt_StudentName.setText(rs.getString("student_name"));
+                        txt_IssueDate.setText(rs.getString("issue_date"));
+                        txt_DueDate.setText(rs.getString("due_date"));
+                        txt_BookID.setText(rs.getString("book_id"));
+                        txt_StudentID.setText(rs.getString("student_id"));
+                    }
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Error");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Connection Error");
+                }
+            }
         }
     }
 
@@ -431,11 +436,11 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (returnBook() == true) {
             // loadBookIssueDetails();
+            loadComboIssueID();
             JOptionPane.showMessageDialog(null, "Book returned");
         } else {
             JOptionPane.showMessageDialog(null, "Book Return Failed");
         }
-        loadComboIssueID();
     }// GEN-LAST:event_returnButtonActionPerformed
 
     private void txt_StudentIDFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txt_StudentIDFocusLost

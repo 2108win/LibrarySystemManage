@@ -5,10 +5,14 @@
 package view;
 
 import dao.DBConnection;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 
 import javax.swing.JOptionPane;
 
@@ -19,8 +23,27 @@ public class SignupPage extends javax.swing.JFrame {
      */
     public SignupPage() {
         initComponents();
+        initMoving(this);
     }
+    
+    private int xMouse;
+    private int yMouse;
 
+    public void initMoving(JFrame fram) {
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent me) {
+                xMouse = me.getX();
+                yMouse = me.getY();
+            }
+        });
+        this.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent me) {
+                fram.setLocation(me.getXOnScreen() - xMouse, me.getYOnScreen() - yMouse);
+            }
+        });
+    }
     public void insertSignupDetails() {
         String name = txt_username.getText();
         String password = txt_password.getText();
@@ -109,10 +132,9 @@ public class SignupPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -132,69 +154,68 @@ public class SignupPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        closeButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
-        setMinimumSize(new java.awt.Dimension(900, 740));
+        setMinimumSize(new java.awt.Dimension(900, 700));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(900, 700));
         setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        kGradientPanel1.setkEndColor(new java.awt.Color(255, 255, 255));
+        kGradientPanel1.setkStartColor(new java.awt.Color(204, 204, 204));
+        kGradientPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo (Custom).png"))); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        kGradientPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/banner.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 700));
-
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        kGradientPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(36, 36, 36));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/phone.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 32, 32));
+        kGradientPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 32, 32));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("DVN-Poppins ExtBd", 0, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(36, 36, 36));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Create new account");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 500, -1));
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 500, -1));
 
         jLabel3.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(36, 36, 36));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Let create new account!!");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 500, -1));
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, 500, -1));
 
         jLabel4.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(36, 36, 36));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Password");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 350, -1));
+        kGradientPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 350, -1));
 
         emailLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         emailLabel.setForeground(new java.awt.Color(255, 0, 0));
         emailLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         emailLabel.setText(" ");
-        jPanel2.add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 200, -1));
+        kGradientPanel1.add(emailLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 200, -1));
 
         jLabel8.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(36, 36, 36));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Email");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 80, -1));
+        kGradientPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 80, -1));
 
         jLabel10.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(36, 36, 36));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Contact");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 350, -1));
+        kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 350, -1));
 
         loginButton.setBackground(new java.awt.Color(245, 246, 241));
         loginButton.setForeground(new java.awt.Color(36, 36, 36));
@@ -205,7 +226,7 @@ public class SignupPage extends javax.swing.JFrame {
                 loginButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 620, 350, 60));
+        kGradientPanel1.add(loginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 600, 350, 60));
 
         createAccountButton.setBackground(new java.awt.Color(247, 171, 10));
         createAccountButton.setText("SignUp");
@@ -215,11 +236,11 @@ public class SignupPage extends javax.swing.JFrame {
                 createAccountButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 550, 350, 60));
+        kGradientPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 350, 60));
 
         txt_contact.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_contact.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
-        jPanel2.add(txt_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 350, 40));
+        kGradientPanel1.add(txt_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 350, 40));
 
         txt_username.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
@@ -228,11 +249,11 @@ public class SignupPage extends javax.swing.JFrame {
                 txt_usernameFocusLost(evt);
             }
         });
-        jPanel2.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 350, 40));
+        kGradientPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 350, 40));
 
         txt_password.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
-        jPanel2.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 350, 40));
+        kGradientPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 350, 40));
 
         txt_email.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_email.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
@@ -241,49 +262,62 @@ public class SignupPage extends javax.swing.JFrame {
                 txt_emailFocusLost(evt);
             }
         });
-        jPanel2.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 350, 40));
+        kGradientPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 350, 40));
 
         usernameLabel1.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         usernameLabel1.setForeground(new java.awt.Color(36, 36, 36));
         usernameLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         usernameLabel1.setText("Username");
-        jPanel2.add(usernameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 100, -1));
+        kGradientPanel1.add(usernameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 100, -1));
 
         checkErrorLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         checkErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         checkErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         checkErrorLabel.setText(" ");
-        jPanel2.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, 350, -1));
+        kGradientPanel1.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, 350, -1));
 
         usernameLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(255, 0, 0));
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usernameLabel.setText(" ");
-        jPanel2.add(usernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 200, -1));
+        kGradientPanel1.add(usernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 200, -1));
 
         jLabel5.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(36, 36, 36));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8_Account_50px.png"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 32, 32));
+        kGradientPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 32, 32));
 
         jLabel7.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(36, 36, 36));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/padlock.png"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 32, 32));
+        kGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 32, 32));
 
         jLabel9.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(36, 36, 36));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email.png"))); // NOI18N
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, 32, 32));
+        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 32, 32));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 500, 700));
+        closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
+        closeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeButtonMouseClicked(evt);
+            }
+        });
+        kGradientPanel1.add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, -1));
 
-        setSize(new java.awt.Dimension(916, 708));
+        getContentPane().add(kGradientPanel1);
+
+        setSize(new java.awt.Dimension(900, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_closeButtonMouseClicked
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
         LoginPage login = new LoginPage();
@@ -364,6 +398,7 @@ public class SignupPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel checkErrorLabel;
+    private javax.swing.JLabel closeButton;
     private rojerusan.RSMaterialButtonRectangle createAccountButton;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel jLabel1;
@@ -377,8 +412,7 @@ public class SignupPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private com.k33ptoo.components.KGradientPanel kGradientPanel1;
     private javax.swing.JTextField txt_contact;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_password;

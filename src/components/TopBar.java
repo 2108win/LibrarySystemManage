@@ -49,7 +49,7 @@ public class TopBar extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
@@ -76,10 +76,10 @@ public class TopBar extends javax.swing.JPanel {
         add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_closeButtonMouseClicked
+    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-    }// GEN-LAST:event_closeButtonMouseClicked
+    }//GEN-LAST:event_closeButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel closeButton;
