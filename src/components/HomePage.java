@@ -138,7 +138,7 @@ public class HomePage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -253,18 +253,19 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         IssueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         IssueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false, false, false, false
+            },
+            new String [] {
+                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         IssueBookDetailsTable.setToolTipText("");
@@ -319,8 +320,7 @@ public class HomePage extends javax.swing.JInternalFrame {
                 seeMoreViewIssueBooksButtonActionPerformed(evt);
             }
         });
-        panelBorder5.add(seeMoreViewIssueBooksButton,
-                new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 140, 20));
+        panelBorder5.add(seeMoreViewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, 140, 20));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N

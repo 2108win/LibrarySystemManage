@@ -6,8 +6,10 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import model.Books;
+import model.Students;
 
 /**
  *
@@ -36,5 +38,25 @@ public class BooksDao extends DBConnection {
       e.printStackTrace();
     }
     return book;
+  }
+
+  public ArrayList<Books> getAllBooks() {
+    ArrayList<Books> books = new ArrayList<>();
+    try {
+      String sql = "SELECT * FROM book_details";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        Books book = new Books();
+        book.setBook_id(rs.getInt("book_id"));
+        book.setBook_name(rs.getString("book_name"));
+        book.setAuthor(rs.getString("author"));
+        book.setQuantity(rs.getInt("quantity"));
+        books.add(book);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return books;
   }
 }

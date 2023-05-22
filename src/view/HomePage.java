@@ -6,9 +6,6 @@ package view;
 
 import java.awt.Color;
 
-import components.TopBar;
-import view.LoginPage;
-
 // import dao.DBConnection;
 // import java.sql.Connection;
 // import java.sql.ResultSet;
@@ -245,6 +242,8 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -339,11 +338,6 @@ public class HomePage extends javax.swing.JFrame {
         homePageButton.setkHoverStartColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         homePageButton.setkStartColor(new java.awt.Color(247, 171, 10));
-        homePageButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                homePageButtonMousePressed(evt);
-            }
-        });
         homePageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homePageButtonActionPerformed(evt);
@@ -373,11 +367,6 @@ public class HomePage extends javax.swing.JFrame {
         manageBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         manageBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         manageBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        manageBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageBookButtonMousePressed(evt);
-            }
-        });
         manageBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageBookButtonActionPerformed(evt);
@@ -407,11 +396,6 @@ public class HomePage extends javax.swing.JFrame {
         manageStudentsButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         manageStudentsButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         manageStudentsButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        manageStudentsButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                manageStudentsButtonMousePressed(evt);
-            }
-        });
         manageStudentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStudentsButtonActionPerformed(evt);
@@ -441,11 +425,6 @@ public class HomePage extends javax.swing.JFrame {
         issueBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         issueBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         issueBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        issueBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                issueBookButtonMousePressed(evt);
-            }
-        });
         issueBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 issueBookButtonActionPerformed(evt);
@@ -475,11 +454,6 @@ public class HomePage extends javax.swing.JFrame {
         returnBookButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         returnBookButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         returnBookButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        returnBookButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                returnBookButtonMousePressed(evt);
-            }
-        });
         returnBookButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 returnBookButtonActionPerformed(evt);
@@ -493,7 +467,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/record.png"))); // NOI18N
         jLabel9.setLabelFor(viewRecordsButton);
         jLabel9.setText("   View Records");
-        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
 
         viewRecordsButton.setBorder(null);
         viewRecordsButton.setAlignmentX(0.5F);
@@ -514,7 +488,7 @@ public class HomePage extends javax.swing.JFrame {
                 viewRecordsButtonActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(viewRecordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 230, -1));
+        kGradientPanel1.add(viewRecordsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 230, -1));
 
         jLabel10.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(36, 36, 36));
@@ -522,7 +496,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/issue.png"))); // NOI18N
         jLabel10.setLabelFor(viewIssueBooksButton);
         jLabel10.setText("   View Issue Books");
-        kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, -1));
+        kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(36, 36, 36));
@@ -590,7 +564,12 @@ public class HomePage extends javax.swing.JFrame {
         viewIssueBooksButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
         viewIssueBooksButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
         viewIssueBooksButton.setkStartColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel1.add(viewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 230, -1));
+        viewIssueBooksButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewIssueBooksButtonActionPerformed(evt);
+            }
+        });
+        kGradientPanel1.add(viewIssueBooksButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 230, -1));
 
         currentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 22)); // NOI18N
         currentNameLabel.setForeground(new java.awt.Color(247, 171, 10));
@@ -608,6 +587,13 @@ public class HomePage extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void viewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewIssueBooksButtonActionPerformed
+        // TODO add your handling code here:
+        components.IssueListPage page = new components.IssueListPage();
+        mainPanel.removeAll();
+        mainPanel.add(page).setVisible(true);
+    }// GEN-LAST:event_viewIssueBooksButtonActionPerformed
 
     private void homePageButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_homePageButtonMousePressed
         // TODO add your handling code here:

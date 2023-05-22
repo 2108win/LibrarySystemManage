@@ -234,7 +234,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -248,7 +248,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookAuthor = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         txt_Quantity = new javax.swing.JTextField();
-        panelPieChart1 = new com.k33ptoo.components.KGradientPanel();
+        panelBorder3 = new components.PanelBorder();
         jLabel24 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         txt_BookID = new javax.swing.JTextField();
@@ -261,9 +261,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_DueDate = new com.toedter.calendar.JDateChooser();
         txt_IssueDate = new com.toedter.calendar.JDateChooser();
         checkErrorLabel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        backButton = new com.k33ptoo.components.KButton();
-        kGradientPanel10 = new com.k33ptoo.components.KGradientPanel();
+        panelBorder2 = new components.PanelBorder();
         txt_ComboStudentID = new javax.swing.JComboBox<>();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -287,21 +285,20 @@ public class IssueBook extends javax.swing.JInternalFrame {
 
         txt_ComboBookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboBookID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboBookID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboBookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboBookID.setOpaque(true);
         txt_ComboBookID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_ComboBookIDActionPerformed(evt);
             }
         });
-        panelBorder1.add(txt_ComboBookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, -1));
+        panelBorder1.add(txt_ComboBookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 430, -1));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
         jLabel25.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
         jLabel25.setText("Book details");
-        panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
+        panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jLabel30.setBackground(new java.awt.Color(36, 36, 36));
         jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -319,10 +316,9 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookName.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder1.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 310, -1));
+        panelBorder1.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, -1));
 
         jLabel28.setBackground(new java.awt.Color(36, 36, 36));
         jLabel28.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -334,10 +330,9 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookAuthor.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookAuthor.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookAuthor
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder1.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 310, -1));
+        panelBorder1.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, -1));
 
         jLabel29.setBackground(new java.awt.Color(36, 36, 36));
         jLabel29.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -349,63 +344,58 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Quantity.setBackground(new java.awt.Color(255, 255, 255));
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Quantity
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        panelBorder1.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 310, -1));
+        panelBorder1.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 430, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 460, 300));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 300));
 
-        panelPieChart1.setkBorderRadius(20);
-        panelPieChart1.setkEndColor(new java.awt.Color(255, 255, 255));
-        panelPieChart1.setkStartColor(new java.awt.Color(255, 255, 255));
-        panelPieChart1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel24.setBackground(new java.awt.Color(36, 36, 36));
         jLabel24.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(36, 36, 36));
         jLabel24.setText("Book ID");
-        panelPieChart1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        panelBorder3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(36, 36, 36));
         jLabel26.setText("Issue Book");
-        panelPieChart1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        panelBorder3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_BookID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_BookIDFocusLost(evt);
             }
         });
-        panelPieChart1.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 370, -1));
+        panelBorder3.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, -1));
 
         issueDateLabel.setBackground(new java.awt.Color(36, 36, 36));
         issueDateLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         issueDateLabel.setForeground(new java.awt.Color(36, 36, 36));
         issueDateLabel.setText("Issue Date");
-        panelPieChart1.add(issueDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        panelBorder3.add(issueDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_StudentID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_StudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_StudentIDFocusLost(evt);
             }
         });
-        panelPieChart1.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 370, -1));
+        panelBorder3.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 260, -1));
 
         jLabel13.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(245, 246, 241));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        panelPieChart1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 570, -1, -1));
+        panelBorder3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -425,129 +415,93 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        panelPieChart1.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 560, 130, 40));
+        panelBorder3.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 130, 40));
 
         jLabel37.setBackground(new java.awt.Color(36, 36, 36));
         jLabel37.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(36, 36, 36));
         jLabel37.setText("Student ID");
-        panelPieChart1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        panelBorder3.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jLabel38.setBackground(new java.awt.Color(36, 36, 36));
         jLabel38.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(36, 36, 36));
         jLabel38.setText("Due Date");
-        panelPieChart1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        panelBorder3.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         txt_DueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        panelPieChart1.add(txt_DueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 370, 40));
+        panelBorder3.add(txt_DueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, 40));
 
         txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        panelPieChart1.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 370, 40));
+        panelBorder3.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 40));
 
         checkErrorLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         checkErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         checkErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         checkErrorLabel.setText(" ");
-        panelPieChart1.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 280, -1));
+        panelBorder3.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 170, -1));
 
-        kGradientPanel2.add(panelPieChart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 430, 620));
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 620));
 
-        jLabel4.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back.png"))); // NOI18N
-        jLabel4.setText("   Back to Home");
-        kGradientPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
-
-        backButton.setAlignmentX(0.5F);
-        backButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
-        backButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        backButton.setIconTextGap(2);
-        backButton.setkBackGroundColor(new java.awt.Color(247, 171, 10));
-        backButton.setkBorderRadius(20);
-        backButton.setkEndColor(new java.awt.Color(247, 171, 10));
-        backButton.setkForeGround(new java.awt.Color(36, 36, 36));
-        backButton.setkHoverColor(new java.awt.Color(204, 204, 204));
-        backButton.setkHoverEndColor(new java.awt.Color(247, 171, 10));
-        backButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        backButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
-        backButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
-        backButton.setkStartColor(new java.awt.Color(247, 171, 10));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        kGradientPanel2.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, -1));
-
-        kGradientPanel10
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
-        kGradientPanel10.setForeground(new java.awt.Color(255, 255, 255));
-        kGradientPanel10.setkBorderRadius(20);
-        kGradientPanel10.setkEndColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel10.setkStartColor(new java.awt.Color(255, 255, 255));
-        kGradientPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_ComboStudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboStudentID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboStudentID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboStudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboStudentID.setOpaque(true);
         txt_ComboStudentID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_ComboStudentIDActionPerformed(evt);
             }
         });
-        kGradientPanel10.add(txt_ComboStudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 310, -1));
+        panelBorder2.add(txt_ComboStudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 430, -1));
 
         jLabel31.setBackground(new java.awt.Color(36, 36, 36));
         jLabel31.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
         jLabel31.setText("Student detaills");
-        kGradientPanel10.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        panelBorder2.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
 
         jLabel32.setBackground(new java.awt.Color(36, 36, 36));
         jLabel32.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(36, 36, 36));
         jLabel32.setText("Student ID");
-        kGradientPanel10.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        panelBorder2.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel33.setBackground(new java.awt.Color(36, 36, 36));
         jLabel33.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(36, 36, 36));
         jLabel33.setText("Name");
-        kGradientPanel10.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        panelBorder2.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         txt_StudentName.setEditable(false);
         txt_StudentName.setBackground(new java.awt.Color(255, 255, 255));
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        kGradientPanel10.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 310, -1));
+        panelBorder2.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, -1));
 
         jLabel34.setBackground(new java.awt.Color(36, 36, 36));
         jLabel34.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(36, 36, 36));
         jLabel34.setText("Branch");
-        kGradientPanel10.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        panelBorder2.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
 
         txt_Branch.setEditable(false);
         txt_Branch.setBackground(new java.awt.Color(255, 255, 255));
         txt_Branch.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Branch.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Branch
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Branch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Branch.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        kGradientPanel10.add(txt_Branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 310, -1));
+        panelBorder2.add(txt_Branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, -1));
 
         jLabel35.setBackground(new java.awt.Color(36, 36, 36));
         jLabel35.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(36, 36, 36));
         jLabel35.setText("Year");
-        kGradientPanel10.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+        panelBorder2.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         txt_Year.setEditable(false);
         txt_Year.setBackground(new java.awt.Color(255, 255, 255));
@@ -555,9 +509,9 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Year.setForeground(new java.awt.Color(36, 36, 36));
         txt_Year.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Year.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        kGradientPanel10.add(txt_Year, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 310, -1));
+        panelBorder2.add(txt_Year, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 430, -1));
 
-        kGradientPanel2.add(kGradientPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 460, 300));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 570, 300));
 
         getContentPane().add(kGradientPanel2);
 
@@ -604,7 +558,6 @@ public class IssueBook extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton addButton;
-    private com.k33ptoo.components.KButton backButton;
     private javax.swing.JLabel checkErrorLabel;
     private javax.swing.JLabel issueDateLabel;
     private javax.swing.JLabel jLabel13;
@@ -622,11 +575,10 @@ public class IssueBook extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel4;
-    private com.k33ptoo.components.KGradientPanel kGradientPanel10;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;
-    private com.k33ptoo.components.KGradientPanel panelPieChart1;
+    private components.PanelBorder panelBorder2;
+    private components.PanelBorder panelBorder3;
     private javax.swing.JTextField txt_BookAuthor;
     private javax.swing.JTextField txt_BookID;
     private javax.swing.JTextField txt_BookName;

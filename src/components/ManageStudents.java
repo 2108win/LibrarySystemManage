@@ -5,6 +5,9 @@
 package components;
 
 import dao.DBConnection;
+import dao.StudentsDao;
+import model.Students;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,8 +15,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -44,21 +49,26 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
     public void setStudentDetailToTable() {
         // connect to database
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root", "");
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from student_details");
-            while (rs.next()) {
-                student_id = rs.getInt("student_id");
-                student_name = rs.getString("student_name");
-                branch = rs.getString("branch");
-                year = rs.getString("year");
-                model = (DefaultTableModel) studentDetailsTable.getModel();
-                model.addRow(new Object[] { student_id, student_name, branch, year });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        // try {
+        // Connection con = DBConnection.getConnection();
+        // Statement st = con.createStatement();
+        // ResultSet rs = st.executeQuery("select * from student_details");
+        // while (rs.next()) {
+        // student_id = rs.getInt("student_id");
+        // student_name = rs.getString("student_name");
+        // branch = rs.getString("branch");
+        // year = rs.getString("year");
+        // model = (DefaultTableModel) studentDetailsTable.getModel();
+        // model.addRow(new Object[] { student_id, student_name, branch, year });
+        // }
+        // } catch (Exception e) {
+        // e.printStackTrace();
+        // }
+        StudentsDao dao = new StudentsDao();
+        model = (DefaultTableModel) studentDetailsTable.getModel();
+        for (Students student : dao.getAllStudents()) {
+            model.addRow(new Object[] { student.getStudent_id(), student.getStudent_name(), student.getBranch(),
+                    student.getYear() });
         }
     }
 
@@ -128,6 +138,14 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         }
     }
 
+    // filter
+    public void filter(String query) {
+        // DefaultTableModel model = (DefaultTableModel) studentDetailsTable.getModel();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        studentDetailsTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(query));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,7 +153,8 @@ public class ManageStudents extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -159,8 +178,9 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         updateButton = new com.k33ptoo.components.KButton();
         jLabel13 = new javax.swing.JLabel();
         addButton = new com.k33ptoo.components.KButton();
-        jLabel4 = new javax.swing.JLabel();
-        backButton = new com.k33ptoo.components.KButton();
+        panelBorder3 = new components.PanelBorder();
+        txt_Search = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -178,19 +198,18 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
         studentDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         studentDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][] {
 
-            },
-            new String [] {
-                "Student ID", "Name", "Branch", "Year"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                },
+                new String[] {
+                        "Student ID", "Name", "Branch", "Year"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         studentDetailsTable.setToolTipText("");
@@ -223,15 +242,15 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(studentDetailsTable);
 
-        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 460));
+        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 580));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
         jLabel25.setText("Student List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 570, 530));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 650));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -249,7 +268,8 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, -1));
 
@@ -261,7 +281,8 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
@@ -273,7 +294,8 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         txt_year.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K18", "K19", "K20", "K21", "K22", "K23", "K24" }));
+        txt_year.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "K18", "K19", "K20", "K21", "K22", "K23", "K24" }));
         txt_year.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_year.setOpaque(true);
         panelBorder2.add(txt_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 250, -1));
@@ -285,18 +307,21 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txt_branch.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Công nghệ Thông tin", "Hệ thống Thông tin", "Khoa học Máy tính", "Kỹ thuật Phần mềm", "Kỹ thuật Máy tính", "An toàn Thông tin", "Thương mại Điện tử", "Khoa học Dữ liệu" }));
-        txt_branch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_branch.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "Công nghệ Thông tin", "Hệ thống Thông tin", "Khoa học Máy tính", "Kỹ thuật Phần mềm",
+                        "Kỹ thuật Máy tính", "An toàn Thông tin", "Thương mại Điện tử", "Khoa học Dữ liệu" }));
+        txt_branch
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_branch.setOpaque(true);
         panelBorder2.add(txt_branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 320, 470));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 320, 470));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Remove");
-        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 590, -1, -1));
+        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
 
         removeButton.setAlignmentX(0.5F);
         removeButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -316,13 +341,13 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 removeButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 100, 40));
+        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, 100, 40));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(36, 36, 36));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Update");
-        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 590, -1, -1));
+        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
 
         updateButton.setAlignmentX(0.5F);
         updateButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -342,13 +367,13 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 updateButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 580, 110, 40));
+        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 630, 110, 40));
 
         jLabel13.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(36, 36, 36));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 590, -1, -1));
+        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -368,40 +393,40 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 580, 90, 40));
+        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 630, 90, 40));
 
-        jLabel4.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/back.png"))); // NOI18N
-        jLabel4.setText("   Back to Home");
-        kGradientPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backButton.setAlignmentX(0.5F);
-        backButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
-        backButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        backButton.setIconTextGap(2);
-        backButton.setkBackGroundColor(new java.awt.Color(247, 171, 10));
-        backButton.setkBorderRadius(20);
-        backButton.setkEndColor(new java.awt.Color(247, 171, 10));
-        backButton.setkForeGround(new java.awt.Color(36, 36, 36));
-        backButton.setkHoverColor(new java.awt.Color(204, 204, 204));
-        backButton.setkHoverEndColor(new java.awt.Color(247, 171, 10));
-        backButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        backButton.setkHoverStartColor(new java.awt.Color(204, 204, 204));
-        backButton.setkSelectedColor(new java.awt.Color(247, 171, 10));
-        backButton.setkStartColor(new java.awt.Color(247, 171, 10));
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+        txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        txt_Search
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_SearchKeyReleased(evt);
             }
         });
-        kGradientPanel2.add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, -1));
+        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, -1));
+
+        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
+        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel30.setText("Search");
+        panelBorder3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 100));
 
         getContentPane().add(kGradientPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_SearchKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_SearchKeyReleased
+        // TODO add your handling code here:
+        String query = txt_Search.getText();
+        filter(query);
+    }// GEN-LAST:event_txt_SearchKeyReleased
 
     private void studentDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_studentDetailsTableMouseClicked
         // TODO add your handling code here:
@@ -446,7 +471,6 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton addButton;
-    private com.k33ptoo.components.KButton backButton;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -456,13 +480,15 @@ public class ManageStudents extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;
     private components.PanelBorder panelBorder2;
+    private components.PanelBorder panelBorder3;
     private com.k33ptoo.components.KButton removeButton;
     private rojeru_san.complementos.RSTableMetro studentDetailsTable;
+    private javax.swing.JTextField txt_Search;
     private javax.swing.JTextField txt_StudentID;
     private javax.swing.JTextField txt_StudentName;
     private javax.swing.JComboBox<String> txt_branch;
