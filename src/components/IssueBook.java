@@ -4,7 +4,12 @@
  */
 package components;
 
+import dao.BooksDao;
 import dao.DBConnection;
+import dao.StudentsDao;
+import model.Books;
+import model.Students;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,72 +85,90 @@ public class IssueBook extends javax.swing.JInternalFrame {
     // to fetch data book_details from database
     public void fetchBookDetails() {
         int bookID = Integer.parseInt(txt_BookID.getText());
-        try {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from book_details where book_id=?");
-            pst.setInt(1, bookID);
-            ResultSet rs1 = pst.executeQuery();
-            if (rs1.next()) {
-                txt_ComboBookID.setSelectedItem(rs1.getString("book_id"));
-                txt_BookName.setText(rs1.getString("book_name"));
-                txt_BookAuthor.setText(rs1.getString("author"));
-                txt_Quantity.setText(rs1.getString("quantity"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Error");
-        }
+        BooksDao bd = new BooksDao();
+        bd.getBookById(bookID);
+        Books b = bd.getBookById(bookID);
+        txt_ComboBookID.setSelectedItem(txt_BookID.getText());
+        txt_BookName.setText(b.getBook_name());
+        txt_BookAuthor.setText(b.getAuthor());
+        txt_Quantity.setText(String.valueOf(b.getQuantity()));
+        // try {
+        // Connection con = DBConnection.getConnection();
+        // PreparedStatement pst = con.prepareStatement("select * from book_details
+        // where book_id=?");
+        // pst.setInt(1, bookID);
+        // ResultSet rs1 = pst.executeQuery();
+        // if (rs1.next()) {
+        // txt_ComboBookID.setSelectedItem(rs1.getString("book_id"));
+        // txt_BookName.setText(rs1.getString("book_name"));
+        // txt_BookAuthor.setText(rs1.getString("author"));
+        // txt_Quantity.setText(rs1.getString("quantity"));
+        // }
+        // } catch (Exception e) {
+        // JOptionPane.showMessageDialog(null, "Connection Error");
+        // }
     }
 
     public void fetchStudentDetails() {
         int studentID = Integer.parseInt(txt_StudentID.getText());
-        try {
-            Connection con = DBConnection.getConnection();
-            PreparedStatement pst = con.prepareStatement("select * from student_details where student_id=?");
-            pst.setInt(1, studentID);
-            ResultSet rs1 = pst.executeQuery();
-            if (rs1.next()) {
-                txt_ComboStudentID.setSelectedItem(rs1.getString("student_id"));
-                txt_StudentName.setText(rs1.getString("student_name"));
-                txt_Branch.setText(rs1.getString("branch"));
-                txt_Year.setText(rs1.getString("year"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Error");
-        }
+        StudentsDao sd = new StudentsDao();
+        sd.getStudentById(studentID);
+        Students s = sd.getStudentById(studentID);
+        // change to set selected item
+        txt_ComboStudentID.setSelectedItem(txt_StudentID.getText());
+        txt_StudentName.setText(s.getStudent_name());
+        txt_Branch.setText(s.getBranch());
+        txt_Year.setText(s.getYear());
+        // try {
+        // Connection con = DBConnection.getConnection();
+        // PreparedStatement pst = con.prepareStatement("select * from student_details
+        // where student_id=?");
+        // pst.setInt(1, studentID);
+        // ResultSet rs1 = pst.executeQuery();
+        // if (rs1.next()) {
+        // txt_ComboStudentID.setSelectedItem(rs1.getString("student_id"));
+        // txt_StudentName.setText(rs1.getString("student_name"));
+        // txt_Branch.setText(rs1.getString("branch"));
+        // txt_Year.setText(rs1.getString("year"));
+        // }
+        // } catch (Exception e) {
+        // JOptionPane.showMessageDialog(null, "Connection Error");
+        // }
     }
 
     public void loadBookDetails() {
         int bookID = Integer.parseInt(txt_ComboBookID.getSelectedItem().toString());
         txt_BookID.setText(String.valueOf(bookID));
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from book_details where book_id=" + bookID + "");
-            while (rs.next()) {
-                txt_BookName.setText(rs.getString("book_name"));
-                txt_BookAuthor.setText(rs.getString("author"));
-                txt_Quantity.setText(rs.getString("quantity"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Error");
-        }
+        BooksDao bd = new BooksDao();
+        bd.getBookById(bookID);
+        Books b = bd.getBookById(bookID);
+        txt_BookName.setText(b.getBook_name());
+        txt_BookAuthor.setText(b.getAuthor());
+        txt_Quantity.setText(String.valueOf(b.getQuantity()));
     }
 
     public void loadStudentDetails() {
         int studentID = Integer.parseInt(txt_ComboStudentID.getSelectedItem().toString());
         txt_StudentID.setText(String.valueOf(studentID));
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from student_details where student_id=" + studentID + "");
-            while (rs.next()) {
-                txt_StudentName.setText(rs.getString("student_name"));
-                txt_Branch.setText(rs.getString("branch"));
-                txt_Year.setText(rs.getString("year"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Connection Error");
-        }
+        StudentsDao sd = new StudentsDao();
+        sd.getStudentById(studentID);
+        Students s = sd.getStudentById(studentID);
+        txt_StudentName.setText(s.getStudent_name());
+        txt_Branch.setText(s.getBranch());
+        txt_Year.setText(s.getYear());
+        // try {
+        // Connection con = DBConnection.getConnection();
+        // Statement st = con.createStatement();
+        // ResultSet rs = st.executeQuery("select * from student_details where
+        // student_id=" + studentID + "");
+        // while (rs.next()) {
+        // txt_StudentName.setText(rs.getString("student_name"));
+        // txt_Branch.setText(rs.getString("branch"));
+        // txt_Year.setText(rs.getString("year"));
+        // }
+        // } catch (Exception e) {
+        // JOptionPane.showMessageDialog(null, "Connection Error");
+        // }
     }
 
     public boolean issueBook() {
@@ -234,7 +257,9 @@ public class IssueBook extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -285,7 +310,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
 
         txt_ComboBookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboBookID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboBookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboBookID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboBookID.setOpaque(true);
         txt_ComboBookID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,7 +342,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookName.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, -1));
 
@@ -330,7 +357,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookAuthor.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookAuthor.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookAuthor
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, -1));
 
@@ -344,7 +372,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Quantity.setBackground(new java.awt.Color(255, 255, 255));
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Quantity
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 430, -1));
 
@@ -366,7 +395,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         panelBorder3.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_BookID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -382,7 +412,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         panelBorder3.add(issueDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_StudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -395,7 +426,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(245, 246, 241));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        panelBorder3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, -1, -1));
+        panelBorder3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -415,7 +446,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        panelBorder3.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, 130, 40));
+        panelBorder3.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, 130, 40));
 
         jLabel37.setBackground(new java.awt.Color(36, 36, 36));
         jLabel37.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -448,7 +479,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
 
         txt_ComboStudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboStudentID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboStudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboStudentID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboStudentID.setOpaque(true);
         txt_ComboStudentID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -479,7 +511,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_StudentName.setBackground(new java.awt.Color(255, 255, 255));
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 430, -1));
 
@@ -493,7 +526,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Branch.setBackground(new java.awt.Color(255, 255, 255));
         txt_Branch.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Branch.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Branch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Branch
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Branch.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_Branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, -1));
 
@@ -547,10 +581,6 @@ public class IssueBook extends javax.swing.JInternalFrame {
             break;
         }
     }// GEN-LAST:event_addButtonActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_backButtonActionPerformed
 
     private void txt_ComboStudentIDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_ComboStudentIDActionPerformed
         loadStudentDetails();

@@ -244,6 +244,7 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -435,9 +436,9 @@ public class HomePage extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(36, 36, 36));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/record.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pending.png"))); // NOI18N
         jLabel9.setLabelFor(viewRecordsButton);
-        jLabel9.setText("   View Records");
+        jLabel9.setText("   View Expired");
         kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         viewRecordsButton.setBorder(null);
@@ -464,9 +465,9 @@ public class HomePage extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(36, 36, 36));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/issue.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/record.png"))); // NOI18N
         jLabel10.setLabelFor(viewIssueBooksButton);
-        jLabel10.setText("   View Issue Books");
+        jLabel10.setText("   View Issue Records");
         kGradientPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
@@ -536,7 +537,6 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewIssueBooksButtonActionPerformed
-        // TODO add your handling code here:
         components.IssueListPage page = new components.IssueListPage();
         mainPanel.removeAll();
         mainPanel.add(page).setVisible(true);

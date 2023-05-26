@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import model.Books;
-import model.Students;
+// import model.Students;
 
 /**
  *
@@ -58,5 +58,26 @@ public class BooksDao extends DBConnection {
       e.printStackTrace();
     }
     return books;
+  }
+
+  // get book by id
+  public Books getBookById(int book_id) {
+    Books book = null;
+    try {
+      String sql = "SELECT * FROM book_details WHERE book_id = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, book_id);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        book = new Books();
+        book.setBook_id(rs.getInt("book_id"));
+        book.setBook_name(rs.getString("book_name"));
+        book.setAuthor(rs.getString("author"));
+        book.setQuantity(rs.getInt("quantity"));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return book;
   }
 }

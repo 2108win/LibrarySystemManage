@@ -4,13 +4,9 @@
  */
 package components;
 
-import dao.DBConnection;
 import dao.IssueBookDao;
 import model.IssueBook;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Date;
 
 import javax.swing.RowFilter;
@@ -51,14 +47,56 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         }
     }
 
+    public void setIssueBookPending() {
+        IssueBookDao issueBookDao = new IssueBookDao();
+        model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+        for (IssueBook issueBook : issueBookDao.getAllIssueBooks()) {
+            if (issueBook.getStatus().equals("Pending")) {
+                model.addRow(new Object[] {
+                        issueBook.getIssue_id(), issueBook.getBook_id(), issueBook.getBook_name(),
+                        issueBook.getStudent_id(), issueBook.getStudent_name(), issueBook.getIssue_date(),
+                        issueBook.getDue_date(), issueBook.getStatus()
+                });
+            }
+        }
+    }
+
+    public void setIssueBookReturned() {
+        IssueBookDao issueBookDao = new IssueBookDao();
+        model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+        for (IssueBook issueBook : issueBookDao.getAllIssueBooks()) {
+            if (issueBook.getStatus().equals("Returned")) {
+                model.addRow(new Object[] {
+                        issueBook.getIssue_id(), issueBook.getBook_id(), issueBook.getBook_name(),
+                        issueBook.getStudent_id(), issueBook.getStudent_name(), issueBook.getIssue_date(),
+                        issueBook.getDue_date(), issueBook.getStatus()
+                });
+            }
+        }
+    }
+
     // filter
     public void filter(String query) {
-        // DefaultTableModel model = (DefaultTableModel) bookDetailsTable.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         IssueBookDetailsTable.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(query));
+        // tr.setRowFilter(RowFilter.regexFilter(fromDate, 5));
+        // tr.setRowFilter(RowFilter.regexFilter(toDate, 5));
     }
 
+    // public void filterStatus(String query) {
+    // TableRowSorter<DefaultTableModel> tr = new
+    // TableRowSorter<DefaultTableModel>(model);
+    // IssueBookDetailsTable.setRowSorter(tr);
+    // tr.setRowFilter(RowFilter.regexFilter(query, 7));
+    // }
+
+    // public void filterFromDateToDate(String query) {
+    // TableRowSorter<DefaultTableModel> tr = new
+    // TableRowSorter<DefaultTableModel>(model);
+    // IssueBookDetailsTable.setRowSorter(tr);
+    // tr.setRowFilter(RowFilter.regexFilter(query, 5));
+    // }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +108,10 @@ public class IssueListPage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -80,7 +121,13 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         jLabel26 = new javax.swing.JLabel();
         panelBorder3 = new components.PanelBorder();
         txt_Search = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelBorder1 = new components.PanelBorder();
+        txt_ComboSearchStatus = new javax.swing.JComboBox<>();
+        panelBorder2 = new components.PanelBorder();
+        txt_IssueDate = new com.toedter.calendar.JDateChooser();
+        txt_IssueDate1 = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(null);
@@ -110,18 +157,19 @@ public class IssueListPage extends javax.swing.JInternalFrame {
 
         IssueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         IssueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false, false, false, false
+            },
+            new String [] {
+                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         IssueBookDetailsTable.setToolTipText("");
@@ -148,8 +196,20 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         IssueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         IssueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(IssueBookDetailsTable);
+        if (IssueBookDetailsTable.getColumnModel().getColumnCount() > 0) {
+            IssueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(50);
+            IssueBookDetailsTable.getColumnModel().getColumn(1).setMinWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(1).setMaxWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(3).setMinWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(5).setMinWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(5).setMaxWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(6).setMinWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(6).setMaxWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(7).setMaxWidth(100);
+        }
 
-        panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 870, 460));
+        panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 870, 490));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -157,34 +217,87 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         jLabel26.setText("Issue List");
         panelBorder5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 910, 530));
+        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 560));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_SearchKeyReleased(evt);
             }
         });
-        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, -1));
+        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 150, -1));
 
-        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel30.setText("Search");
-        panelBorder3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
+        panelBorder3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 320, 100));
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 70));
+
+        panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_ComboSearchStatus.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        txt_ComboSearchStatus.setForeground(new java.awt.Color(36, 36, 36));
+        txt_ComboSearchStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Pending", "Returned" }));
+        txt_ComboSearchStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboSearchStatus.setOpaque(true);
+        txt_ComboSearchStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ComboSearchStatusActionPerformed(evt);
+            }
+        });
+        panelBorder1.add(txt_ComboSearchStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, 30));
+
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 160, 70));
+
+        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
+        panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        panelBorder2.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 190, 30));
+
+        txt_IssueDate1.setAlignmentX(2.0F);
+        txt_IssueDate1.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        panelBorder2.add(txt_IssueDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 30));
+
+        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(247, 171, 10));
+        jLabel2.setText("to");
+        jLabel2.setAlignmentX(0.5F);
+        panelBorder2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 30, -1));
+
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 470, 70));
 
         getContentPane().add(kGradientPanel2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_ComboSearchStatusActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_ComboSearchStatusActionPerformed
+        // TODO add your handling code here:
+        String status = txt_ComboSearchStatus.getSelectedItem().toString();
+        if (status.equals("Pending")) {
+            // clear table
+            model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+            model.setRowCount(0);
+            setIssueBookPending();
+        } else if (status.equals("Returned")) {
+            // clear table
+            model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+            model.setRowCount(0);
+            setIssueBookReturned();
+        } else {
+            // clear table
+            model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+            model.setRowCount(0);
+            setIssueBookDetails();
+        }
+
+    }// GEN-LAST:event_txt_ComboSearchStatusActionPerformed
 
     private void txt_SearchKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_txt_SearchKeyReleased
         // TODO add your handling code here:
@@ -192,21 +305,20 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         filter(query);
     }// GEN-LAST:event_txt_SearchKeyReleased
 
-    private void seeMoreViewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_seeMoreViewIssueBooksButtonActionPerformed
-        // TODO add your handling code here:
-        // IssueBook ib = new IssueBook();
-        // ib.setVisible(true);
-        // dispose();
-    }// GEN-LAST:event_seeMoreViewIssueBooksButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.RSTableMetro IssueBookDetailsTable;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
+    private components.PanelBorder panelBorder1;
+    private components.PanelBorder panelBorder2;
     private components.PanelBorder panelBorder3;
     private components.PanelBorder panelBorder5;
+    private javax.swing.JComboBox<String> txt_ComboSearchStatus;
+    private com.toedter.calendar.JDateChooser txt_IssueDate;
+    private com.toedter.calendar.JDateChooser txt_IssueDate1;
     private javax.swing.JTextField txt_Search;
     // End of variables declaration//GEN-END:variables
 }

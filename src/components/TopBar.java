@@ -25,7 +25,7 @@ public class TopBar extends javax.swing.JPanel {
     private int xMouse;
     private int yMouse;
 
-    public void initMoving(JFrame fram) {
+    public void initMoving(JFrame frame) {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {
@@ -36,7 +36,7 @@ public class TopBar extends javax.swing.JPanel {
         this.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent me) {
-                fram.setLocation(me.getXOnScreen() - xMouse, me.getYOnScreen() - yMouse);
+                frame.setLocation(me.getXOnScreen() - xMouse, me.getYOnScreen() - yMouse);
             }
         });
     }
@@ -49,7 +49,8 @@ public class TopBar extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
@@ -76,10 +77,9 @@ public class TopBar extends javax.swing.JPanel {
         add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonMouseClicked
-        // TODO add your handling code here:
+    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_closeButtonMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_closeButtonMouseClicked
+    }// GEN-LAST:event_closeButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel closeButton;

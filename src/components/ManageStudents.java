@@ -9,10 +9,10 @@ import dao.StudentsDao;
 import model.Students;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
+// import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+// import java.sql.ResultSet;
+// import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -154,7 +154,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -180,7 +180,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         addButton = new com.k33ptoo.components.KButton();
         panelBorder3 = new components.PanelBorder();
         txt_Search = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -198,18 +198,19 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
         studentDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         studentDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "Student ID", "Name", "Branch", "Year"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false
+            },
+            new String [] {
+                "Student ID", "Name", "Branch", "Year"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         studentDetailsTable.setToolTipText("");
@@ -241,6 +242,11 @@ public class ManageStudents extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane4.setViewportView(studentDetailsTable);
+        if (studentDetailsTable.getColumnModel().getColumnCount() > 0) {
+            studentDetailsTable.getColumnModel().getColumn(0).setMinWidth(80);
+            studentDetailsTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            studentDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
 
         panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 580));
 
@@ -268,8 +274,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_StudentID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, -1));
 
@@ -281,8 +286,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
 
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
@@ -294,8 +298,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         txt_year.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_year.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "K18", "K19", "K20", "K21", "K22", "K23", "K24" }));
+        txt_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K18", "K19", "K20", "K21", "K22", "K23", "K24" }));
         txt_year.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_year.setOpaque(true);
         panelBorder2.add(txt_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 250, -1));
@@ -307,15 +310,12 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txt_branch.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_branch.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Công nghệ Thông tin", "Hệ thống Thông tin", "Khoa học Máy tính", "Kỹ thuật Phần mềm",
-                        "Kỹ thuật Máy tính", "An toàn Thông tin", "Thương mại Điện tử", "Khoa học Dữ liệu" }));
-        txt_branch
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Công nghệ Thông tin", "Hệ thống Thông tin", "Khoa học Máy tính", "Kỹ thuật Phần mềm", "Kỹ thuật Máy tính", "An toàn Thông tin", "Thương mại Điện tử", "Khoa học Dữ liệu" }));
+        txt_branch.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_branch.setOpaque(true);
         panelBorder2.add(txt_branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 320, 470));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 500));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -399,23 +399,19 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_SearchKeyReleased(evt);
             }
         });
-        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, -1));
+        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 230, -1));
 
-        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel30.setText("Search");
-        panelBorder3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
+        panelBorder3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 100));
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 70));
 
         getContentPane().add(kGradientPanel2);
 
@@ -448,7 +444,6 @@ public class ManageStudents extends javax.swing.JInternalFrame {
     }// GEN-LAST:event_removeButtonActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
         if (updateStudent()) {
             reloadTable();
         } else {
@@ -457,7 +452,6 @@ public class ManageStudents extends javax.swing.JInternalFrame {
     }// GEN-LAST:event_updateButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
         if (addStudent()) {
             reloadTable();
         } else {
@@ -465,12 +459,9 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         }
     }// GEN-LAST:event_addButtonActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_backButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton addButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -480,7 +471,6 @@ public class ManageStudents extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;

@@ -58,4 +58,25 @@ public class StudentsDao extends DBConnection {
     }
     return students;
   }
+
+  // get student by id
+  public Students getStudentById(int student_id) {
+    Students student = null;
+    try {
+      String sql = "SELECT * FROM student_details WHERE student_id = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, student_id);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        student = new Students();
+        student.setStudent_id(rs.getInt("student_id"));
+        student.setStudent_name(rs.getString("student_name"));
+        student.setBranch(rs.getString("branch"));
+        student.setYear(rs.getString("year"));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return student;
+  }
 }

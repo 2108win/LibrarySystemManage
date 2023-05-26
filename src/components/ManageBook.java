@@ -160,7 +160,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -186,7 +186,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel29 = new javax.swing.JLabel();
         panelBorder3 = new components.PanelBorder();
         txt_Search = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
@@ -283,18 +283,19 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
         bookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         bookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "Book ID", "Name", "Author", "Quantity"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false
+            },
+            new String [] {
+                "Book ID", "Name", "Author", "Quantity"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         bookDetailsTable.setToolTipText("");
@@ -326,6 +327,10 @@ public class ManageBook extends javax.swing.JInternalFrame {
             }
         });
         jScrollPane4.setViewportView(bookDetailsTable);
+        if (bookDetailsTable.getColumnModel().getColumnCount() > 0) {
+            bookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(110);
+            bookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
+        }
 
         panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 580));
 
@@ -341,15 +346,13 @@ public class ManageBook extends javax.swing.JInternalFrame {
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookAuthor
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 260, -1));
 
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Quantity
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, -1));
@@ -367,8 +370,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, -1));
 
@@ -380,8 +382,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 260, -1));
@@ -398,29 +399,25 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel29.setText("Author");
         panelBorder2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 140, 320, 470));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 500));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_SearchKeyReleased(evt);
             }
         });
-        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, -1));
+        panelBorder3.add(txt_Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 230, -1));
 
-        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
-        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel30.setText("Search");
-        panelBorder3.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
+        panelBorder3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 100));
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 70));
 
         getContentPane().add(kGradientPanel2);
 
@@ -472,6 +469,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton addButton;
     private rojeru_san.complementos.RSTableMetro bookDetailsTable;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -481,7 +479,6 @@ public class ManageBook extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;

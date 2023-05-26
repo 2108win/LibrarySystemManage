@@ -292,6 +292,16 @@ public class HomePage extends javax.swing.JInternalFrame {
         IssueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         IssueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane4.setViewportView(IssueBookDetailsTable);
+        if (IssueBookDetailsTable.getColumnModel().getColumnCount() > 0) {
+            IssueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(1).setMaxWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
+            IssueBookDetailsTable.getColumnModel().getColumn(5).setMinWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(5).setMaxWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(6).setMinWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(6).setMaxWidth(110);
+            IssueBookDetailsTable.getColumnModel().getColumn(7).setMaxWidth(100);
+        }
 
         panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 850, 200));
 
