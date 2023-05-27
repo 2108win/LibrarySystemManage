@@ -12,7 +12,7 @@ This is my persional project about manage library, using MVC with connect databa
 
 # Step 2:
 - Setup database with database file sql at "library_ms.sql"
-- I was used NetBeans to code Java project
+- I used NetBeans to code Java project
 
 # Step 3:
 Enjoy my app!! 
