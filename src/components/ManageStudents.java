@@ -232,7 +232,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         studentDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         studentDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         studentDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
-        studentDetailsTable.setRowHeight(34);
+        studentDetailsTable.setRowHeight(40);
         studentDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
         studentDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         studentDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
