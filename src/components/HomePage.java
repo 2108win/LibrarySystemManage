@@ -5,13 +5,21 @@
 package components;
 
 import dao.DBConnection;
+import dao.IssueBookDao;
+import model.IssueBook;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,6 +33,7 @@ public class HomePage extends javax.swing.JInternalFrame {
     String book_name, author, student_name, branch, year, status;
     int book_id, quantity, student_id, issue_id;
     Date issue_date, due_date;
+    DefaultTableModel model;
 
     public HomePage() {
         initComponents();
@@ -34,7 +43,8 @@ public class HomePage extends javax.swing.JInternalFrame {
         setStudentDetailToTable();
         setBookDetailToTable();
         setStatusBookDetails();
-//        setIssueBookDetails();
+        setIssueBookDetails();
+        setStudentBooksCountTable();
     }
 
     public void setStudentDetailToTable() {
@@ -104,14 +114,53 @@ public class HomePage extends javax.swing.JInternalFrame {
         countReturnLabel.setText(" " + String.valueOf(countReturn));
     }
 
-   public void setIssueBookDetails() {
-       try {
-           
+    public void setIssueBookDetails() {
+        IssueBookDao issueBookDao = new IssueBookDao();
+        model = (DefaultTableModel) issueBookDetailsTable.getModel();
+        model.setRowCount(0);
+        for (IssueBook issueBook : issueBookDao.getAllIssueBooks()) {
+            model.addRow(new Object[] { issueBook.getBook_id(), issueBook.getBook_name(), issueBook.getStudent_name(),
+                    issueBook.getIssue_date(),
+                    issueBook.getDue_date() });
+        }
+    }
 
-       } catch (Exception e) {
-           e.printStackTrace();
-       }
-   }
+    public void setStudentBooksCountTable() {
+        IssueBookDao issueBookDao = new IssueBookDao();
+        model = (DefaultTableModel) studentBooksCountTable.getModel();
+        model.setRowCount(0);
+        ArrayList<IssueBook> issueBooks = issueBookDao.getPendingIssueBooks();
+        while (issueBooks.size() > 0) {
+            int count = 0;
+            IssueBook issueBook = issueBooks.get(0);
+            for (IssueBook issueBook1 : issueBooks) {
+                if (issueBook.getStudent_id() == issueBook1.getStudent_id()) {
+                    count++;
+                }
+            }
+            model.addRow(new Object[] { issueBook.getStudent_name(), count });
+            issueBooks.removeIf(issueBook1 -> issueBook.getStudent_id() == issueBook1.getStudent_id());
+        }
+        // sort table by count to descending order
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        studentBooksCountTable.setRowSorter(sorter);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        int columnIndexToSort = 1;
+        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+        sorter.sort();
+        model.setRowCount(6);
+    }
+
+    public void setNameBookList(String student_name) {
+        IssueBookDao issueBookDao = new IssueBookDao();
+        ArrayList<IssueBook> issueBooks = issueBookDao.getBooksByStudentName(student_name);
+        model = (DefaultTableModel) nameBookListTable.getModel();
+        model.setRowCount(0);
+        for (IssueBook issueBook : issueBooks) {
+            model.addRow(new Object[] { issueBook.getBook_name() });
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,7 +172,12 @@ public class HomePage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -141,14 +195,14 @@ public class HomePage extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         panelBorder5 = new components.PanelBorder();
         jLabel16 = new javax.swing.JLabel();
-        panelBorder7 = new components.PanelBorder();
-        jLabel20 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        topBooksTable = new rojeru_san.complementos.RSTableMetro();
         panelBorder6 = new components.PanelBorder();
-        jLabel18 = new javax.swing.JLabel();
+        studentNameLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         studentBooksCountTable = new rojeru_san.complementos.RSTableMetro();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        nameBookListTable = new rojeru_san.complementos.RSTableMetro();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         panelBorder8 = new components.PanelBorder();
         jScrollPane6 = new javax.swing.JScrollPane();
         issueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
@@ -247,78 +301,12 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 320));
 
-        panelBorder7.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("Top Books");
-        panelBorder7.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
-
-        jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane5.setBorder(null);
-        jScrollPane5.setForeground(new java.awt.Color(255, 255, 255));
-
-        topBooksTable.setForeground(new java.awt.Color(255, 255, 255));
-        topBooksTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "", ""
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        topBooksTable.setToolTipText("");
-        topBooksTable.setAlignmentX(0.0F);
-        topBooksTable.setAlignmentY(0.0F);
-        topBooksTable.setAltoHead(0);
-        topBooksTable.setColorBackgoundHead(new java.awt.Color(255, 255, 255));
-        topBooksTable.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        topBooksTable.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        topBooksTable.setColorFilasBackgound1(new java.awt.Color(245, 246, 241));
-        topBooksTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        topBooksTable.setColorFilasForeground1(new java.awt.Color(36, 36, 36));
-        topBooksTable.setColorFilasForeground2(new java.awt.Color(36, 36, 36));
-        topBooksTable.setColorForegroundHead(new java.awt.Color(36, 36, 36));
-        topBooksTable.setColorSelBackgound(new java.awt.Color(255, 204, 204));
-        topBooksTable.setColorSelForeground(new java.awt.Color(36, 36, 36));
-        topBooksTable.setDragEnabled(true);
-        topBooksTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        topBooksTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        topBooksTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        topBooksTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        topBooksTable.setGridColor(new java.awt.Color(255, 255, 255));
-        topBooksTable.setRowHeight(50);
-        topBooksTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        topBooksTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        topBooksTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane5.setViewportView(topBooksTable);
-        if (topBooksTable.getColumnModel().getColumnCount() > 0) {
-            topBooksTable.getColumnModel().getColumn(1).setMinWidth(30);
-            topBooksTable.getColumnModel().getColumn(1).setMaxWidth(30);
-        }
-
-        panelBorder7.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 280, 150));
-
-        kGradientPanel2.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 490, 320, 220));
-
         panelBorder6.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel18.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel18.setText("Students books count");
-        panelBorder6.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
+        studentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
+        studentNameLabel.setText(" ");
+        panelBorder6.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 180, -1));
 
         jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane4.setBorder(null);
@@ -326,23 +314,22 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         studentBooksCountTable.setForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Book Name", "Count"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
+                new Object[][] {
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null }
+                },
+                new String[] {
+                        "Student Name", "Count"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         studentBooksCountTable.setToolTipText("");
@@ -369,15 +356,80 @@ public class HomePage extends javax.swing.JInternalFrame {
         studentBooksCountTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        studentBooksCountTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentBooksCountTableMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(studentBooksCountTable);
         if (studentBooksCountTable.getColumnModel().getColumnCount() > 0) {
             studentBooksCountTable.getColumnModel().getColumn(1).setMinWidth(50);
             studentBooksCountTable.getColumnModel().getColumn(1).setMaxWidth(50);
         }
 
-        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 260));
+        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 300));
 
-        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 320, 320));
+        jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane5.setBorder(null);
+        jScrollPane5.setForeground(new java.awt.Color(255, 255, 255));
+
+        nameBookListTable.setForeground(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][] {
+                        { null },
+                        { null },
+                        { null }
+                },
+                new String[] {
+                        ""
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        nameBookListTable.setToolTipText("");
+        nameBookListTable.setAlignmentX(0.0F);
+        nameBookListTable.setAlignmentY(0.0F);
+        nameBookListTable.setAltoHead(0);
+        nameBookListTable.setColorBackgoundHead(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setColorFilasBackgound1(new java.awt.Color(245, 246, 241));
+        nameBookListTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setColorFilasForeground1(new java.awt.Color(36, 36, 36));
+        nameBookListTable.setColorFilasForeground2(new java.awt.Color(36, 36, 36));
+        nameBookListTable.setColorForegroundHead(new java.awt.Color(36, 36, 36));
+        nameBookListTable.setColorSelBackgound(new java.awt.Color(255, 204, 204));
+        nameBookListTable.setColorSelForeground(new java.awt.Color(36, 36, 36));
+        nameBookListTable.setDragEnabled(true);
+        nameBookListTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        nameBookListTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        nameBookListTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
+        nameBookListTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        nameBookListTable.setGridColor(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setRowHeight(50);
+        nameBookListTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        nameBookListTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane5.setViewportView(nameBookListTable);
+
+        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 280, 150));
+
+        jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("Top 5 Student");
+        panelBorder6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
+
+        jLabel22.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("List Book by:");
+        panelBorder6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+
+        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 320, 560));
 
         panelBorder8.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -388,21 +440,20 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                new Object[][] {
+                        { null, null, null, null, null },
+                        { null, null, null, null, null },
+                        { null, null, null, null, null }
+                },
+                new String[] {
+                        "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -450,12 +501,13 @@ public class HomePage extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void seeMoreViewIssueBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_seeMoreViewIssueBooksButtonActionPerformed
-        // TODO add your handling code here:
-        // IssueBook ib = new IssueBook();
-        // ib.setVisible(true);
-        // dispose();
-    }// GEN-LAST:event_seeMoreViewIssueBooksButtonActionPerformed
+    private void studentBooksCountTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_studentBooksCountTableMouseClicked
+        int i = studentBooksCountTable.getSelectedRow();
+        TableModel model = studentBooksCountTable.getModel();
+        String student_name = model.getValueAt(i, 0).toString();
+        studentNameLabel.setText(student_name);
+        setNameBookList(student_name);
+    }// GEN-LAST:event_studentBooksCountTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel countBookLabel;
@@ -466,24 +518,24 @@ public class HomePage extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
+    private rojeru_san.complementos.RSTableMetro nameBookListTable;
     private components.PanelBorder panelBorder1;
     private components.PanelBorder panelBorder2;
     private components.PanelBorder panelBorder3;
     private components.PanelBorder panelBorder4;
     private components.PanelBorder panelBorder5;
     private components.PanelBorder panelBorder6;
-    private components.PanelBorder panelBorder7;
     private components.PanelBorder panelBorder8;
     private rojeru_san.complementos.RSTableMetro studentBooksCountTable;
-    private rojeru_san.complementos.RSTableMetro topBooksTable;
+    private javax.swing.JLabel studentNameLabel;
     // End of variables declaration//GEN-END:variables
 }
