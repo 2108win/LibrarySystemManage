@@ -146,10 +146,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `contact`) VALUES
 (1, 'winlax', '123456', 'dangcapcuawin@gmail.com', '0971292838'),
-(9, '123', '123', '123@gg.com', '123'),
-(10, '1234', '1234', '1234@gm.iii', '1234'),
-(11, 'dangcapcuawin', 'Win21082001', 'dangcapcuawin@gmail.com', '12341234'),
-(12, '2345', '2345', '2345@gmail.com', '2345');
+(2, '123', '123', '123@gg.com', '123'),
+(3, '1234', '1234', '1234@gm.iii', '1234'),
+(4, 'dangcapcuawin', 'Win21082001', 'dangcapcuawin@gmail.com', '12341234'),
+(5, '2345', '2345', '2345@gmail.com', '2345');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -186,26 +186,21 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT cho bảng `book_details`
 --
-ALTER TABLE `book_details`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10013;
 
 --
 -- AUTO_INCREMENT cho bảng `issue_book_details`
 --
 ALTER TABLE `issue_book_details`
-  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `student_details`
 --
-ALTER TABLE `student_details`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12322;
-
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

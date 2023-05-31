@@ -16,6 +16,15 @@
     "/Users/winlax/Study/java/jar/RojeruSan.parte1.jar",
     "/Users/winlax/Study/java/jar/RSCalendar.jar",
     "/Users/winlax/Study/java/jar/RSFoto_v1.0.jar",
-    "/Users/winlax/Study/java/jar/RSTableMetro.jar"
-  ]
+    "/Users/winlax/Study/java/jar/RSTableMetro.jar",
+    "src/JarLibrary/AbsoluteLayout-RELEASE170.jar",
+    "src/JarLibrary/jcalendar-1.4.jar",
+    "src/JarLibrary/KControls-2.0.jar",
+    "src/JarLibrary/mysql-connector-java-8.0.11.jar",
+    "src/JarLibrary/RojeruSan.parte1.jar",
+    "src/JarLibrary/RSCalendar.jar",
+    "src/JarLibrary/RSFoto_v1.0.jar",
+    "src/JarLibrary/RSTableMetro.jar"
+  ],
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable"
 }

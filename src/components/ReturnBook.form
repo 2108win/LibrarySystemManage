@@ -620,7 +620,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="rojeru_san.complementos.RSTableMetro" name="IssueBookDetailsTable">
+                <Component class="rojeru_san.complementos.RSTableMetro" name="issueBookDetailsTable">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -743,7 +743,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="IssueBookDetailsTableMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="issueBookDetailsTableMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

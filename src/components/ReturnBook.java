@@ -182,7 +182,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
     public void setIssueBookDetails() {
         IssueBookDao issueBookDao = new IssueBookDao();
-        model = (DefaultTableModel) IssueBookDetailsTable.getModel();
+        model = (DefaultTableModel) issueBookDetailsTable.getModel();
         model.setRowCount(0);
         for (IssueBook issueBook : issueBookDao.getPendingIssueBooks()) {
             model.addRow(new Object[] {
@@ -234,7 +234,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_BookID = new javax.swing.JTextField();
         panelBorder5 = new components.PanelBorder();
         jScrollPane4 = new javax.swing.JScrollPane();
-        IssueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
+        issueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
         jLabel28 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -436,8 +436,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         jScrollPane4.setBorder(null);
         jScrollPane4.setForeground(new java.awt.Color(255, 255, 255));
 
-        IssueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
+        issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -453,46 +453,46 @@ public class ReturnBook extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        IssueBookDetailsTable.setToolTipText("");
-        IssueBookDetailsTable.setAlignmentX(0.0F);
-        IssueBookDetailsTable.setAlignmentY(0.0F);
-        IssueBookDetailsTable.setColorBackgoundHead(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorBordeFilas(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorBordeHead(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorFilasBackgound1(new java.awt.Color(245, 246, 241));
-        IssueBookDetailsTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setColorFilasForeground1(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorFilasForeground2(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorForegroundHead(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setColorSelBackgound(new java.awt.Color(255, 204, 204));
-        IssueBookDetailsTable.setColorSelForeground(new java.awt.Color(36, 36, 36));
-        IssueBookDetailsTable.setDragEnabled(true);
-        IssueBookDetailsTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        IssueBookDetailsTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        IssueBookDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
-        IssueBookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
-        IssueBookDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setRowHeight(34);
-        IssueBookDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        IssueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        IssueBookDetailsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        issueBookDetailsTable.setToolTipText("");
+        issueBookDetailsTable.setAlignmentX(0.0F);
+        issueBookDetailsTable.setAlignmentY(0.0F);
+        issueBookDetailsTable.setColorBackgoundHead(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setColorBordeFilas(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setColorBordeHead(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setColorFilasBackgound1(new java.awt.Color(245, 246, 241));
+        issueBookDetailsTable.setColorFilasBackgound2(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setColorFilasForeground1(new java.awt.Color(36, 36, 36));
+        issueBookDetailsTable.setColorFilasForeground2(new java.awt.Color(36, 36, 36));
+        issueBookDetailsTable.setColorForegroundHead(new java.awt.Color(36, 36, 36));
+        issueBookDetailsTable.setColorSelBackgound(new java.awt.Color(255, 204, 204));
+        issueBookDetailsTable.setColorSelForeground(new java.awt.Color(36, 36, 36));
+        issueBookDetailsTable.setDragEnabled(true);
+        issueBookDetailsTable.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        issueBookDetailsTable.setFuenteFilas(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        issueBookDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
+        issueBookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        issueBookDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setRowHeight(34);
+        issueBookDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        issueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        issueBookDetailsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                IssueBookDetailsTableMouseClicked(evt);
+                issueBookDetailsTableMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(IssueBookDetailsTable);
-        if (IssueBookDetailsTable.getColumnModel().getColumnCount() > 0) {
-            IssueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(50);
-            IssueBookDetailsTable.getColumnModel().getColumn(1).setMinWidth(80);
-            IssueBookDetailsTable.getColumnModel().getColumn(1).setMaxWidth(80);
-            IssueBookDetailsTable.getColumnModel().getColumn(3).setMinWidth(80);
-            IssueBookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
-            IssueBookDetailsTable.getColumnModel().getColumn(5).setMinWidth(110);
-            IssueBookDetailsTable.getColumnModel().getColumn(5).setMaxWidth(110);
-            IssueBookDetailsTable.getColumnModel().getColumn(6).setMinWidth(110);
-            IssueBookDetailsTable.getColumnModel().getColumn(6).setMaxWidth(110);
-            IssueBookDetailsTable.getColumnModel().getColumn(7).setMaxWidth(100);
+        jScrollPane4.setViewportView(issueBookDetailsTable);
+        if (issueBookDetailsTable.getColumnModel().getColumnCount() > 0) {
+            issueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(50);
+            issueBookDetailsTable.getColumnModel().getColumn(1).setMinWidth(80);
+            issueBookDetailsTable.getColumnModel().getColumn(1).setMaxWidth(80);
+            issueBookDetailsTable.getColumnModel().getColumn(3).setMinWidth(80);
+            issueBookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
+            issueBookDetailsTable.getColumnModel().getColumn(5).setMinWidth(110);
+            issueBookDetailsTable.getColumnModel().getColumn(5).setMaxWidth(110);
+            issueBookDetailsTable.getColumnModel().getColumn(6).setMinWidth(110);
+            issueBookDetailsTable.getColumnModel().getColumn(6).setMaxWidth(110);
+            issueBookDetailsTable.getColumnModel().getColumn(7).setMaxWidth(100);
         }
 
         panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 870, 220));
@@ -518,15 +518,15 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SearchActionPerformed
 
-    private void IssueBookDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_IssueBookDetailsTableMouseClicked
-        int row = IssueBookDetailsTable.getSelectedRow();
-        txt_ComboIssueID.setSelectedItem(IssueBookDetailsTable.getValueAt(row, 0).toString());
-        txt_BookID.setText(IssueBookDetailsTable.getValueAt(row, 1).toString());
-        txt_StudentID.setText(IssueBookDetailsTable.getValueAt(row, 3).toString());
-        txt_BookName.setText(IssueBookDetailsTable.getValueAt(row, 2).toString());
-        txt_StudentName.setText(IssueBookDetailsTable.getValueAt(row, 4).toString());
-        txt_IssueDate.setText(IssueBookDetailsTable.getValueAt(row, 5).toString());
-        txt_DueDate.setText(IssueBookDetailsTable.getValueAt(row, 6).toString());
+    private void issueBookDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_IssueBookDetailsTableMouseClicked
+        int row = issueBookDetailsTable.getSelectedRow();
+        txt_ComboIssueID.setSelectedItem(issueBookDetailsTable.getValueAt(row, 0).toString());
+        txt_BookID.setText(issueBookDetailsTable.getValueAt(row, 1).toString());
+        txt_StudentID.setText(issueBookDetailsTable.getValueAt(row, 3).toString());
+        txt_BookName.setText(issueBookDetailsTable.getValueAt(row, 2).toString());
+        txt_StudentName.setText(issueBookDetailsTable.getValueAt(row, 4).toString());
+        txt_IssueDate.setText(issueBookDetailsTable.getValueAt(row, 5).toString());
+        txt_DueDate.setText(issueBookDetailsTable.getValueAt(row, 6).toString());
     }// GEN-LAST:event_IssueBookDetailsTableMouseClicked
 
     private void txt_ComboIssueIDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_ComboIssueIDActionPerformed
@@ -536,6 +536,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_returnButtonActionPerformed
         if (returnBook() == true) {
             loadComboIssueID();
+            setIssueBookDetails();
             JOptionPane.showMessageDialog(null, "Book returned");
         } else {
             JOptionPane.showMessageDialog(null, "Book Return Failed");
@@ -561,8 +562,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     }// GEN-LAST:event_txt_BookIDFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojeru_san.complementos.RSTableMetro IssueBookDetailsTable;
     private javax.swing.JLabel checkErrorLabel;
+    private rojeru_san.complementos.RSTableMetro issueBookDetailsTable;
     private javax.swing.JLabel issueDateLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
