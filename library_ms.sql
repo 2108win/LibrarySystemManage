@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:8111
--- Thời gian đã tạo: Th5 13, 2023 lúc 08:30 PM
+-- Thời gian đã tạo: Th5 31, 2023 lúc 02:15 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -39,15 +39,25 @@ CREATE TABLE `book_details` (
 --
 
 INSERT INTO `book_details` (`book_id`, `book_name`, `author`, `quantity`) VALUES
-(1, '1', '1', 0),
-(2, '2', '2', 0),
-(3, '3', '3', 2),
-(4, '4', '4', 0),
-(5, '5', '55', 54),
-(6, '66', '66', 65),
-(7, '777', '7', 65),
-(10, 'test101212', 'rr', 9),
-(11, 'test101212', 'rr', 9);
+(1, 'Tớ Học Lập Trình', 'Nhiều tác giả', 99),
+(2, 'Introduction to Algorithms', 'UIT', 99),
+(3, 'Lập Trình Và Cuộc Sống', 'Jeff Atwood', 100),
+(4, 'Code Dạo Kí Sự', 'Phạm Huy Hoàng', 99),
+(5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 'Phạm Văn Ất & Lê Trường Thông', 99),
+(6, 'Lập Trình C Toàn Tập Từ Cơ Bản Đến Nâng Cao', 'Hùng Minh & Mạnh Hùng', 100),
+(7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 'Nhiều tác giả', 99),
+(8, 'Kỹ Thuật Lập Trình Cơ Sở Với Ngôn Ngữ C/C ++', 'Dương Thăng Long & Trương Tiến Tùng', 100),
+(9, 'Khái niệm lập trình', 'UIT', 100),
+(10, 'Python', 'UIT', 100),
+(11, 'Core Java', 'UIT', 100),
+(12, 'Core Java nâng cao', 'UIT', 100),
+(13, 'Effective Java', 'UIT', 99),
+(14, 'Code Complete', 'UIT', 100),
+(15, 'The Pragmatic Programmer', 'UIT', 99),
+(16, 'Clean Code', 'UIT', 100),
+(17, 'Introduction to Algorithms (CLRS)', 'UIT', 99),
+(18, 'Data structure and Algorithms in Java', 'UIT', 100),
+(20, 'Art of Computer Programming', 'UIT', 96);
 
 -- --------------------------------------------------------
 
@@ -72,13 +82,56 @@ CREATE TABLE `issue_book_details` (
 
 INSERT INTO `issue_book_details` (`issue_id`, `book_id`, `book_name`, `student_id`, `student_name`, `issue_date`, `due_date`, `status`) VALUES
 (61, 10, 'test10', 5, 'test100', '2023-05-13', '2023-05-13', 'Returned'),
-(62, 1, '1', 1, 'Win Lã 1', '2023-05-13', '2023-05-13', 'Pending'),
+(62, 1, '1', 1, 'Win Lã 1', '2023-05-13', '2023-05-13', 'Returned'),
 (63, 10, 'test10', 5, 'test100', '2023-05-13', '2023-05-13', 'Returned'),
 (64, 10, 'test10', 5, 'test100', '2023-05-27', '2023-05-27', 'Returned'),
-(65, 2, '2', 3, 'Win Lã 3', '2023-05-20', '2023-05-20', 'Pending'),
+(65, 2, '2', 3, 'Win Lã 3', '2023-05-20', '2023-05-20', 'Returned'),
 (66, 5, '5', 3, 'Win Lã 3', '2023-05-20', '2023-05-20', 'Returned'),
-(67, 1, '1', 12, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Pending'),
-(68, 7, '777', 2, 'Win Lã 12334', '2023-05-27', '2023-05-27', 'Pending');
+(67, 1, '1', 12, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Returned'),
+(68, 7, '777', 2, 'Win Lã 12334', '2023-05-27', '2023-05-27', 'Returned'),
+(69, 10, 'test101212', 1, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Returned'),
+(70, 1, '1', 1, 'Win Lã 1', '2023-05-25', '2023-05-25', 'Returned'),
+(71, 1, '1', 3, 'Win Lã 3', '2023-05-27', '2023-05-27', 'Returned'),
+(72, 2, '2', 2, 'Win Lã 12334', '2023-05-27', '2023-05-27', 'Returned'),
+(73, 4, '4', 2, 'Win Lã 12334', '2023-05-31', '2023-05-31', 'Returned'),
+(74, 1234, '1234', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(75, 1234, '1234', 1234, '1234', '2023-05-31', '2023-05-31', 'Returned'),
+(76, 1, '1', 1, 'Win Lã 1', '2023-05-25', '2023-05-25', 'Returned'),
+(77, 1234, '1234', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(78, 10, 'test101212', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(79, 7, '777', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(80, 6, '66', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(81, 5, '5', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(82, 4, '4', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(83, 3, '3', 1234, '1234', '2023-05-25', '2023-05-25', 'Returned'),
+(84, 1234, '1234', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(85, 10, 'test101212', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(86, 7, '777', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(87, 6, '66', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(88, 5, '5', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(89, 1234, '1234', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(90, 10, 'test101212', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(91, 7, '777', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(92, 6, '66', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(93, 5, '5', 1234, '1234', '2023-05-27', '2023-05-27', 'Returned'),
+(94, 1234, '1234', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(95, 10, 'test101212', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(96, 7, '777', 1, 'Win Lã 1', '2023-05-31', '2023-05-31', 'Returned'),
+(97, 1, '1', 1, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Returned'),
+(98, 1, '1', 1, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Returned'),
+(99, 10, 'test101212', 1, 'Win Lã 1', '2023-05-27', '2023-05-27', 'Returned'),
+(100, 2, 'Introduction to Algorithms', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
+(101, 7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
+(102, 20, 'Art of Computer Programming', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
+(103, 17, 'Introduction to Algorithms (CLRS)', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
+(104, 15, 'The Pragmatic Programmer', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
+(105, 13, 'Effective Java', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Pending'),
+(106, 20, 'Art of Computer Programming', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Pending'),
+(107, 20, 'Art of Computer Programming', 2, 'Nghiêm Vũ Hoàng Long', '2023-05-27', '2023-05-27', 'Pending'),
+(108, 20, 'Art of Computer Programming', 10, 'Nguyễn Thị Hòa', '2023-05-27', '2023-05-27', 'Pending'),
+(109, 4, 'Code Dạo Kí Sự', 1, 'Lã Mai Win', '2023-05-27', '2023-05-27', 'Pending'),
+(110, 5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 1, 'Lã Mai Win', '2023-05-20', '2023-05-20', 'Pending'),
+(111, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-05-31', '2023-05-31', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -98,10 +151,20 @@ CREATE TABLE `student_details` (
 --
 
 INSERT INTO `student_details` (`student_id`, `student_name`, `branch`, `year`) VALUES
-(1, 'Win Lã 1', 'Hệ thống Thông tin', 'K19'),
-(2, 'Win Lã 12334', 'Kỹ thuật Phần mềm', 'K18'),
-(3, 'Win Lã 3', 'Hệ thống Thông tin', 'K18'),
-(12, 'Win Lã 1233455555', 'Hệ thống Thông tin', 'K18');
+(1, 'Lã Mai Win', 'Công nghệ Thông tin', 'K19'),
+(2, 'Nghiêm Vũ Hoàng Long', 'Kỹ thuật Phần mềm', 'K21'),
+(3, 'Hoàng Kim Long', 'Hệ thống Thông tin', 'K20'),
+(4, 'Lê Nguyễn Trung Đan', 'An toàn Thông tin', 'K22'),
+(5, 'Nguyễn Thanh Tùng', 'Kỹ thuật Phần mềm', 'K24'),
+(6, 'Nguyễn Việt Hoàng', 'Hệ thống Thông tin', 'K23'),
+(7, 'Hoàng Thuỳ Linh', 'Công nghệ Thông tin', 'K23'),
+(8, 'Nguyễn Đức Cường', 'Khoa học Dữ liệu', 'K19'),
+(9, 'Phùng Thanh Độ', 'Khoa học Dữ liệu', 'K18'),
+(10, 'Nguyễn Thị Hòa', 'Kỹ thuật Phần mềm', 'K20'),
+(11, 'Lê Trung Thành', 'Khoa học Máy tính', 'K22'),
+(12, 'Mai Hồng Ngọc', 'Hệ thống Thông tin', 'K22'),
+(13, 'Ngô Kiến Huy', 'Kỹ thuật Máy tính', 'K22'),
+(14, 'Nguyễn Phước Thịnh', 'Kỹ thuật Máy tính', 'K22');
 
 -- --------------------------------------------------------
 
@@ -132,7 +195,8 @@ INSERT INTO `users` (`id`, `name`, `password`, `email`, `contact`) VALUES
 (8, 'winlax123', '123', 'dangca@gmaic.com', '123'),
 (9, '123', '123', '123@gg.com', '123'),
 (10, '1234', '1234', '1234@gm.iii', '1234'),
-(11, 'dangcapcuawin', 'Win21082001', 'dangcapcuawin@gmail.com', '12341234');
+(11, 'dangcapcuawin', 'Win21082001', 'dangcapcuawin@gmail.com', '12341234'),
+(12, '2345', '2345', '2345@gmail.com', '2345');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -176,7 +240,7 @@ ALTER TABLE `book_details`
 -- AUTO_INCREMENT cho bảng `issue_book_details`
 --
 ALTER TABLE `issue_book_details`
-  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT cho bảng `student_details`
@@ -188,7 +252,7 @@ ALTER TABLE `student_details`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
