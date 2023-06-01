@@ -191,7 +191,7 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         issueBookDetailsTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         issueBookDetailsTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         issueBookDetailsTable.setGridColor(new java.awt.Color(255, 255, 255));
-        issueBookDetailsTable.setRowHeight(40);
+        issueBookDetailsTable.setRowHeight(34);
         issueBookDetailsTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
