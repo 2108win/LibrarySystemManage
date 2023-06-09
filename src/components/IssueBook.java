@@ -92,21 +92,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookName.setText(b.getBook_name());
         txt_BookAuthor.setText(b.getAuthor());
         txt_Quantity.setText(String.valueOf(b.getQuantity()));
-        // try {
-        // Connection con = DBConnection.getConnection();
-        // PreparedStatement pst = con.prepareStatement("select * from book_details
-        // where book_id=?");
-        // pst.setInt(1, bookID);
-        // ResultSet rs1 = pst.executeQuery();
-        // if (rs1.next()) {
-        // txt_ComboBookID.setSelectedItem(rs1.getString("book_id"));
-        // txt_BookName.setText(rs1.getString("book_name"));
-        // txt_BookAuthor.setText(rs1.getString("author"));
-        // txt_Quantity.setText(rs1.getString("quantity"));
-        // }
-        // } catch (Exception e) {
-        // JOptionPane.showMessageDialog(null, "Connection Error");
-        // }
+        txt_BookFee.setText(String.valueOf(b.getBook_fee()));
     }
 
     public void fetchStudentDetails() {
@@ -119,21 +105,6 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_StudentName.setText(s.getStudent_name());
         txt_Branch.setText(s.getBranch());
         txt_Year.setText(s.getYear());
-        // try {
-        // Connection con = DBConnection.getConnection();
-        // PreparedStatement pst = con.prepareStatement("select * from student_details
-        // where student_id=?");
-        // pst.setInt(1, studentID);
-        // ResultSet rs1 = pst.executeQuery();
-        // if (rs1.next()) {
-        // txt_ComboStudentID.setSelectedItem(rs1.getString("student_id"));
-        // txt_StudentName.setText(rs1.getString("student_name"));
-        // txt_Branch.setText(rs1.getString("branch"));
-        // txt_Year.setText(rs1.getString("year"));
-        // }
-        // } catch (Exception e) {
-        // JOptionPane.showMessageDialog(null, "Connection Error");
-        // }
     }
 
     public void loadBookDetails() {
@@ -145,6 +116,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookName.setText(b.getBook_name());
         txt_BookAuthor.setText(b.getAuthor());
         txt_Quantity.setText(String.valueOf(b.getQuantity()));
+        txt_BookFee.setText(String.valueOf(b.getBook_fee()));
     }
 
     public void loadStudentDetails() {
@@ -156,22 +128,12 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_StudentName.setText(s.getStudent_name());
         txt_Branch.setText(s.getBranch());
         txt_Year.setText(s.getYear());
-        // try {
-        // Connection con = DBConnection.getConnection();
-        // Statement st = con.createStatement();
-        // ResultSet rs = st.executeQuery("select * from student_details where
-        // student_id=" + studentID + "");
-        // while (rs.next()) {
-        // txt_StudentName.setText(rs.getString("student_name"));
-        // txt_Branch.setText(rs.getString("branch"));
-        // txt_Year.setText(rs.getString("year"));
-        // }
-        // } catch (Exception e) {
-        // JOptionPane.showMessageDialog(null, "Connection Error");
-        // }
     }
 
     public boolean issueBook() {
+        Date curDate = new Date();
+        Long lCurrentDate = curDate.getTime();
+        java.sql.Date currentDate = new java.sql.Date(lCurrentDate);
         boolean isIssued = false;
         int bookID = Integer.parseInt(txt_BookID.getText());
         int studentID = Integer.parseInt(txt_StudentID.getText());
@@ -193,7 +155,11 @@ public class IssueBook extends javax.swing.JInternalFrame {
             pst.setString(4, studentName);
             pst.setDate(5, issueDate);
             pst.setDate(6, dueDate);
-            pst.setString(7, "Pending");
+            if (currentDate.compareTo(dueDate) > 0) {
+                pst.setString(7, "Overdue");
+            } else {
+                pst.setString(7, "Pending");
+            }
             int i = pst.executeUpdate();
             if (i > 0) {
                 isIssued = true;
@@ -201,7 +167,6 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 isIssued = false;
             }
         } catch (Exception e) {
-            // TODO: handle exception
             e.printStackTrace();
         }
         return isIssued;
@@ -234,10 +199,9 @@ public class IssueBook extends javax.swing.JInternalFrame {
             Connection con = DBConnection.getConnection();
             PreparedStatement pst = con
                     .prepareStatement(
-                            "select * from issue_book_details where book_id=? and student_id=? and status=?");
+                            "select * from issue_book_details where book_id=? and student_id=? and (status='Pending' OR status='Overdue')");
             pst.setInt(1, bookID);
             pst.setInt(2, studentID);
-            pst.setString(3, "Pending");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 isAlreadyIssued = true;
@@ -259,6 +223,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -271,6 +236,8 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookName = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         txt_BookAuthor = new javax.swing.JTextField();
+        txt_BookFee = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         txt_Quantity = new javax.swing.JTextField();
         panelBorder3 = new components.PanelBorder();
@@ -362,6 +329,21 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 430, -1));
 
+        txt_BookFee.setEditable(false);
+        txt_BookFee.setBackground(new java.awt.Color(255, 255, 255));
+        txt_BookFee.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        txt_BookFee.setForeground(new java.awt.Color(36, 36, 36));
+        txt_BookFee
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookFee.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        panelBorder1.add(txt_BookFee, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 430, -1));
+
+        jLabel36.setBackground(new java.awt.Color(36, 36, 36));
+        jLabel36.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(36, 36, 36));
+        jLabel36.setText("Fee");
+        panelBorder1.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
         jLabel29.setBackground(new java.awt.Color(36, 36, 36));
         jLabel29.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(36, 36, 36));
@@ -377,7 +359,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 430, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 300));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 360));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -426,7 +408,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         jLabel13.setForeground(new java.awt.Color(245, 246, 241));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        panelBorder3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 570, -1, -1));
+        panelBorder3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 630, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -446,7 +428,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        panelBorder3.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 560, 130, 40));
+        panelBorder3.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, 130, 40));
 
         jLabel37.setBackground(new java.awt.Color(36, 36, 36));
         jLabel37.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -472,7 +454,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         checkErrorLabel.setText(" ");
         panelBorder3.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 170, -1));
 
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 620));
+        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 320, 680));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -545,7 +527,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         txt_Year.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_Year, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 430, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 570, 300));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 570, 300));
 
         getContentPane().add(kGradientPanel2);
 
@@ -603,6 +585,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
@@ -610,6 +593,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
     private components.PanelBorder panelBorder2;
     private components.PanelBorder panelBorder3;
     private javax.swing.JTextField txt_BookAuthor;
+    private javax.swing.JTextField txt_BookFee;
     private javax.swing.JTextField txt_BookID;
     private javax.swing.JTextField txt_BookName;
     private javax.swing.JTextField txt_Branch;

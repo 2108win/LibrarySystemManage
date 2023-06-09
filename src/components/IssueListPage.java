@@ -125,9 +125,10 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         panelBorder1 = new components.PanelBorder();
         txt_ComboSearchStatus = new javax.swing.JComboBox<>();
         panelBorder2 = new components.PanelBorder();
-        txt_IssueDate = new com.toedter.calendar.JDateChooser();
-        txt_IssueDate1 = new com.toedter.calendar.JDateChooser();
-        jLabel2 = new javax.swing.JLabel();
+        txt_Fee = new javax.swing.JLabel();
+        txt_Status = new javax.swing.JLabel();
+        studentNameLabel2 = new javax.swing.JLabel();
+        txt_StudentName = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(null);
@@ -242,7 +243,7 @@ public class IssueListPage extends javax.swing.JInternalFrame {
 
         txt_ComboSearchStatus.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboSearchStatus.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboSearchStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Pending", "Returned" }));
+        txt_ComboSearchStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Pending", "Returned", "Overdue" }));
         txt_ComboSearchStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboSearchStatus.setOpaque(true);
         txt_ComboSearchStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -257,18 +258,25 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        panelBorder2.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 190, 30));
+        txt_Fee.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
+        txt_Fee.setForeground(new java.awt.Color(0, 204, 0));
+        txt_Fee.setText("0.0đ");
+        txt_Fee.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        panelBorder2.add(txt_Fee, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 100, 30));
 
-        txt_IssueDate1.setAlignmentX(2.0F);
-        txt_IssueDate1.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        panelBorder2.add(txt_IssueDate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 30));
+        txt_Status.setFont(new java.awt.Font("DVN-Poppins", 3, 16)); // NOI18N
+        txt_Status.setForeground(new java.awt.Color(0, 204, 0));
+        txt_Status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txt_Status.setText("Status");
+        panelBorder2.add(txt_Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 90, 30));
 
-        jLabel2.setFont(new java.awt.Font("DVN-Poppins", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(247, 171, 10));
-        jLabel2.setText("to");
-        jLabel2.setAlignmentX(0.5F);
-        panelBorder2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 30, -1));
+        studentNameLabel2.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
+        studentNameLabel2.setText("--");
+        panelBorder2.add(studentNameLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 20, 30));
+
+        txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
+        txt_StudentName.setText(" Student_name");
+        panelBorder2.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, 30));
 
         kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 470, 70));
 
@@ -308,7 +316,6 @@ public class IssueListPage extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.complementos.RSTableMetro issueBookDetailsTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
@@ -316,9 +323,11 @@ public class IssueListPage extends javax.swing.JInternalFrame {
     private components.PanelBorder panelBorder2;
     private components.PanelBorder panelBorder3;
     private components.PanelBorder panelBorder5;
+    private javax.swing.JLabel studentNameLabel2;
     private javax.swing.JComboBox<String> txt_ComboSearchStatus;
-    private com.toedter.calendar.JDateChooser txt_IssueDate;
-    private com.toedter.calendar.JDateChooser txt_IssueDate1;
+    private javax.swing.JLabel txt_Fee;
     private javax.swing.JTextField txt_Search;
+    private javax.swing.JLabel txt_Status;
+    private javax.swing.JLabel txt_StudentName;
     // End of variables declaration//GEN-END:variables
 }

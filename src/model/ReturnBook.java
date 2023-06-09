@@ -49,4 +49,14 @@ public class ReturnBook {
         this.books = books;
     }
 
+    public void updateQuantity() {
+        // update quantity of book in database
+        int newQuantity = books.getQuantity() + 1;
+        books.setQuantity(newQuantity);
+    }
+
+    public void updateIssueBookStatus() {
+        // update issue book in database
+        issueBook.setStatus("Returned");
+    }
 }

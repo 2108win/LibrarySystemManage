@@ -73,4 +73,27 @@ public class Books {
     public Books() {
     }
 
+    public void addBook(int book_id, String book_name, String author, int quantity, double book_fee) {
+        this.book_id = book_id;
+        this.book_name = book_name;
+        this.author = author;
+        this.quantity = quantity;
+        this.book_fee = book_fee;
+    }
+
+    public void updateBook(int book_id, String book_name, String author, int quantity, double book_fee) {
+        this.book_id = book_id;
+        this.book_name = book_name;
+        this.author = author;
+        this.quantity = quantity;
+        this.book_fee = book_fee;
+    }
+
+    public void deleteBook(int book_id, String book_name, String author, int quantity, double book_fee) {
+        this.book_id = book_id;
+        this.book_name = book_name;
+        this.author = author;
+        this.quantity = quantity;
+        this.book_fee = book_fee;
+    }
 }

@@ -17,7 +17,8 @@ public class Students {
 
     @Override
     public String toString() {
-        return "Students{" + "student_id=" + student_id + ", student_name=" + student_name + ", branch=" + branch + ", year=" + year + '}';
+        return "Students{" + "student_id=" + student_id + ", student_name=" + student_name + ", branch=" + branch
+                + ", year=" + year + '}';
     }
 
     public Students(int student_id, String student_name, String branch, String year) {
@@ -62,4 +63,24 @@ public class Students {
     public Students() {
     }
 
+    public void addStudent(int student_id, String student_name, String branch, String year) {
+        this.student_id = student_id;
+        this.student_name = student_name;
+        this.branch = branch;
+        this.year = year;
+    }
+
+    public void updateStudent(int student_id, String student_name, String branch, String year) {
+        this.student_id = student_id;
+        this.student_name = student_name;
+        this.branch = branch;
+        this.year = year;
+    }
+
+    public void deleteStudent(int student_id, String student_name, String branch, String year) {
+        this.student_id = student_id;
+        this.student_name = student_name;
+        this.branch = branch;
+        this.year = year;
+    }
 }

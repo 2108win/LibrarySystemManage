@@ -42,7 +42,9 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select issue_id from issue_book_details where status='Pending'");
+            ResultSet rs = st
+                    .executeQuery(
+                            "select issue_id from issue_book_details where (status='Pending' or status='Overdue')");
             while (rs.next()) {
                 txt_ComboIssueID.addItem(rs.getString("issue_id"));
             }
@@ -61,10 +63,12 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         try {
             Connection con = DBConnection.getConnection();
             PreparedStatement pst = con
-                    .prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
+                    .prepareStatement(
+                            "select * from issue_book_details where book_id=? and student_id=? and (status=? or status=?)");
             pst.setInt(1, bookID);
             pst.setInt(2, studentID);
             pst.setString(3, "Pending");
+            pst.setString(4, "Overdue");
             ResultSet rs1 = pst.executeQuery();
             if (rs1.next()) {
                 txt_ComboIssueID.setSelectedItem(rs1.getString("issue_id"));
@@ -114,7 +118,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
                     Connection con = DBConnection.getConnection();
                     Statement st = con.createStatement();
                     ResultSet rs = st.executeQuery(
-                            "select * from issue_book_details where issue_id=" + issueID + " and status='Pending'");
+                            "select * from issue_book_details where issue_id=" + issueID
+                                    + " and (status='Pending' or status='Overdue')");
                     while (rs.next()) {
                         txt_BookName.setText(rs.getString("book_name"));
                         txt_StudentName.setText(rs.getString("student_name"));
@@ -167,10 +172,12 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         try {
             Connection con = DBConnection.getConnection();
             PreparedStatement pst = con
-                    .prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
+                    .prepareStatement(
+                            "select * from issue_book_details where book_id=? and student_id=? and (status=? or status=?)");
             pst.setInt(1, bookID);
             pst.setInt(2, studentID);
             pst.setString(3, "Pending");
+            pst.setString(4, "Overdue");
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 isIssued = true;
@@ -215,7 +222,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -235,6 +242,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_ComboIssueID = new javax.swing.JComboBox<>();
         jLabel30 = new javax.swing.JLabel();
         panelBorder2 = new components.PanelBorder();
+        jLabel39 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         returnButton = new com.k33ptoo.components.KButton();
@@ -243,6 +251,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         jLabel24 = new javax.swing.JLabel();
         txt_StudentID = new javax.swing.JTextField();
         txt_BookID = new javax.swing.JTextField();
+        studentNameLabel = new javax.swing.JLabel();
+        txt_FeePending = new javax.swing.JLabel();
         panelBorder5 = new components.PanelBorder();
         jScrollPane4 = new javax.swing.JScrollPane();
         issueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
@@ -260,8 +270,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -294,8 +303,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_BookName.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, -1));
 
@@ -303,8 +311,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_IssueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_IssueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_IssueDate
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_IssueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_IssueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 390, -1));
 
@@ -312,8 +319,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_DueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_DueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_DueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_DueDate
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_DueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_DueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_DueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 390, -1));
 
@@ -327,8 +333,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_StudentName.setBackground(new java.awt.Color(255, 255, 255));
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 390, -1));
 
@@ -346,8 +351,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         txt_ComboIssueID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboIssueID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboIssueID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboIssueID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboIssueID.setOpaque(true);
         txt_ComboIssueID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -366,6 +370,12 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel39.setBackground(new java.awt.Color(36, 36, 36));
+        jLabel39.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(36, 36, 36));
+        jLabel39.setText("Fee");
+        panelBorder2.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -403,43 +413,52 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         jLabel37.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(36, 36, 36));
         jLabel37.setText("Student ID");
-        panelBorder2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        panelBorder2.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         checkErrorLabel.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         checkErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
         checkErrorLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         checkErrorLabel.setText(" ");
-        panelBorder2.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 270, -1));
+        panelBorder2.add(checkErrorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 270, -1));
 
         jLabel24.setBackground(new java.awt.Color(36, 36, 36));
         jLabel24.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(36, 36, 36));
         jLabel24.setText("Book ID");
-        panelBorder2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+        panelBorder2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_StudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_StudentIDFocusLost(evt);
             }
         });
-        panelBorder2.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 170, -1));
+        panelBorder2.add(txt_StudentID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 170, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_BookID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_BookIDFocusLost(evt);
             }
         });
-        panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 70, 170, -1));
+        panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 170, -1));
+
+        studentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
+        studentNameLabel.setForeground(new java.awt.Color(0, 204, 0));
+        studentNameLabel.setText("0.0đ");
+        studentNameLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        panelBorder2.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 100, 30));
+
+        txt_FeePending.setFont(new java.awt.Font("DVN-Poppins", 3, 16)); // NOI18N
+        txt_FeePending.setText("0.0đ");
+        txt_FeePending.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        panelBorder2.add(txt_FeePending, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 170, 30));
 
         kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 290));
 
@@ -452,18 +471,19 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false, false, false, false
+            },
+            new String [] {
+                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -586,6 +606,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;
@@ -593,10 +614,12 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     private components.PanelBorder panelBorder3;
     private components.PanelBorder panelBorder5;
     private com.k33ptoo.components.KButton returnButton;
+    private javax.swing.JLabel studentNameLabel;
     private javax.swing.JTextField txt_BookID;
     private javax.swing.JTextField txt_BookName;
     private javax.swing.JComboBox<String> txt_ComboIssueID;
     private javax.swing.JTextField txt_DueDate;
+    private javax.swing.JLabel txt_FeePending;
     private javax.swing.JTextField txt_IssueDate;
     private javax.swing.JTextField txt_Search;
     private javax.swing.JTextField txt_StudentID;

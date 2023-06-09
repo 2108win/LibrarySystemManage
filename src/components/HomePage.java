@@ -13,13 +13,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -40,62 +35,20 @@ public class HomePage extends javax.swing.JInternalFrame {
         // set border null
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
-        setStudentDetailToTable();
-        setBookDetailToTable();
-        setStatusBookDetails();
+
+        setCountDetails();
         setIssueBookDetails();
         setStudentBooksCountTable();
     }
 
-    public void setStudentDetailToTable() {
-        // connect to database
-        int countStudent = 0;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from student_details");
-            while (rs.next()) {
-                countStudent++;
-                // student_id = rs.getInt("student_id");
-                // student_name = rs.getString("student_name");
-                // branch = rs.getString("branch");
-                // year = rs.getString("year");
-                // DefaultTableModel model = (DefaultTableModel) tableStudent.getModel();
-                // model.addRow(new Object[] { student_id, student_name, branch, year });
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        countStudentLabel.setText(" " + String.valueOf(countStudent));
-    }
-
-    public void setBookDetailToTable() {
-        // connect to database
+    public void setCountDetails() {
         int countBook = 0;
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM book_details");
-            while (rs.next()) {
-                countBook++;
-                // book_id = rs.getInt("book_id");
-                // book_name = rs.getString("book_name");
-                // author = rs.getString("author");
-                // quantity = rs.getInt("quantity");
-                // DefaultTableModel model = (DefaultTableModel) tableBook.getModel();
-                // model.addRow(new Object[] { book_id, book_name, author, quantity });
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        countBookLabel.setText(" " + String.valueOf(countBook));
-    }
-
-    public void setStatusBookDetails() {
+        int countStudent = 0;
+        int countOverdue = 0;
         int countPending = 0;
         int countReturn = 0;
+        double fee_pending = 0;
+        double fee_returned = 0;
         try {
             Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
@@ -107,11 +60,38 @@ public class HomePage extends javax.swing.JInternalFrame {
             while (rs1.next()) {
                 countReturn++;
             }
+            ResultSet rs2 = st.executeQuery("SELECT * FROM issue_book_details where status='Overdue'");
+            while (rs2.next()) {
+                countOverdue++;
+            }
+            ResultSet rs3 = st.executeQuery("SELECT * FROM student_details");
+            while (rs3.next()) {
+                countStudent++;
+            }
+            ResultSet rs4 = st.executeQuery("SELECT * FROM book_details");
+            while (rs4.next()) {
+                countBook++;
+            }
+            // lấy ra số tiền fee_pending của user
+            ResultSet rs5 = st.executeQuery("SELECT * FROM users where fee_pending>0");
+            while (rs5.next()) {
+                fee_pending += rs5.getDouble("fee_pending");
+            }
+            // lấy ra số tiền fee_returned của user
+            ResultSet rs6 = st.executeQuery("SELECT * FROM users where fee_returned>0");
+            while (rs6.next()) {
+                fee_returned += rs6.getDouble("fee_returned");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
         countPendingLabel.setText(" " + String.valueOf(countPending));
         countReturnLabel.setText(" " + String.valueOf(countReturn));
+        countOverdueLabel.setText(" " + String.valueOf(countOverdue));
+        countStudentLabel.setText(" " + String.valueOf(countStudent));
+        countBookLabel.setText(" " + String.valueOf(countBook));
+        countFeePendingLabel.setText(" " + String.valueOf(fee_pending) + " đ");
+        countFeeReturnedLabel.setText(" " + String.valueOf(fee_returned) + " đ");
     }
 
     public void setIssueBookDetails() {
@@ -141,15 +121,6 @@ public class HomePage extends javax.swing.JInternalFrame {
             model.addRow(new Object[] { issueBook.getStudent_name(), count });
             issueBooks.removeIf(issueBook1 -> issueBook.getStudent_id() == issueBook1.getStudent_id());
         }
-        // sort table by count to descending order
-        // TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        // studentBooksCountTable.setRowSorter(sorter);
-        // List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        // int columnIndexToSort = 1;
-        // sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
-        // sorter.setSortKeys(sortKeys);
-        // sorter.sort();
-        // model.setRowCount(6);
     }
 
     public void setNameBookList(String student_name) {
@@ -168,6 +139,9 @@ public class HomePage extends javax.swing.JInternalFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -199,14 +173,23 @@ public class HomePage extends javax.swing.JInternalFrame {
         studentNameLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         studentBooksCountTable = new rojeru_san.complementos.RSTableMetro();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        nameBookListTable = new rojeru_san.complementos.RSTableMetro();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        nameBookListTable = new rojeru_san.complementos.RSTableMetro();
         panelBorder8 = new components.PanelBorder();
         jScrollPane6 = new javax.swing.JScrollPane();
         issueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
         jLabel26 = new javax.swing.JLabel();
+        returnBookPanel2 = new components.PanelBorder();
+        countOverdueLabel = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        returnBookPanel3 = new components.PanelBorder();
+        countFeePendingLabel = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        returnBookPanel4 = new components.PanelBorder();
+        countFeeReturnedLabel = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(null);
@@ -231,7 +214,7 @@ public class HomePage extends javax.swing.JInternalFrame {
         returnBookPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countReturnLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countReturnLabel.setForeground(new java.awt.Color(36, 36, 36));
+        countReturnLabel.setForeground(new java.awt.Color(153, 204, 0));
         countReturnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         countReturnLabel.setText("   100");
         returnBookPanel.add(countReturnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
@@ -247,7 +230,7 @@ public class HomePage extends javax.swing.JInternalFrame {
         PendingBookPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countPendingLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
-        countPendingLabel.setForeground(new java.awt.Color(36, 36, 36));
+        countPendingLabel.setForeground(new java.awt.Color(204, 204, 0));
         countPendingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pending.png"))); // NOI18N
         countPendingLabel.setText("   100");
         PendingBookPanel.add(countPendingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
@@ -296,7 +279,7 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         studentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
         studentNameLabel.setText(" ");
-        panelBorder6.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 180, -1));
+        panelBorder6.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, 180, -1));
 
         jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane4.setBorder(null);
@@ -305,7 +288,6 @@ public class HomePage extends javax.swing.JInternalFrame {
         studentBooksCountTable.setForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -343,7 +325,7 @@ public class HomePage extends javax.swing.JInternalFrame {
         studentBooksCountTable.setFuenteFilasSelect(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         studentBooksCountTable.setFuenteHead(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
         studentBooksCountTable.setGridColor(new java.awt.Color(255, 255, 255));
-        studentBooksCountTable.setRowHeight(46);
+        studentBooksCountTable.setRowHeight(50);
         studentBooksCountTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -358,7 +340,17 @@ public class HomePage extends javax.swing.JInternalFrame {
             studentBooksCountTable.getColumnModel().getColumn(1).setMaxWidth(50);
         }
 
-        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 260));
+        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 230));
+
+        jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("Top Student");
+        panelBorder6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
+
+        jLabel22.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("List Book by:");
+        panelBorder6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
 
         jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane5.setBorder(null);
@@ -367,8 +359,6 @@ public class HomePage extends javax.swing.JInternalFrame {
         nameBookListTable.setForeground(new java.awt.Color(255, 255, 255));
         nameBookListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
                 {null},
                 {null}
             },
@@ -410,19 +400,9 @@ public class HomePage extends javax.swing.JInternalFrame {
         nameBookListTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(nameBookListTable);
 
-        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 200));
+        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 280, 100));
 
-        jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("Top Student");
-        panelBorder6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
-
-        jLabel22.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel22.setText("List Book by:");
-        panelBorder6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
-
-        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 320, 560));
+        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 320, 430));
 
         panelBorder8.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -480,7 +460,7 @@ public class HomePage extends javax.swing.JInternalFrame {
             issueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(65);
         }
 
-        panelBorder8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 500));
+        panelBorder8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 370));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -488,7 +468,55 @@ public class HomePage extends javax.swing.JInternalFrame {
         jLabel26.setText("Issue List");
         panelBorder8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 560));
+        kGradientPanel2.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 560, 430));
+
+        returnBookPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        returnBookPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        countOverdueLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
+        countOverdueLabel.setForeground(new java.awt.Color(255, 153, 153));
+        countOverdueLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/overdue.png"))); // NOI18N
+        countOverdueLabel.setText("   100");
+        returnBookPanel2.add(countOverdueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel24.setText("Overdue books");
+        returnBookPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        kGradientPanel2.add(returnBookPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 210, 110));
+
+        returnBookPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        returnBookPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        countFeePendingLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
+        countFeePendingLabel.setForeground(new java.awt.Color(255, 153, 153));
+        countFeePendingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fee_pending.png"))); // NOI18N
+        countFeePendingLabel.setText("   100 đ");
+        returnBookPanel3.add(countFeePendingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel25.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel25.setText("Fee Pending");
+        returnBookPanel3.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        kGradientPanel2.add(returnBookPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 320, 110));
+
+        returnBookPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        returnBookPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        countFeeReturnedLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
+        countFeeReturnedLabel.setForeground(new java.awt.Color(0, 204, 0));
+        countFeeReturnedLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fee_return.png"))); // NOI18N
+        countFeeReturnedLabel.setText("   100 đ");
+        returnBookPanel4.add(countFeeReturnedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel27.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel27.setText("Fee Returned");
+        returnBookPanel4.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        kGradientPanel2.add(returnBookPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 330, 110));
 
         getContentPane().add(kGradientPanel2);
 
@@ -508,6 +536,9 @@ public class HomePage extends javax.swing.JInternalFrame {
     private components.PanelBorder booksPanel;
     private com.k33ptoo.utils.ComponentResizerUtil componentResizerUtil1;
     private javax.swing.JLabel countBookLabel;
+    private javax.swing.JLabel countFeePendingLabel;
+    private javax.swing.JLabel countFeeReturnedLabel;
+    private javax.swing.JLabel countOverdueLabel;
     private javax.swing.JLabel countPendingLabel;
     private javax.swing.JLabel countReturnLabel;
     private javax.swing.JLabel countStudentLabel;
@@ -518,7 +549,10 @@ public class HomePage extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -527,6 +561,9 @@ public class HomePage extends javax.swing.JInternalFrame {
     private components.PanelBorder panelBorder6;
     private components.PanelBorder panelBorder8;
     private components.PanelBorder returnBookPanel;
+    private components.PanelBorder returnBookPanel2;
+    private components.PanelBorder returnBookPanel3;
+    private components.PanelBorder returnBookPanel4;
     private rojeru_san.complementos.RSTableMetro studentBooksCountTable;
     private javax.swing.JLabel studentNameLabel;
     private components.PanelBorder studentsPanel;

@@ -9,17 +9,10 @@ import dao.DBConnection;
 import model.Books;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -35,6 +28,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
      */
     String book_name, author;
     int book_id, quantity;
+    double book_fee;
     DefaultTableModel model;
 
     public ManageBook() {
@@ -52,37 +46,12 @@ public class ManageBook extends javax.swing.JInternalFrame {
     }
 
     public void setBookDetailToTable() {
-        // connect to database
-        // try {
-        // Class.forName("com.mysql.cj.jdbc.Driver");
-        // Connection con =
-        // DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root",
-        // "");
-        // Statement st = con.createStatement();
-        // ResultSet rs = st.executeQuery("SELECT * FROM book_details");
-        // while (rs.next()) {
-        // book_id = rs.getInt("book_id");
-        // book_name = rs.getString("book_name");
-        // author = rs.getString("author");
-        // quantity = rs.getInt("quantity");
-        // model = (DefaultTableModel) bookDetailsTable.getModel();
-        // model.addRow(new Object[] { book_id, book_name, author, quantity });
-        // }
-        // } catch (Exception e) {
-        // e.printStackTrace();
-        // }
         BooksDao booksDao = new BooksDao();
         model = (DefaultTableModel) bookDetailsTable.getModel();
         for (Books book : booksDao.getAllBooks()) {
-            model.addRow(new Object[] { book.getBook_id(), book.getBook_name(), book.getAuthor(), book.getQuantity() });
+            model.addRow(new Object[] { book.getBook_id(), book.getBook_name(), book.getAuthor(), book.getQuantity(),
+                    book.getBook_fee() });
         }
-//        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-//        bookDetailsTable.setRowSorter(sorter);
-//        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-//        int columnIndexToSort = 1;
-//        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
-//        sorter.setSortKeys(sortKeys);
-//        sorter.sort();
     }
 
     public boolean addBook() {
@@ -90,14 +59,16 @@ public class ManageBook extends javax.swing.JInternalFrame {
         String book_name = txt_BookName.getText();
         String author = txt_BookAuthor.getText();
         int quantity = Integer.parseInt(txt_Quantity.getText());
+        double book_fee = Double.parseDouble(txt_BookFee.getText());
         try {
             Connection con = DBConnection.getConnection();
-            String sql = "INSERT INTO book_details VALUES(?,?,?,?)";
+            String sql = "INSERT INTO book_details VALUES(?,?,?,?,?)";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setInt(1, book_id);
             pst.setString(2, book_name);
             pst.setString(3, author);
             pst.setInt(4, quantity);
+            pst.setDouble(5, book_fee);
             int rs = pst.executeUpdate();
             if (rs > 0) {
                 return true;
@@ -115,14 +86,16 @@ public class ManageBook extends javax.swing.JInternalFrame {
         String book_name = txt_BookName.getText();
         String author = txt_BookAuthor.getText();
         int quantity = Integer.parseInt(txt_Quantity.getText());
+        double book_fee = Double.parseDouble(txt_BookFee.getText());
         try {
             Connection con = DBConnection.getConnection();
-            String sql = "UPDATE book_details SET book_name = ?, author = ?, quantity = ? WHERE book_id = ?";
+            String sql = "UPDATE book_details SET book_name = ?, author = ?, quantity = ?, book_fee = ? WHERE book_id = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, book_name);
             pst.setString(2, author);
             pst.setInt(3, quantity);
-            pst.setInt(4, book_id);
+            pst.setDouble(4, book_fee);
+            pst.setInt(5, book_id);
             int rs = pst.executeUpdate();
             if (rs > 0) {
                 return true;
@@ -173,6 +146,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -197,6 +171,8 @@ public class ManageBook extends javax.swing.JInternalFrame {
         txt_BookName = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        txt_BookFee = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
         panelBorder3 = new components.PanelBorder();
         txt_Search = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -300,10 +276,10 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
                 },
                 new String[] {
-                        "Book ID", "Name", "Author", "Quantity"
+                        "Book ID", "Name", "Author", "Quantity", "Fee"
                 }) {
             boolean[] canEdit = new boolean[] {
-                    false, false, false, false
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -415,6 +391,20 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel29.setText("Author");
         panelBorder2.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
+        txt_BookFee.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        txt_BookFee.setForeground(new java.awt.Color(36, 36, 36));
+        txt_BookFee
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookFee.setCaretColor(new java.awt.Color(36, 36, 36));
+        txt_BookFee.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        panelBorder2.add(txt_BookFee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 250, -1));
+
+        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
+        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(36, 36, 36));
+        jLabel30.setText("Fee of book");
+        panelBorder2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+
         kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 500));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
@@ -481,6 +471,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
         txt_BookName.setText(model.getValueAt(i, 1).toString());
         txt_BookAuthor.setText(model.getValueAt(i, 2).toString());
         txt_Quantity.setText(model.getValueAt(i, 3).toString());
+        txt_BookFee.setText(model.getValueAt(i, 4).toString());
     }// GEN-LAST:event_bookDetailsTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -496,6 +487,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private components.PanelBorder panelBorder1;
@@ -503,6 +495,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     private components.PanelBorder panelBorder3;
     private com.k33ptoo.components.KButton removeButton;
     private javax.swing.JTextField txt_BookAuthor;
+    private javax.swing.JTextField txt_BookFee;
     private javax.swing.JTextField txt_BookID;
     private javax.swing.JTextField txt_BookName;
     private javax.swing.JTextField txt_Quantity;

@@ -167,6 +167,8 @@ public class ManageBook extends javax.swing.JFrame {
         txt_BookID = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         txt_BookName = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        txt_BookFee = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
 
@@ -303,11 +305,11 @@ public class ManageBook extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book ID", "Name", "Author", "Quantity"
+                "Book ID", "Name", "Author", "Quantity", "Fee"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -348,6 +350,7 @@ public class ManageBook extends javax.swing.JFrame {
             bookDetailsTable.getColumnModel().getColumn(1).setResizable(false);
             bookDetailsTable.getColumnModel().getColumn(2).setResizable(false);
             bookDetailsTable.getColumnModel().getColumn(3).setResizable(false);
+            bookDetailsTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
         panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 460));
@@ -404,6 +407,19 @@ public class ManageBook extends javax.swing.JFrame {
         txt_BookName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
+
+        jLabel30.setBackground(new java.awt.Color(36, 36, 36));
+        jLabel30.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(36, 36, 36));
+        jLabel30.setText("Fee of book");
+        panelBorder2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
+
+        txt_BookFee.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        txt_BookFee.setForeground(new java.awt.Color(36, 36, 36));
+        txt_BookFee.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookFee.setCaretColor(new java.awt.Color(36, 36, 36));
+        txt_BookFee.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        panelBorder2.add(txt_BookFee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 250, -1));
 
         jLabel28.setBackground(new java.awt.Color(36, 36, 36));
         jLabel28.setFont(new java.awt.Font("DVN-Poppins", 0, 14)); // NOI18N
@@ -521,6 +537,7 @@ public class ManageBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane4;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
@@ -528,6 +545,7 @@ public class ManageBook extends javax.swing.JFrame {
     private components.PanelBorder panelBorder2;
     private com.k33ptoo.components.KButton removeButton;
     private javax.swing.JTextField txt_BookAuthor;
+    private javax.swing.JTextField txt_BookFee;
     private javax.swing.JTextField txt_BookID;
     private javax.swing.JTextField txt_BookName;
     private javax.swing.JTextField txt_Quantity;
