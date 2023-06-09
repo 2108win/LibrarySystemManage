@@ -149,7 +149,7 @@ public class IssueBookDao extends DBConnection {
   public ArrayList<IssueBook> getBooksByStudentName(String student_name) {
     ArrayList<IssueBook> issueBooks = new ArrayList<>();
     try {
-      String sql = "SELECT * FROM issue_book_details WHERE student_name = ?";
+      String sql = "SELECT * FROM issue_book_details WHERE student_name = ? and status = 'Pending'";
       PreparedStatement ps = con.prepareStatement(sql);
       ps.setString(1, student_name);
       ResultSet rs = ps.executeQuery();

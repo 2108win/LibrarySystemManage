@@ -142,14 +142,14 @@ public class HomePage extends javax.swing.JInternalFrame {
             issueBooks.removeIf(issueBook1 -> issueBook.getStudent_id() == issueBook1.getStudent_id());
         }
         // sort table by count to descending order
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        studentBooksCountTable.setRowSorter(sorter);
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        int columnIndexToSort = 1;
-        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
-        sorter.setSortKeys(sortKeys);
-        sorter.sort();
-        model.setRowCount(6);
+        // TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        // studentBooksCountTable.setRowSorter(sorter);
+        // List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        // int columnIndexToSort = 1;
+        // sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
+        // sorter.setSortKeys(sortKeys);
+        // sorter.sort();
+        // model.setRowCount(6);
     }
 
     public void setNameBookList(String student_name) {
@@ -177,24 +177,24 @@ public class HomePage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        componentResizerUtil1 = new com.k33ptoo.utils.ComponentResizerUtil();
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
-        panelBorder4 = new components.PanelBorder();
+        returnBookPanel = new components.PanelBorder();
         countReturnLabel = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        panelBorder3 = new components.PanelBorder();
+        PendingBookPanel = new components.PanelBorder();
         countPendingLabel = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        panelBorder2 = new components.PanelBorder();
+        studentsPanel = new components.PanelBorder();
         countStudentLabel = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        panelBorder1 = new components.PanelBorder();
+        booksPanel = new components.PanelBorder();
         countBookLabel = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        panelBorder5 = new components.PanelBorder();
-        jLabel16 = new javax.swing.JLabel();
         panelBorder6 = new components.PanelBorder();
         studentNameLabel = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -227,86 +227,76 @@ public class HomePage extends javax.swing.JInternalFrame {
         kGradientPanel2.setPreferredSize(new java.awt.Dimension(950, 730));
         kGradientPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBorder4.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        returnBookPanel.setBackground(new java.awt.Color(255, 255, 255));
+        returnBookPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countReturnLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
         countReturnLabel.setForeground(new java.awt.Color(36, 36, 36));
         countReturnLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/return.png"))); // NOI18N
         countReturnLabel.setText("   100");
-        panelBorder4.add(countReturnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        returnBookPanel.add(countReturnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
         jLabel21.setText("Return books");
-        panelBorder4.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        returnBookPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 210, 110));
+        kGradientPanel2.add(returnBookPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 210, 110));
 
-        panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PendingBookPanel.setBackground(new java.awt.Color(255, 255, 255));
+        PendingBookPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countPendingLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
         countPendingLabel.setForeground(new java.awt.Color(36, 36, 36));
         countPendingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pending.png"))); // NOI18N
         countPendingLabel.setText("   100");
-        panelBorder3.add(countPendingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        PendingBookPanel.add(countPendingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(102, 102, 102));
         jLabel19.setText("Pending books");
-        panelBorder3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        PendingBookPanel.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 210, 110));
+        kGradientPanel2.add(PendingBookPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, 210, 110));
 
-        panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        studentsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        studentsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countStudentLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
         countStudentLabel.setForeground(new java.awt.Color(36, 36, 36));
         countStudentLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/member.png"))); // NOI18N
         countStudentLabel.setText("   100");
-        panelBorder2.add(countStudentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        studentsPanel.add(countStudentLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(102, 102, 102));
         jLabel17.setText("Students");
-        panelBorder2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        studentsPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 210, 110));
+        kGradientPanel2.add(studentsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 210, 110));
 
-        panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        booksPanel.setBackground(new java.awt.Color(255, 255, 255));
+        booksPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         countBookLabel.setFont(new java.awt.Font("DVN-Poppins", 1, 40)); // NOI18N
         countBookLabel.setForeground(new java.awt.Color(36, 36, 36));
         countBookLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book.png"))); // NOI18N
         countBookLabel.setText("   100");
-        panelBorder1.add(countBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        booksPanel.add(countBookLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel15.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
         jLabel15.setText("Total books");
-        panelBorder1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        booksPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 210, 110));
-
-        panelBorder5.setBackground(new java.awt.Color(255, 255, 255));
-        panelBorder5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel16.setText("Total books");
-        panelBorder5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 320));
+        kGradientPanel2.add(booksPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 210, 110));
 
         panelBorder6.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         studentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
         studentNameLabel.setText(" ");
-        panelBorder6.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 180, -1));
+        panelBorder6.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 180, -1));
 
         jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane4.setBorder(null);
@@ -314,22 +304,23 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         studentBooksCountTable.setForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null },
-                        { null, null },
-                        { null, null },
-                        { null, null },
-                        { null, null }
-                },
-                new String[] {
-                        "Student Name", "Count"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Student Name", "Count"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         studentBooksCountTable.setToolTipText("");
@@ -367,7 +358,7 @@ public class HomePage extends javax.swing.JInternalFrame {
             studentBooksCountTable.getColumnModel().getColumn(1).setMaxWidth(50);
         }
 
-        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 300));
+        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 260));
 
         jScrollPane5.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane5.setBorder(null);
@@ -375,20 +366,22 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         nameBookListTable.setForeground(new java.awt.Color(255, 255, 255));
         nameBookListTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null },
-                        { null },
-                        { null }
-                },
-                new String[] {
-                        ""
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         nameBookListTable.setToolTipText("");
@@ -417,17 +410,17 @@ public class HomePage extends javax.swing.JInternalFrame {
         nameBookListTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(nameBookListTable);
 
-        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 280, 150));
+        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 280, 200));
 
         jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("Top 5 Student");
+        jLabel20.setText("Top Student");
         panelBorder6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 290, -1));
 
         jLabel22.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 102, 102));
         jLabel22.setText("List Book by:");
-        panelBorder6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        panelBorder6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 320, 560));
 
@@ -440,20 +433,21 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null }
-                },
-                new String[] {
-                        "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -486,15 +480,15 @@ public class HomePage extends javax.swing.JInternalFrame {
             issueBookDetailsTable.getColumnModel().getColumn(0).setMaxWidth(65);
         }
 
-        panelBorder8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 510, 150));
+        panelBorder8.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 500));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
         jLabel26.setText("Issue List");
-        panelBorder8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panelBorder8.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 560, 220));
+        kGradientPanel2.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 560));
 
         getContentPane().add(kGradientPanel2);
 
@@ -510,13 +504,15 @@ public class HomePage extends javax.swing.JInternalFrame {
     }// GEN-LAST:event_studentBooksCountTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private components.PanelBorder PendingBookPanel;
+    private components.PanelBorder booksPanel;
+    private com.k33ptoo.utils.ComponentResizerUtil componentResizerUtil1;
     private javax.swing.JLabel countBookLabel;
     private javax.swing.JLabel countPendingLabel;
     private javax.swing.JLabel countReturnLabel;
     private javax.swing.JLabel countStudentLabel;
     private rojeru_san.complementos.RSTableMetro issueBookDetailsTable;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
@@ -528,14 +524,11 @@ public class HomePage extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private com.k33ptoo.components.KGradientPanel kGradientPanel2;
     private rojeru_san.complementos.RSTableMetro nameBookListTable;
-    private components.PanelBorder panelBorder1;
-    private components.PanelBorder panelBorder2;
-    private components.PanelBorder panelBorder3;
-    private components.PanelBorder panelBorder4;
-    private components.PanelBorder panelBorder5;
     private components.PanelBorder panelBorder6;
     private components.PanelBorder panelBorder8;
+    private components.PanelBorder returnBookPanel;
     private rojeru_san.complementos.RSTableMetro studentBooksCountTable;
     private javax.swing.JLabel studentNameLabel;
+    private components.PanelBorder studentsPanel;
     // End of variables declaration//GEN-END:variables
 }

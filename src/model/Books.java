@@ -14,17 +14,20 @@ public class Books {
     private String book_name;
     private String author;
     private int quantity;
+    private double book_fee;
 
     @Override
     public String toString() {
-        return "Books{" + "book_id=" + book_id + ", book_name=" + book_name + ", author=" + author + ", quantity=" + quantity + '}';
+        return "Books{" + "book_id=" + book_id + ", book_name=" + book_name + ", author=" + author + ", quantity="
+                + quantity + ", book_fee=" + book_fee + '}';
     }
 
-    public Books(int book_id, String book_name, String author, int quantity) {
+    public Books(int book_id, String book_name, String author, int quantity, double book_fee) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.author = author;
         this.quantity = quantity;
+        this.book_fee = book_fee;
     }
 
     public int getBook_id() {
@@ -57,6 +60,14 @@ public class Books {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public double getBook_fee() {
+        return book_fee;
+    }
+
+    public void setBook_fee(double book_fee) {
+        this.book_fee = book_fee;
     }
 
     public Books() {

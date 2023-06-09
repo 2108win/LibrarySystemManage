@@ -106,4 +106,43 @@ public class IssueBook {
         this.status = status;
     }
 
+    // nếu trễ hẹn due_date (due_date có sẵn trong dư liệu khi thêm vào) thì tính
+    // 10% giá sách, nếu trễ quá 10 ngày thì phí gấp 3
+    // lần giá sách
+    public double calculateFeeReturn(double book_fee, Date due_date) {
+        // daysLate là số ngày tính từ due_date đến ngày hôm nay
+        Date currentDate = new Date();
+        long daysLate = (currentDate.getTime() - due_date.getTime()) / (24 * 60 * 60 * 1000);
+        System.out.println("daysLate: " + daysLate);
+        double FeeReturn = 0.0;
+        if (daysLate > 0) {
+            if (daysLate <= 10) {
+                FeeReturn = book_fee * 1.1;
+            } else {
+                FeeReturn = book_fee * 1.3;
+            }
+        } else {
+            FeeReturn = book_fee;
+        }
+        return FeeReturn;
+    }
+
+    public void returnBook(Users user, double bookFee, Date dueDate, String status) {
+        // Cập nhật số tiền đã nhận
+        if (status.equals("Returned")) {
+            double receivedAmount = user.getFee_returned();
+            user.setFee_returned(receivedAmount);
+            // Tính phí trả sách
+            double returnFee = calculateFeeReturn(bookFee, dueDate);
+            // Cập nhật số tiền phí trả sách
+            double feeReturn = user.getFee_returned();
+            feeReturn += returnFee;
+            user.setFee_returned(feeReturn);
+        } else {
+            double pendingAmount = user.getFee_pending();
+            pendingAmount += bookFee;
+            user.setFee_pending(pendingAmount);
+        }
+
+    }
 }

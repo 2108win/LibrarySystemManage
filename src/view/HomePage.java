@@ -245,7 +245,8 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -541,76 +542,6 @@ public class HomePage extends javax.swing.JFrame {
         mainPanel.removeAll();
         mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_viewIssueBooksButtonActionPerformed
-
-    private void homePageButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_homePageButtonMousePressed
-        // TODO add your handling code here:
-        homePageButton.setkStartColor(pressColor);
-        homePageButton.setkEndColor(pressColor);
-        manageBookButton.setkStartColor(defaultStartColor);
-        manageBookButton.setkEndColor(defaultEndColor);
-        manageStudentsButton.setkStartColor(defaultStartColor);
-        manageStudentsButton.setkEndColor(defaultEndColor);
-        issueBookButton.setkStartColor(defaultStartColor);
-        issueBookButton.setkEndColor(defaultEndColor);
-        returnBookButton.setkStartColor(defaultStartColor);
-        returnBookButton.setkEndColor(defaultEndColor);
-    }// GEN-LAST:event_homePageButtonMousePressed
-
-    private void manageBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_manageBookButtonMousePressed
-        // TODO add your handling code here:
-        homePageButton.setkStartColor(defaultStartColor);
-        homePageButton.setkEndColor(defaultEndColor);
-        manageBookButton.setkStartColor(pressColor);
-        manageBookButton.setkEndColor(pressColor);
-        manageStudentsButton.setkStartColor(defaultStartColor);
-        manageStudentsButton.setkEndColor(defaultEndColor);
-        issueBookButton.setkStartColor(defaultStartColor);
-        issueBookButton.setkEndColor(defaultEndColor);
-        returnBookButton.setkStartColor(defaultStartColor);
-        returnBookButton.setkEndColor(defaultEndColor);
-    }// GEN-LAST:event_manageBookButtonMousePressed
-
-    private void manageStudentsButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_manageStudentsButtonMousePressed
-        // TODO add your handling code here:
-        homePageButton.setkStartColor(defaultStartColor);
-        homePageButton.setkEndColor(defaultEndColor);
-        manageBookButton.setkStartColor(defaultStartColor);
-        manageBookButton.setkEndColor(defaultEndColor);
-        manageStudentsButton.setkStartColor(pressColor);
-        manageStudentsButton.setkEndColor(pressColor);
-        issueBookButton.setkStartColor(defaultStartColor);
-        issueBookButton.setkEndColor(defaultEndColor);
-        returnBookButton.setkStartColor(defaultStartColor);
-        returnBookButton.setkEndColor(defaultEndColor);
-    }// GEN-LAST:event_manageStudentsButtonMousePressed
-
-    private void issueBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_issueBookButtonMousePressed
-        // TODO add your handling code here:
-        homePageButton.setkStartColor(defaultStartColor);
-        homePageButton.setkEndColor(defaultEndColor);
-        manageBookButton.setkStartColor(defaultStartColor);
-        manageBookButton.setkEndColor(defaultEndColor);
-        manageStudentsButton.setkStartColor(defaultStartColor);
-        manageStudentsButton.setkEndColor(defaultEndColor);
-        issueBookButton.setkStartColor(pressColor);
-        issueBookButton.setkEndColor(pressColor);
-        returnBookButton.setkStartColor(defaultStartColor);
-        returnBookButton.setkEndColor(defaultEndColor);
-    }// GEN-LAST:event_issueBookButtonMousePressed
-
-    private void returnBookButtonMousePressed(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_returnBookButtonMousePressed
-        // TODO add your handling code here:
-        homePageButton.setkStartColor(defaultStartColor);
-        homePageButton.setkEndColor(defaultEndColor);
-        manageBookButton.setkStartColor(defaultStartColor);
-        manageBookButton.setkEndColor(defaultEndColor);
-        manageStudentsButton.setkStartColor(defaultStartColor);
-        manageStudentsButton.setkEndColor(defaultEndColor);
-        issueBookButton.setkStartColor(defaultStartColor);
-        issueBookButton.setkEndColor(defaultEndColor);
-        returnBookButton.setkStartColor(pressColor);
-        returnBookButton.setkEndColor(pressColor);
-    }// GEN-LAST:event_returnBookButtonMousePressed
 
     private void issueBookButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_issueBookButtonActionPerformed
         // TODO add your handling code here:

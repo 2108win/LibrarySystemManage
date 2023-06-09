@@ -76,13 +76,13 @@ public class ManageBook extends javax.swing.JInternalFrame {
         for (Books book : booksDao.getAllBooks()) {
             model.addRow(new Object[] { book.getBook_id(), book.getBook_name(), book.getAuthor(), book.getQuantity() });
         }
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        bookDetailsTable.setRowSorter(sorter);
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        int columnIndexToSort = 1;
-        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
-        sorter.setSortKeys(sortKeys);
-        sorter.sort();
+//        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+//        bookDetailsTable.setRowSorter(sorter);
+//        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+//        int columnIndexToSort = 1;
+//        sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.DESCENDING));
+//        sorter.setSortKeys(sortKeys);
+//        sorter.sort();
     }
 
     public boolean addBook() {

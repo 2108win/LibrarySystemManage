@@ -15,6 +15,8 @@ public class Users {
     private String email;
     private String password;
     private String contact;
+    private double fee_pending;
+    private double fee_returned;
 
     @Override
     public String toString() {
@@ -24,12 +26,15 @@ public class Users {
     public Users() {
     }
 
-    public Users(int id, String name, String password, String email, String contact) {
+    public Users(int id, String name, String password, String email, String contact, double fee_pending,
+            double fee_returned) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
         this.contact = contact;
+        this.fee_pending = fee_pending;
+        this.fee_returned = fee_returned;
     }
 
     public int getId() {
@@ -70,6 +75,22 @@ public class Users {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public double getFee_pending() {
+        return fee_pending;
+    }
+
+    public void setFee_pending(double fee_pending) {
+        this.fee_pending = fee_pending;
+    }
+
+    public double getFee_returned() {
+        return fee_returned;
+    }
+
+    public void setFee_returned(double fee_returned) {
+        this.fee_returned = fee_returned;
     }
 
 }
