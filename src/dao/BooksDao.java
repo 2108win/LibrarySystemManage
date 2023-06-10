@@ -134,4 +134,19 @@ public class BooksDao extends DBConnection {
     }
   }
 
+  public static double getBookFee(int book_id) {
+    double book_fee = 0;
+    try {
+      String sql = "SELECT book_fee FROM book_details WHERE book_id = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, book_id);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        book_fee = rs.getDouble("book_fee");
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return book_fee;
+  }
 }

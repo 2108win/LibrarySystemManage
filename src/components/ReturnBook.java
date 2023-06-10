@@ -4,8 +4,10 @@
  */
 package components;
 
+import dao.BooksDao;
 import dao.DBConnection;
 import dao.IssueBookDao;
+import model.Books;
 import model.IssueBook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +36,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         ((javax.swing.plaf.basic.BasicInternalFrameUI) this.getUI()).setNorthPane(null);
         loadComboIssueID();
-        setIssueBookDetails();
+        setAndLoadIssueBookDetails();
     }
 
     public void loadComboIssueID() {
@@ -82,26 +84,6 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         }
     }
 
-    // // update book_details table after return book
-    // public void updateBookQuantity() {
-    // int bookID = Integer.parseInt(txt_BookID.getText());
-    // int studentID = Integer.parseInt(txt_StudentID.getText());
-    // try {
-    // Connection con = DBConnection.getConnection();
-    // // get quantity of book
-    // PreparedStatement pst = con.prepareStatement("update book_details set
-    // quantity=quantity+1 where book_id=?");
-    // pst.setInt(1, bookID);
-    // PreparedStatement pst1 = con.prepareStatement("update issue_book_details set
-    // quantity = quantity + 1 where book_id=? and student_id=? and
-    // status='Pending'");
-    // pst1.setInt(1, bookID);
-    // pst1.setInt(2, studentID);
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // }
-    // }
-
     public void loadBookIssueDetails() {
         txt_BookName.setText("");
         txt_StudentName.setText("");
@@ -109,6 +91,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_DueDate.setText("");
         txt_BookID.setText("");
         txt_StudentID.setText("");
+        txt_FeePending.setText("");
+
         if (txt_ComboIssueID.getItemCount() > 0) {
             if (txt_ComboIssueID.getSelectedItem().toString().equals("")) {
                 JOptionPane.showMessageDialog(null, "Please select issue id");
@@ -132,6 +116,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Connection Error");
                 }
+
             }
         }
     }
@@ -189,16 +174,45 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         return isIssued;
     }
 
-    public void setIssueBookDetails() {
+    public void setAndLoadIssueBookDetails() {
         IssueBookDao issueBookDao = new IssueBookDao();
         model = (DefaultTableModel) issueBookDetailsTable.getModel();
         model.setRowCount(0);
         for (IssueBook issueBook : issueBookDao.getPendingIssueBooks()) {
+            // tính phí cho sách đã mượn
+            IssueBook iBook = new IssueBook();
+            double fee_pending = iBook.calculateFee(BooksDao.getBookFee(issueBook.getBook_id()),
+                    issueBook.getDue_date());
+            issueBookDao.updateIssueFee(issueBook.getIssue_id(), fee_pending);
             model.addRow(new Object[] {
                     issueBook.getIssue_id(), issueBook.getBook_id(), issueBook.getBook_name(),
                     issueBook.getStudent_id(), issueBook.getStudent_name(), issueBook.getIssue_date(),
                     issueBook.getDue_date(), issueBook.getStatus()
             });
+        }
+    }
+
+    public void updateUserFee() {
+        double fee_pending = Double.parseDouble(txt_FeePending.getText());
+        int book_id = IssueBookDao
+                .getBook_idByIssue_id(Integer.parseInt(txt_ComboIssueID.getSelectedItem().toString()));
+        double fee_returned = BooksDao.getBookFee(book_id);
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("update users set fee_returned = fee_returned + ?");
+            pst.setDouble(1, fee_pending);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con
+                    .prepareStatement("update users set fee_pending = fee_pending - ? where fee_pending > 0");
+            pst.setDouble(1, fee_returned);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -222,7 +236,11 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -249,10 +267,11 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         jLabel37 = new javax.swing.JLabel();
         checkErrorLabel = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
+        txt_FeePending1 = new javax.swing.JTextField();
+        txt_FeePending = new javax.swing.JTextField();
         txt_StudentID = new javax.swing.JTextField();
         txt_BookID = new javax.swing.JTextField();
         studentNameLabel = new javax.swing.JLabel();
-        txt_FeePending = new javax.swing.JLabel();
         panelBorder5 = new components.PanelBorder();
         jScrollPane4 = new javax.swing.JScrollPane();
         issueBookDetailsTable = new rojeru_san.complementos.RSTableMetro();
@@ -270,7 +289,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -303,7 +323,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_BookName.setBackground(new java.awt.Color(255, 255, 255));
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 390, -1));
 
@@ -311,7 +332,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_IssueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_IssueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_IssueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_IssueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_IssueDate
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_IssueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_IssueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 390, -1));
 
@@ -319,7 +341,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_DueDate.setBackground(new java.awt.Color(255, 255, 255));
         txt_DueDate.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_DueDate.setForeground(new java.awt.Color(36, 36, 36));
-        txt_DueDate.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_DueDate
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_DueDate.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_DueDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 390, -1));
 
@@ -333,7 +356,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_StudentName.setBackground(new java.awt.Color(255, 255, 255));
         txt_StudentName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder1.add(txt_StudentName, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 390, -1));
 
@@ -351,7 +375,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         txt_ComboIssueID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboIssueID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboIssueID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboIssueID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboIssueID.setOpaque(true);
         txt_ComboIssueID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -427,9 +452,32 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         jLabel24.setText("Book ID");
         panelBorder2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
+        txt_FeePending1.setEditable(false);
+        txt_FeePending1.setBackground(new java.awt.Color(255, 255, 255));
+        txt_FeePending1.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        txt_FeePending1.setForeground(new java.awt.Color(36, 36, 36));
+        txt_FeePending1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_FeePending1.setText("đ");
+        txt_FeePending1
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_FeePending1.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        panelBorder2.add(txt_FeePending1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 20, -1));
+
+        txt_FeePending.setEditable(false);
+        txt_FeePending.setBackground(new java.awt.Color(255, 255, 255));
+        txt_FeePending.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
+        txt_FeePending.setForeground(new java.awt.Color(36, 36, 36));
+        txt_FeePending.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_FeePending.setText("0");
+        txt_FeePending
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_FeePending.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        panelBorder2.add(txt_FeePending, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 150, -1));
+
         txt_StudentID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_StudentID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_StudentID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_StudentID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_StudentID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_StudentID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -440,7 +488,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookID.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_BookID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -452,13 +501,9 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         studentNameLabel.setFont(new java.awt.Font("DVN-Poppins", 2, 16)); // NOI18N
         studentNameLabel.setForeground(new java.awt.Color(0, 204, 0));
         studentNameLabel.setText("0.0đ");
-        studentNameLabel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        studentNameLabel
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         panelBorder2.add(studentNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, 100, 30));
-
-        txt_FeePending.setFont(new java.awt.Font("DVN-Poppins", 3, 16)); // NOI18N
-        txt_FeePending.setText("0.0đ");
-        txt_FeePending.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
-        panelBorder2.add(txt_FeePending, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 170, 30));
 
         kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 290));
 
@@ -471,19 +516,18 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][] {
 
-            },
-            new String [] {
-                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                },
+                new String[] {
+                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -557,6 +601,11 @@ public class ReturnBook extends javax.swing.JInternalFrame {
         txt_StudentName.setText(issueBookDetailsTable.getValueAt(row, 4).toString());
         txt_IssueDate.setText(issueBookDetailsTable.getValueAt(row, 5).toString());
         txt_DueDate.setText(issueBookDetailsTable.getValueAt(row, 6).toString());
+        // lấy issue_fee trên database
+        int issue_id = Integer.parseInt(issueBookDetailsTable.getValueAt(row, 0).toString());
+        IssueBookDao issueBookDao = new IssueBookDao();
+        txt_FeePending.setText(String.valueOf(issueBookDao.getIssueFeeByIssueId(issue_id)));
+
     }// GEN-LAST:event_IssueBookDetailsTableMouseClicked
 
     private void txt_ComboIssueIDActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txt_ComboIssueIDActionPerformed
@@ -565,8 +614,9 @@ public class ReturnBook extends javax.swing.JInternalFrame {
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_returnButtonActionPerformed
         if (returnBook() == true) {
+            updateUserFee();
             loadComboIssueID();
-            setIssueBookDetails();
+            setAndLoadIssueBookDetails();
             JOptionPane.showMessageDialog(null, "Book returned");
         } else {
             JOptionPane.showMessageDialog(null, "Book Return Failed");
@@ -619,7 +669,8 @@ public class ReturnBook extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_BookName;
     private javax.swing.JComboBox<String> txt_ComboIssueID;
     private javax.swing.JTextField txt_DueDate;
-    private javax.swing.JLabel txt_FeePending;
+    private javax.swing.JTextField txt_FeePending;
+    private javax.swing.JTextField txt_FeePending1;
     private javax.swing.JTextField txt_IssueDate;
     private javax.swing.JTextField txt_Search;
     private javax.swing.JTextField txt_StudentID;

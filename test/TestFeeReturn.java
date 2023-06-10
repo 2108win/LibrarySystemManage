@@ -34,8 +34,7 @@ public class TestFeeReturn {
         System.out.println("idate" + issueBook.getIssue_date());
         System.out.println("ddate" + issueBook.getDue_date());
         System.out.println("cdate" + currentDate);
-        double fee;
-        fee = issueBook.calculateFeeReturn(book.getBook_fee(), currentDate);
+        double fee = issueBook.calculateFee(book.getBook_fee(), currentDate);
         issueBook.returnBook(user, book.getBook_fee(), issueBook.getDue_date(), issueBook.getStatus());
         System.out.println("User pending : " + user.getFee_pending());
         System.out.println("User returned : " + user.getFee_returned());

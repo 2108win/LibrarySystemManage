@@ -139,7 +139,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
         int studentID = Integer.parseInt(txt_StudentID.getText());
         String bookName = txt_BookName.getText();
         String studentName = txt_StudentName.getText();
-        Date uIssueDate = txt_DueDate.getDate();
+        Date uIssueDate = txt_IssueDate.getDate();
         Date uDueDate = txt_DueDate.getDate();
         Long l1 = uIssueDate.getTime();
         Long l2 = uDueDate.getTime();
@@ -172,9 +172,10 @@ public class IssueBook extends javax.swing.JInternalFrame {
         return isIssued;
     }
 
-    public void updateBookQuantity() {
+    public void updateDetail() {
         int bookID = Integer.parseInt(txt_BookID.getText());
         int quantity = Integer.parseInt(txt_Quantity.getText());
+        double bookFee = Double.parseDouble(txt_BookFee.getText());
         int newQuantity = quantity - 1;
         if (newQuantity >= 0) {
             try {
@@ -182,6 +183,17 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 PreparedStatement pst = con.prepareStatement("update book_details set quantity=? where book_id=?");
                 pst.setInt(1, newQuantity);
                 pst.setInt(2, bookID);
+                pst.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // update fee_pending of user
+            try {
+                Connection con = DBConnection.getConnection();
+                PreparedStatement pst = con.prepareStatement(
+                        "update users set fee_pending=fee_pending+?");
+                pst.setDouble(1, bookFee);
                 pst.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -199,7 +211,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
             Connection con = DBConnection.getConnection();
             PreparedStatement pst = con
                     .prepareStatement(
-                            "select * from issue_book_details where book_id=? and student_id=? and (status='Pending' OR status='Overdue')");
+                            "select * from issue_book_details where book_id=? and student_id=? and (status='Pending' or status='Overdue')");
             pst.setInt(1, bookID);
             pst.setInt(2, studentID);
             ResultSet rs = pst.executeQuery();
@@ -552,7 +564,7 @@ public class IssueBook extends javax.swing.JInternalFrame {
                 checkDueDate();
                 if (issueBook() == true) {
                     JOptionPane.showMessageDialog(null, "Book Issued Successfully");
-                    updateBookQuantity();
+                    updateDetail();
                     loadBookDetails();
                 } else {
                     JOptionPane.showMessageDialog(null, "Book Issue Failed");

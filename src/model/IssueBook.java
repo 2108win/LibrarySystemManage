@@ -19,12 +19,13 @@ public class IssueBook {
     private Date issue_date;
     private Date due_date;
     private String status;
+    private double issue_fee;
 
     @Override
     public String toString() {
         return "IssueBook{" + "issue_id=" + issue_id + ", book_id=" + book_id + ", book_name=" + book_name
                 + ", student_id=" + student_id + ", student_name=" + student_name + ", issue_date=" + issue_date
-                + ", due_date=" + due_date + ", status=" + status + '}';
+                + ", due_date=" + due_date + ", status=" + status + ", issue_fee=" + issue_fee + '}';
     }
 
     public IssueBook(int issue_id, int book_id, String book_name, int student_id, String student_name, Date issue_date,
@@ -37,6 +38,7 @@ public class IssueBook {
         this.issue_date = issue_date;
         this.due_date = due_date;
         this.status = status;
+        this.issue_fee = 0.0;
     }
 
     public IssueBook() {
@@ -106,25 +108,30 @@ public class IssueBook {
         this.status = status;
     }
 
-    // nếu trễ hẹn due_date (due_date có sẵn trong dư liệu khi thêm vào) thì tính
-    // 10% giá sách, nếu trễ quá 10 ngày thì phí gấp 3
-    // lần giá sách
-    public double calculateFeeReturn(double book_fee, Date due_date) {
+    public double getIssue_fee() {
+        return issue_fee;
+    }
+
+    public void setIssue_fee(double issue_fee) {
+        this.issue_fee = issue_fee;
+    }
+
+    public double calculateFee(double book_fee, Date due_date) {
         // daysLate là số ngày tính từ due_date đến ngày hôm nay
         Date currentDate = new Date();
         long daysLate = (currentDate.getTime() - due_date.getTime()) / (24 * 60 * 60 * 1000);
         System.out.println("daysLate: " + daysLate);
-        double FeeReturn = 0.0;
+        double Fee = 0.0;
         if (daysLate > 0) {
             if (daysLate <= 10) {
-                FeeReturn = book_fee * 1.1;
+                Fee = book_fee * 1.1;
             } else {
-                FeeReturn = book_fee * 1.3;
+                Fee = book_fee * 3;
             }
         } else {
-            FeeReturn = book_fee;
+            Fee = book_fee;
         }
-        return FeeReturn;
+        return Fee;
     }
 
     public void returnBook(Users user, double bookFee, Date dueDate, String status) {
@@ -133,7 +140,7 @@ public class IssueBook {
             double receivedAmount = user.getFee_returned();
             user.setFee_returned(receivedAmount);
             // Tính phí trả sách
-            double returnFee = calculateFeeReturn(bookFee, dueDate);
+            double returnFee = calculateFee(bookFee, dueDate);
             // Cập nhật số tiền phí trả sách
             double feeReturn = user.getFee_returned();
             feeReturn += returnFee;

@@ -73,12 +73,12 @@ public class HomePage extends javax.swing.JInternalFrame {
                 countBook++;
             }
             // lấy ra số tiền fee_pending của user
-            ResultSet rs5 = st.executeQuery("SELECT * FROM users where fee_pending>0");
+            ResultSet rs5 = st.executeQuery("SELECT * FROM users");
             while (rs5.next()) {
                 fee_pending += rs5.getDouble("fee_pending");
             }
             // lấy ra số tiền fee_returned của user
-            ResultSet rs6 = st.executeQuery("SELECT * FROM users where fee_returned>0");
+            ResultSet rs6 = st.executeQuery("SELECT * FROM users");
             while (rs6.next()) {
                 fee_returned += rs6.getDouble("fee_returned");
             }
@@ -152,7 +152,8 @@ public class HomePage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         componentResizerUtil1 = new com.k33ptoo.utils.ComponentResizerUtil();
@@ -287,22 +288,21 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         studentBooksCountTable.setForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Student Name", "Count"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
+                new Object[][] {
+                        { null, null },
+                        { null, null },
+                        { null, null },
+                        { null, null }
+                },
+                new String[] {
+                        "Student Name", "Count"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         studentBooksCountTable.setToolTipText("");
@@ -358,20 +358,19 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         nameBookListTable.setForeground(new java.awt.Color(255, 255, 255));
         nameBookListTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null}
-            },
-            new String [] {
-                ""
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false
+                new Object[][] {
+                        { null },
+                        { null }
+                },
+                new String[] {
+                        ""
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         nameBookListTable.setToolTipText("");
@@ -413,21 +412,20 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                new Object[][] {
+                        { null, null, null, null, null },
+                        { null, null, null, null, null },
+                        { null, null, null, null, null }
+                },
+                new String[] {
+                        "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");

@@ -43,7 +43,7 @@ public class IssueBookDao extends DBConnection {
   public ArrayList<IssueBook> getAllIssueBooks() {
     ArrayList<IssueBook> issueBooks = new ArrayList<>();
     try {
-      String sql = "SELECT * FROM issue_book_details ORDER BY issue_date ASC";
+      String sql = "SELECT * FROM issue_book_details ORDER BY issue_id DESC";
       PreparedStatement ps = con.prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
@@ -68,7 +68,7 @@ public class IssueBookDao extends DBConnection {
   public ArrayList<IssueBook> getPendingIssueBooks() {
     ArrayList<IssueBook> issueBooks = new ArrayList<>();
     try {
-      String sql = "SELECT * FROM issue_book_details WHERE (status = 'Pending' or status = 'Overdue') ORDER BY issue_date DESC";
+      String sql = "SELECT * FROM issue_book_details WHERE (status = 'Pending' or status = 'Overdue') ORDER BY issue_id DESC";
       PreparedStatement ps = con.prepareStatement(sql);
       ResultSet rs = ps.executeQuery();
       while (rs.next()) {
@@ -155,7 +155,7 @@ public class IssueBookDao extends DBConnection {
     return count;
   }
 
-  public int getBook_idByIssue_id(int issue_id) {
+  public static int getBook_idByIssue_id(int issue_id) {
     int book_id = 0;
     try {
       String sql = "SELECT book_id FROM issue_book_details WHERE issue_id = ?";
@@ -195,4 +195,40 @@ public class IssueBookDao extends DBConnection {
     }
     return issueBooks;
   }
+
+  // update issue_fee
+  public boolean updateIssueFee(int issue_id, double issue_fee) {
+    boolean status = false;
+    try {
+      String sql = "UPDATE issue_book_details SET issue_fee = ? WHERE issue_id = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setDouble(1, issue_fee);
+      ps.setInt(2, issue_id);
+      int rs = ps.executeUpdate();
+      if (rs > 0) {
+        status = true;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return status;
+  }
+
+  // get issue_fee by issue_id
+  public double getIssueFeeByIssueId(int issue_id) {
+    double issue_fee = 0;
+    try {
+      String sql = "SELECT issue_fee FROM issue_book_details WHERE issue_id = ?";
+      PreparedStatement ps = con.prepareStatement(sql);
+      ps.setInt(1, issue_id);
+      ResultSet rs = ps.executeQuery();
+      if (rs.next()) {
+        issue_fee = rs.getDouble("issue_fee");
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return issue_fee;
+  }
+
 }
