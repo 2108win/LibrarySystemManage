@@ -131,7 +131,7 @@ public class SignupPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -157,6 +157,7 @@ public class SignupPage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         closeButton = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -241,13 +242,11 @@ public class SignupPage extends javax.swing.JFrame {
         kGradientPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 350, 60));
 
         txt_contact.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_contact
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_contact.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         kGradientPanel1.add(txt_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 350, 40));
 
         txt_username.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_username
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusLost(evt);
@@ -256,8 +255,7 @@ public class SignupPage extends javax.swing.JFrame {
         kGradientPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 350, 40));
 
         txt_password.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_password
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         kGradientPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 350, 40));
 
         txt_email.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -302,8 +300,8 @@ public class SignupPage extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(36, 36, 36));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email.png"))); // NOI18N
-        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 32, 32));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/phone.png"))); // NOI18N
+        kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 32, 32));
 
         closeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/close.png"))); // NOI18N
         closeButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -312,6 +310,12 @@ public class SignupPage extends javax.swing.JFrame {
             }
         });
         kGradientPanel1.add(closeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(36, 36, 36));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email.png"))); // NOI18N
+        kGradientPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 32, 32));
 
         getContentPane().add(kGradientPanel1);
 
@@ -409,6 +413,7 @@ public class SignupPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

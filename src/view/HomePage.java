@@ -247,7 +247,7 @@ public class HomePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -440,7 +440,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/pending.png"))); // NOI18N
         jLabel9.setLabelFor(viewRecordsButton);
-        jLabel9.setText("   View Sales");
+        jLabel9.setText("   View Records");
         kGradientPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         viewRecordsButton.setBorder(null);
@@ -583,7 +583,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void viewRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_viewRecordsButtonActionPerformed
         // TODO add your handling code here:
-        components.ViewSalesPage page = new components.ViewSalesPage();
+        components.ViewRecordsPage page = new components.ViewRecordsPage();
         mainPanel.removeAll();
         mainPanel.add(page).setVisible(true);
     }// GEN-LAST:event_viewRecordsButtonActionPerformed

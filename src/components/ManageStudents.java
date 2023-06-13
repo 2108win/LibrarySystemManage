@@ -256,7 +256,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         jLabel25.setText("Student List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 650));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 690));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,13 +315,13 @@ public class ManageStudents extends javax.swing.JInternalFrame {
         txt_branch.setOpaque(true);
         panelBorder2.add(txt_branch, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 500));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 540));
 
         jLabel11.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Remove");
-        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
+        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, -1));
 
         removeButton.setAlignmentX(0.5F);
         removeButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -341,13 +341,13 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 removeButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, 100, 40));
+        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 670, 100, 40));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(36, 36, 36));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Update");
-        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
+        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 680, -1, -1));
 
         updateButton.setAlignmentX(0.5F);
         updateButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -367,13 +367,13 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 updateButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 630, 110, 40));
+        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 670, 110, 40));
 
         jLabel13.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(36, 36, 36));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, -1, -1));
+        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 680, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -393,7 +393,7 @@ public class ManageStudents extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 630, 90, 40));
+        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 670, 90, 40));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
