@@ -120,7 +120,7 @@ public class IssueBook {
         // daysLate là số ngày tính từ due_date đến ngày hôm nay
         Date currentDate = new Date();
         long daysLate = (currentDate.getTime() - due_date.getTime()) / (24 * 60 * 60 * 1000);
-        System.out.println("daysLate: " + daysLate);
+        // System.out.println("daysLate: " + daysLate);
         double Fee = 0.0;
         if (daysLate > 0) {
             if (daysLate <= 10) {
@@ -150,6 +150,5 @@ public class IssueBook {
             pendingAmount += bookFee;
             user.setFee_pending(pendingAmount);
         }
-
     }
 }

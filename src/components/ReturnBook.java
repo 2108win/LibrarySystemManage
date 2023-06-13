@@ -111,6 +111,7 @@ public class ReturnBook extends javax.swing.JInternalFrame {
                         txt_DueDate.setText(rs.getString("due_date"));
                         txt_BookID.setText(rs.getString("book_id"));
                         txt_StudentID.setText(rs.getString("student_id"));
+                        txt_FeePending.setText(rs.getString("issue_fee"));
                     }
 
                 } catch (Exception e) {

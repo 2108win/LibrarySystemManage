@@ -430,7 +430,7 @@
             <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="viewRecordsButton"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="   View Overdue"/>
+            <Property name="text" type="java.lang.String" value="   View Sales"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
