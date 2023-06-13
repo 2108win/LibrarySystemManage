@@ -78,7 +78,6 @@ public class ReturnBook extends javax.swing.JInternalFrame {
                 txt_StudentName.setText(rs1.getString("student_name"));
                 txt_IssueDate.setText(rs1.getString("issue_date"));
                 txt_DueDate.setText(rs1.getString("due_date"));
-                txt_FeePending.setText(rs1.getString("issue_fee"));
             }
         } catch (Exception e) {
             e.printStackTrace();
