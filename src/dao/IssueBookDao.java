@@ -56,6 +56,7 @@ public class IssueBookDao extends DBConnection {
         issueBook.setIssue_date(rs.getDate("issue_date"));
         issueBook.setDue_date(rs.getDate("due_date"));
         issueBook.setStatus(rs.getString("status"));
+        issueBook.setIssue_fee(rs.getDouble("issue_fee"));
         issueBooks.add(issueBook);
       }
     } catch (Exception e) {
@@ -81,6 +82,7 @@ public class IssueBookDao extends DBConnection {
         issueBook.setIssue_date(rs.getDate("issue_date"));
         issueBook.setDue_date(rs.getDate("due_date"));
         issueBook.setStatus(rs.getString("status"));
+        issueBook.setIssue_fee(rs.getDouble("issue_fee"));
         issueBooks.add(issueBook);
       }
     } catch (Exception e) {
@@ -106,6 +108,7 @@ public class IssueBookDao extends DBConnection {
         issueBook.setIssue_date(rs.getDate("issue_date"));
         issueBook.setDue_date(rs.getDate("due_date"));
         issueBook.setStatus(rs.getString("status"));
+        issueBook.setIssue_fee(rs.getDouble("issue_fee"));
         issueBooks.add(issueBook);
       }
     } catch (Exception e) {
@@ -131,6 +134,7 @@ public class IssueBookDao extends DBConnection {
         issueBook.setIssue_date(rs.getDate("issue_date"));
         issueBook.setDue_date(rs.getDate("due_date"));
         issueBook.setStatus(rs.getString("status"));
+        issueBook.setIssue_fee(rs.getDouble("issue_fee"));
         issueBooks.add(issueBook);
       }
     } catch (Exception e) {
@@ -174,7 +178,7 @@ public class IssueBookDao extends DBConnection {
   public ArrayList<IssueBook> getBooksByStudentName(String student_name) {
     ArrayList<IssueBook> issueBooks = new ArrayList<>();
     try {
-      String sql = "SELECT * FROM issue_book_details WHERE student_name = ? and status = 'Pending'";
+      String sql = "SELECT * FROM issue_book_details WHERE student_name = ? and (status = 'Pending' or status = 'Overdue') ORDER BY issue_id DESC";
       PreparedStatement ps = con.prepareStatement(sql);
       ps.setString(1, student_name);
       ResultSet rs = ps.executeQuery();
@@ -188,6 +192,7 @@ public class IssueBookDao extends DBConnection {
         issueBook.setIssue_date(rs.getDate("issue_date"));
         issueBook.setDue_date(rs.getDate("due_date"));
         issueBook.setStatus(rs.getString("status"));
+        issueBook.setIssue_fee(rs.getDouble("issue_fee"));
         issueBooks.add(issueBook);
       }
     } catch (Exception e) {

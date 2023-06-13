@@ -147,7 +147,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -189,7 +189,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Remove");
-        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 640, -1, -1));
+        kGradientPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, -1));
 
         removeButton.setAlignmentX(0.5F);
         removeButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -209,13 +209,13 @@ public class ManageBook extends javax.swing.JInternalFrame {
                 removeButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 630, 100, 40));
+        kGradientPanel2.add(removeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 670, 100, 40));
 
         jLabel12.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(36, 36, 36));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Update");
-        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, -1, -1));
+        kGradientPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 680, -1, -1));
 
         updateButton.setAlignmentX(0.5F);
         updateButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -235,13 +235,13 @@ public class ManageBook extends javax.swing.JInternalFrame {
                 updateButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 630, 110, 40));
+        kGradientPanel2.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 670, 110, 40));
 
         jLabel13.setFont(new java.awt.Font("DVN-Poppins", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(36, 36, 36));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Add");
-        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 640, -1, -1));
+        kGradientPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 680, -1, -1));
 
         addButton.setAlignmentX(0.5F);
         addButton.setFont(new java.awt.Font("DVN-Poppins", 1, 18)); // NOI18N
@@ -261,7 +261,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
                 addButtonActionPerformed(evt);
             }
         });
-        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 630, 90, 40));
+        kGradientPanel2.add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 670, 90, 40));
 
         panelBorder1.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -272,18 +272,19 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
         bookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         bookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "Book ID", "Name", "Author", "Quantity", "Fee"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false
+            },
+            new String [] {
+                "Book ID", "Name", "Author", "Quantity", "Fee"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         bookDetailsTable.setToolTipText("");
@@ -320,7 +321,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
             bookDetailsTable.getColumnModel().getColumn(3).setMaxWidth(80);
         }
 
-        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 580));
+        panelBorder1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 530, 620));
 
         jLabel25.setBackground(new java.awt.Color(36, 36, 36));
         jLabel25.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -328,21 +329,19 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel25.setText("Book List");
         panelBorder1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 650));
+        kGradientPanel2.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 570, 690));
 
         panelBorder2.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookAuthor
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 260, -1));
 
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Quantity
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 260, -1));
@@ -360,8 +359,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookID
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 260, -1));
 
@@ -373,8 +371,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 260, -1));
@@ -393,8 +390,7 @@ public class ManageBook extends javax.swing.JInternalFrame {
 
         txt_BookFee.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookFee.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookFee
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookFee.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookFee.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookFee.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookFee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 250, -1));
@@ -405,14 +401,13 @@ public class ManageBook extends javax.swing.JInternalFrame {
         jLabel30.setText("Fee of book");
         panelBorder2.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, -1, -1));
 
-        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 500));
+        kGradientPanel2.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, 320, 540));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {

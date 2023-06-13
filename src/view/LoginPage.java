@@ -24,6 +24,7 @@ public class LoginPage extends javax.swing.JFrame {
         initComponents();
         initMoving(this);
     }
+
     private int xMouse;
     private int yMouse;
 
@@ -49,11 +50,8 @@ public class LoginPage extends javax.swing.JFrame {
         String password = String.valueOf(txt_password.getPassword());
 
         if (name.isEmpty()) {
-
-            checkErrorLabel.setText("*Please fill username");
             isValidate = false;
         } else if (password.isEmpty()) {
-            checkErrorLabel.setText("*Please fill password");
             isValidate = false;
         } else {
             checkErrorLabel.setText(" ");
@@ -102,7 +100,8 @@ public class LoginPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -181,7 +180,8 @@ public class LoginPage extends javax.swing.JFrame {
         kGradientPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, 350, 60));
 
         txt_username.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_username
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusLost(evt);
@@ -208,7 +208,8 @@ public class LoginPage extends javax.swing.JFrame {
         kGradientPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 32, 32));
 
         txt_password.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_password
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_password.setMargin(new java.awt.Insets(2, 12, 2, 12));
         txt_password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -237,10 +238,10 @@ public class LoginPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeButtonMouseClicked
+    private void closeButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_closeButtonMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_closeButtonMouseClicked
+    }// GEN-LAST:event_closeButtonMouseClicked
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
         if (validateLoginDetails()) {
@@ -249,6 +250,9 @@ public class LoginPage extends javax.swing.JFrame {
     }// GEN-LAST:event_loginButtonActionPerformed
 
     private void txt_passwordFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txt_passwordFocusLost
+        if (txt_password.getText().equals("")) {
+            checkErrorLabel.setText("*Please fill in your password");
+        }
         validateLoginDetails();
     }// GEN-LAST:event_txt_passwordFocusLost
 
@@ -260,6 +264,9 @@ public class LoginPage extends javax.swing.JFrame {
     }// GEN-LAST:event_createAccountButtonActionPerformed
 
     private void txt_usernameFocusLost(java.awt.event.FocusEvent evt) {// GEN-FIRST:event_txt_usernameFocusLost
+        if (txt_username.getText().equals("")) {
+            checkErrorLabel.setText("*Please fill in your username");
+        }
         validateLoginDetails();
     }// GEN-LAST:event_txt_usernameFocusLost
 

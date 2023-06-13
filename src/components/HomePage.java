@@ -153,7 +153,7 @@ public class HomePage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         componentResizerUtil1 = new com.k33ptoo.utils.ComponentResizerUtil();
@@ -225,7 +225,7 @@ public class HomePage extends javax.swing.JInternalFrame {
         jLabel21.setText("Return books");
         returnBookPanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(returnBookPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 210, 110));
+        kGradientPanel2.add(returnBookPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 220, 110));
 
         PendingBookPanel.setBackground(new java.awt.Color(255, 255, 255));
         PendingBookPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -288,21 +288,22 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         studentBooksCountTable.setForeground(new java.awt.Color(255, 255, 255));
         studentBooksCountTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null },
-                        { null, null },
-                        { null, null },
-                        { null, null }
-                },
-                new String[] {
-                        "Student Name", "Count"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Student Name", "Count"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         studentBooksCountTable.setToolTipText("");
@@ -340,7 +341,7 @@ public class HomePage extends javax.swing.JInternalFrame {
             studentBooksCountTable.getColumnModel().getColumn(1).setMaxWidth(50);
         }
 
-        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 280, 230));
+        panelBorder6.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 290, 230));
 
         jLabel20.setFont(new java.awt.Font("DVN-Poppins", 0, 16)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(102, 102, 102));
@@ -358,19 +359,20 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         nameBookListTable.setForeground(new java.awt.Color(255, 255, 255));
         nameBookListTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null },
-                        { null }
-                },
-                new String[] {
-                        ""
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false
+            new Object [][] {
+                {null},
+                {null}
+            },
+            new String [] {
+                ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         nameBookListTable.setToolTipText("");
@@ -399,9 +401,9 @@ public class HomePage extends javax.swing.JInternalFrame {
         nameBookListTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(nameBookListTable);
 
-        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 280, 100));
+        panelBorder6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 290, 100));
 
-        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 320, 430));
+        kGradientPanel2.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 330, 430));
 
         panelBorder8.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -412,20 +414,21 @@ public class HomePage extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
-                        { null, null, null, null, null },
-                        { null, null, null, null, null },
-                        { null, null, null, null, null }
-                },
-                new String[] {
-                        "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Book ID", "Book Name", "Student Name", "Issue Date", "Due Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -482,7 +485,7 @@ public class HomePage extends javax.swing.JInternalFrame {
         jLabel24.setText("Overdue books");
         returnBookPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        kGradientPanel2.add(returnBookPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 210, 110));
+        kGradientPanel2.add(returnBookPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, 220, 110));
 
         returnBookPanel3.setBackground(new java.awt.Color(255, 255, 255));
         returnBookPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -132,7 +132,7 @@ public class IssueListPage extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -179,18 +179,19 @@ public class IssueListPage extends javax.swing.JInternalFrame {
 
         issueBookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         issueBookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][] {
+            new Object [][] {
 
-                },
-                new String[] {
-                        "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
-                }) {
-            boolean[] canEdit = new boolean[] {
-                    false, false, false, false, false, false, false, false
+            },
+            new String [] {
+                "ID", "Book ID", "Book Name", "Student ID", "Student Name", "Issue Date", "Due Date", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit[columnIndex];
+                return canEdit [columnIndex];
             }
         });
         issueBookDetailsTable.setToolTipText("");
@@ -235,7 +236,7 @@ public class IssueListPage extends javax.swing.JInternalFrame {
             issueBookDetailsTable.getColumnModel().getColumn(7).setMaxWidth(100);
         }
 
-        panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 870, 490));
+        panelBorder5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 870, 530));
 
         jLabel26.setBackground(new java.awt.Color(36, 36, 36));
         jLabel26.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
@@ -243,14 +244,13 @@ public class IssueListPage extends javax.swing.JInternalFrame {
         jLabel26.setText("Issue List");
         panelBorder5.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 560));
+        kGradientPanel2.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 600));
 
         panelBorder3.setBackground(new java.awt.Color(255, 255, 255));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_Search.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_Search
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Search.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Search.setMargin(new java.awt.Insets(2, 10, 2, 10));
         txt_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -269,10 +269,8 @@ public class IssueListPage extends javax.swing.JInternalFrame {
 
         txt_ComboSearchStatus.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_ComboSearchStatus.setForeground(new java.awt.Color(36, 36, 36));
-        txt_ComboSearchStatus.setModel(
-                new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Pending", "Returned", "Overdue" }));
-        txt_ComboSearchStatus
-                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_ComboSearchStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Status", "Pending", "Returned", "Overdue" }));
+        txt_ComboSearchStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_ComboSearchStatus.setOpaque(true);
         txt_ComboSearchStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

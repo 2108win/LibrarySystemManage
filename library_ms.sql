@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1:8111
--- Thời gian đã tạo: Th5 31, 2023 lúc 02:15 PM
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th6 13, 2023 lúc 02:04 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Phiên bản PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,33 +31,34 @@ CREATE TABLE `book_details` (
   `book_id` int(11) NOT NULL,
   `book_name` varchar(250) DEFAULT NULL,
   `author` varchar(100) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
+  `quantity` int(11) DEFAULT NULL,
+  `book_fee` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `book_details`
 --
 
-INSERT INTO `book_details` (`book_id`, `book_name`, `author`, `quantity`) VALUES
-(1, 'Tớ Học Lập Trình', 'Nhiều tác giả', 99),
-(2, 'Introduction to Algorithms', 'UIT', 99),
-(3, 'Lập Trình Và Cuộc Sống', 'Jeff Atwood', 100),
-(4, 'Code Dạo Kí Sự', 'Phạm Huy Hoàng', 99),
-(5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 'Phạm Văn Ất & Lê Trường Thông', 99),
-(6, 'Lập Trình C Toàn Tập Từ Cơ Bản Đến Nâng Cao', 'Hùng Minh & Mạnh Hùng', 100),
-(7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 'Nhiều tác giả', 99),
-(8, 'Kỹ Thuật Lập Trình Cơ Sở Với Ngôn Ngữ C/C ++', 'Dương Thăng Long & Trương Tiến Tùng', 100),
-(9, 'Khái niệm lập trình', 'UIT', 100),
-(10, 'Python', 'UIT', 100),
-(11, 'Core Java', 'UIT', 100),
-(12, 'Core Java nâng cao', 'UIT', 100),
-(13, 'Effective Java', 'UIT', 99),
-(14, 'Code Complete', 'UIT', 100),
-(15, 'The Pragmatic Programmer', 'UIT', 99),
-(16, 'Clean Code', 'UIT', 100),
-(17, 'Introduction to Algorithms (CLRS)', 'UIT', 99),
-(18, 'Data structure and Algorithms in Java', 'UIT', 100),
-(20, 'Art of Computer Programming', 'UIT', 96);
+INSERT INTO `book_details` (`book_id`, `book_name`, `author`, `quantity`, `book_fee`) VALUES
+(1, 'Tớ Học Lập Trình', 'Nhiều tác giả', 100, 1000),
+(2, 'Introduction to Algorithms', 'UIT', 99, 2000),
+(3, 'Lập Trình Và Cuộc Sống', 'Jeff Atwood', 100, 2000),
+(4, 'Code Dạo Kí Sự', 'Phạm Huy Hoàng', 100, 5000),
+(5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 'Phạm Văn Ất & Lê Trường Thông', 99, 2000),
+(6, 'Lập Trình C Toàn Tập Từ Cơ Bản Đến Nâng Cao', 'Hùng Minh & Mạnh Hùng', 99, 10000),
+(7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 'Nhiều tác giả', 99, 1000),
+(8, 'Kỹ Thuật Lập Trình Cơ Sở Với Ngôn Ngữ C/C ++', 'Dương Thăng Long & Trương Tiến Tùng', 100, 3000),
+(9, 'Khái niệm lập trình', 'UIT', 100, 2000),
+(10, 'Python', 'UIT', 100, 1000),
+(11, 'Core Java', 'UIT', 101, 2000),
+(12, 'Core Java nâng cao', 'UIT', 100, 20000),
+(13, 'Effective Java', 'UIT', 100, 5000),
+(14, 'Code Complete', 'UIT', 100, 2000),
+(15, 'The Pragmatic Programmer', 'UIT', 100, 10000),
+(16, 'Clean Code', 'UIT', 100, 1000),
+(17, 'Introduction to Algorithms (CLRS)', 'UIT', 100, 1000),
+(18, 'Data structure and Algorithms in Java', 'UIT', 99, 10000),
+(20, 'Art of Computer Programming', 'UIT', 100, 20000);
 
 -- --------------------------------------------------------
 
@@ -73,25 +74,55 @@ CREATE TABLE `issue_book_details` (
   `student_name` varchar(50) DEFAULT NULL,
   `issue_date` date DEFAULT NULL,
   `due_date` date DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
+  `status` varchar(20) DEFAULT NULL,
+  `issue_fee` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `issue_book_details`
 --
 
-INSERT INTO `issue_book_details` (`issue_id`, `book_id`, `book_name`, `student_id`, `student_name`, `issue_date`, `due_date`, `status`) VALUES
-(1, 7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
-(2, 20, 'Art of Computer Programming', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
-(3, 17, 'Introduction to Algorithms (CLRS)', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
-(4, 15, 'The Pragmatic Programmer', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Pending'),
-(5, 13, 'Effective Java', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Pending'),
-(6, 20, 'Art of Computer Programming', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Pending'),
-(7, 20, 'Art of Computer Programming', 2, 'Nghiêm Vũ Hoàng Long', '2023-05-27', '2023-05-27', 'Pending'),
-(8, 20, 'Art of Computer Programming', 10, 'Nguyễn Thị Hòa', '2023-05-27', '2023-05-27', 'Pending'),
-(9, 4, 'Code Dạo Kí Sự', 1, 'Lã Mai Win', '2023-05-27', '2023-05-27', 'Pending'),
-(10, 5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 1, 'Lã Mai Win', '2023-05-20', '2023-05-20', 'Pending'),
-(11, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-05-31', '2023-05-31', 'Pending');
+INSERT INTO `issue_book_details` (`issue_id`, `book_id`, `book_name`, `student_id`, `student_name`, `issue_date`, `due_date`, `status`, `issue_fee`) VALUES
+(1, 7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Returned', 3000),
+(2, 20, 'Art of Computer Programming', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Returned', 60000),
+(3, 17, 'Introduction to Algorithms (CLRS)', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Returned', 3000),
+(4, 15, 'The Pragmatic Programmer', 4, 'Lê Nguyễn Trung Đan', '2023-05-27', '2023-05-27', 'Returned', 30000),
+(5, 13, 'Effective Java', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Returned', 15000),
+(6, 20, 'Art of Computer Programming', 7, 'Hoàng Thuỳ Linh', '2023-05-27', '2023-05-27', 'Returned', 60000),
+(7, 20, 'Art of Computer Programming', 2, 'Nghiêm Vũ Hoàng Long', '2023-05-27', '2023-05-27', 'Returned', 60000),
+(8, 20, 'Art of Computer Programming', 10, 'Nguyễn Thị Hòa', '2023-05-27', '2023-05-27', 'Returned', 60000),
+(9, 4, 'Code Dạo Kí Sự', 1, 'Lã Mai Win', '2023-05-27', '2023-05-27', 'Returned', 15000),
+(10, 5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 1, 'Lã Mai Win', '2023-05-20', '2023-05-20', 'Returned', 6000),
+(11, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-05-31', '2023-05-31', 'Returned', 3000),
+(12, 8, 'Kỹ Thuật Lập Trình Cơ Sở Với Ngôn Ngữ C/C ++', 5, 'Nguyễn Thanh Tùng', '2023-06-27', '2023-06-27', 'Returned', 3000),
+(13, 4, 'Code Dạo Kí Sự', 3, 'Hoàng Kim Long', '2023-06-01', '2023-06-01', 'Returned', 15000),
+(14, 1, 'Tớ Học Lập Trình', 3, 'Hoàng Kim Long', '2023-06-08', '2023-06-08', 'Returned', 1100),
+(15, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-06-04', '2023-06-04', 'Returned', 1100),
+(16, 2, 'Introduction to Algorithms', 1, 'Lã Mai Win', '2023-06-02', '2023-06-02', 'Returned', 6000),
+(17, 20, 'Art of Computer Programming', 1, 'Lã Mai Win', '2023-06-09', '2023-06-09', 'Returned', 22000),
+(18, 18, 'Data structure and Algorithms in Java', 1, 'Lã Mai Win', '2023-06-21', '2023-06-21', 'Returned', 10000),
+(19, 4, 'Code Dạo Kí Sự', 2, 'Nghiêm Vũ Hoàng Long', '2023-06-17', '2023-06-17', 'Returned', 5000),
+(20, 3, 'Lập Trình Và Cuộc Sống', 3, 'Hoàng Kim Long', '2023-06-16', '2023-06-16', 'Returned', 2000),
+(21, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-06-12', '2023-06-12', 'Returned', 1100),
+(22, 2, 'Introduction to Algorithms', 1, 'Lã Mai Win', '2023-06-12', '2023-06-12', 'Returned', 2200),
+(23, 3, 'Lập Trình Và Cuộc Sống', 1, 'Lã Mai Win', '2023-06-12', '2023-06-12', 'Returned', 2200),
+(24, 20, 'Art of Computer Programming', 1, 'Lã Mai Win', '2023-06-12', '2023-06-12', 'Returned', 22000),
+(25, 10, 'Python', 1, 'Lã Mai Win', '2023-06-15', '2023-06-15', 'Returned', 1000),
+(26, 16, 'Clean Code', 1, 'Lã Mai Win', '2023-06-30', '2023-06-30', 'Returned', 1000),
+(27, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-06-14', '2023-06-14', 'Returned', 1000),
+(28, 2, 'Introduction to Algorithms', 1, 'Lã Mai Win', '2023-06-14', '2023-06-14', 'Returned', 2000),
+(29, 3, 'Lập Trình Và Cuộc Sống', 1, 'Lã Mai Win', '2023-06-14', '2023-06-14', 'Returned', 2000),
+(30, 4, 'Code Dạo Kí Sự', 1, 'Lã Mai Win', '2023-06-14', '2023-06-14', 'Returned', 5000),
+(31, 20, 'Art of Computer Programming', 1, 'Lã Mai Win', '2023-06-14', '2023-06-14', 'Returned', 20000),
+(32, 3, 'Lập Trình Và Cuộc Sống', 3, 'Hoàng Kim Long', '2023-06-13', '2023-06-13', 'Returned', 2000),
+(33, 1, 'Tớ Học Lập Trình', 14, 'Nguyễn Phước Thịnh', '2023-06-09', '2023-06-09', 'Returned', 1100),
+(34, 10, 'Python', 10, 'Nguyễn Thị Hòa', '2023-06-04', '2023-06-10', 'Returned', 1100),
+(35, 11, 'Core Java', 12, 'Mai Hồng Ngọc', '2023-05-22', '2023-05-29', 'Returned', 6000),
+(36, 1, 'Tớ Học Lập Trình', 1, 'Lã Mai Win', '2023-06-13', '2023-06-18', 'Pending', 1000),
+(37, 5, 'Giáo Trình C++ Và Lập Trình Hướng Đối Tượng ', 1, 'Lã Mai Win', '2023-06-02', '2023-06-15', 'Pending', 2000),
+(38, 7, 'Lập Trình Với C# Xây Dựng Ứng Dụng', 1, 'Lã Mai Win', '2023-05-18', '2023-05-31', 'Overdue', 3000),
+(39, 6, 'Lập Trình C Toàn Tập Từ Cơ Bản Đến Nâng Cao', 5, 'Nguyễn Thanh Tùng', '2023-06-13', '2023-06-15', 'Pending', NULL),
+(40, 18, 'Data structure and Algorithms in Java', 7, 'Hoàng Thuỳ Linh', '2023-06-01', '2023-06-03', 'Overdue', NULL);
 
 -- --------------------------------------------------------
 
@@ -137,19 +168,17 @@ CREATE TABLE `users` (
   `name` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `contact` varchar(20) DEFAULT NULL
+  `contact` varchar(20) DEFAULT NULL,
+  `fee_pending` double DEFAULT NULL,
+  `fee_returned` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `password`, `email`, `contact`) VALUES
-(1, 'winlax', '123456', 'dangcapcuawin@gmail.com', '0971292838'),
-(2, '123', '123', '123@gg.com', '123'),
-(3, '1234', '1234', '1234@gm.iii', '1234'),
-(4, 'dangcapcuawin', 'Win21082001', 'dangcapcuawin@gmail.com', '12341234'),
-(5, '2345', '2345', '2345@gmail.com', '2345');
+INSERT INTO `users` (`id`, `name`, `password`, `email`, `contact`, `fee_pending`, `fee_returned`) VALUES
+(1, '1234', '1234', '1234@gm.com', '1234', 24000, 44200);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -184,23 +213,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT cho bảng `book_details`
---
-
---
 -- AUTO_INCREMENT cho bảng `issue_book_details`
 --
 ALTER TABLE `issue_book_details`
-  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT cho bảng `student_details`
---
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
