@@ -44,8 +44,7 @@ public class ManageStudents extends javax.swing.JFrame {
     public void setStudentDetailToTable() {
         // connect to database
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root", "");
+            Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from student_details");
             while (rs.next()) {

@@ -41,8 +41,7 @@ public class ManageBook extends javax.swing.JFrame {
     public void setBookDetailToTable() {
         // connect to database
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root", "");
+            Connection con = DBConnection.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM book_details");
             while (rs.next()) {
@@ -143,7 +142,8 @@ public class ManageBook extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel2 = new com.k33ptoo.components.KGradientPanel();
@@ -301,19 +301,18 @@ public class ManageBook extends javax.swing.JFrame {
 
         bookDetailsTable.setForeground(new java.awt.Color(255, 255, 255));
         bookDetailsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][] {
 
-            },
-            new String [] {
-                "Book ID", "Name", "Author", "Quantity", "Fee"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                },
+                new String[] {
+                        "Book ID", "Name", "Author", "Quantity", "Fee"
+                }) {
+            boolean[] canEdit = new boolean[] {
+                    false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         bookDetailsTable.setToolTipText("");
@@ -367,13 +366,15 @@ public class ManageBook extends javax.swing.JFrame {
         panelBorder2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_BookAuthor.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookAuthor.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookAuthor
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookAuthor.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookAuthor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 250, -1));
 
         txt_Quantity.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_Quantity.setForeground(new java.awt.Color(36, 36, 36));
-        txt_Quantity.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_Quantity
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_Quantity.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_Quantity.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_Quantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 250, -1));
@@ -391,7 +392,8 @@ public class ManageBook extends javax.swing.JFrame {
         panelBorder2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, -1, -1));
 
         txt_BookID.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_BookID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookID
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookID.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, -1));
 
@@ -403,7 +405,8 @@ public class ManageBook extends javax.swing.JFrame {
 
         txt_BookName.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookName.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookName
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookName.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookName.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 250, -1));
@@ -416,7 +419,8 @@ public class ManageBook extends javax.swing.JFrame {
 
         txt_BookFee.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
         txt_BookFee.setForeground(new java.awt.Color(36, 36, 36));
-        txt_BookFee.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        txt_BookFee
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         txt_BookFee.setCaretColor(new java.awt.Color(36, 36, 36));
         txt_BookFee.setMargin(new java.awt.Insets(2, 10, 2, 10));
         panelBorder2.add(txt_BookFee, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 250, -1));
@@ -441,7 +445,7 @@ public class ManageBook extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bookDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookDetailsTableMouseClicked
+    private void bookDetailsTableMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_bookDetailsTableMouseClicked
         // TODO add your handling code here:
         int i = bookDetailsTable.getSelectedRow();
         TableModel model = bookDetailsTable.getModel();
@@ -449,7 +453,7 @@ public class ManageBook extends javax.swing.JFrame {
         txt_BookName.setText(model.getValueAt(i, 1).toString());
         txt_BookAuthor.setText(model.getValueAt(i, 2).toString());
         txt_Quantity.setText(model.getValueAt(i, 3).toString());
-    }//GEN-LAST:event_bookDetailsTableMouseClicked
+    }// GEN-LAST:event_bookDetailsTableMouseClicked
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateButtonActionPerformed
         if (updateBook()) {

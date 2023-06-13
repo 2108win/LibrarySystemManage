@@ -97,8 +97,7 @@ public class SignupPage extends javax.swing.JFrame {
         String name = txt_username.getText();
         boolean isDuplicate = false;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root", "");
+            Connection con = DBConnection.getConnection();
             String sql = "select * from users where name=?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, name);
@@ -131,7 +130,8 @@ public class SignupPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         kGradientPanel1 = new com.k33ptoo.components.KGradientPanel();
@@ -242,11 +242,13 @@ public class SignupPage extends javax.swing.JFrame {
         kGradientPanel1.add(createAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 350, 60));
 
         txt_contact.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_contact.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_contact
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         kGradientPanel1.add(txt_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 350, 40));
 
         txt_username.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_username.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_username
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         txt_username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_usernameFocusLost(evt);
@@ -255,7 +257,8 @@ public class SignupPage extends javax.swing.JFrame {
         kGradientPanel1.add(txt_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 350, 40));
 
         txt_password.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N
-        txt_password.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
+        txt_password
+                .setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(247, 171, 10)));
         kGradientPanel1.add(txt_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 350, 40));
 
         txt_email.setFont(new java.awt.Font("DVN-Poppins", 0, 18)); // NOI18N

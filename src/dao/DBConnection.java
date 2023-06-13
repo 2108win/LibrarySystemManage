@@ -16,10 +16,12 @@ public class DBConnection {
 
     public static Connection getConnection() {
         try {
-            if(con == null) {
+            if (con == null) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
+                // mặc định sẽ là localhost:3306
+                // con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_ms",
+                // "root", "123456");
                 con = DriverManager.getConnection("jdbc:mysql://localhost:8111/library_ms", "root", "");
-                //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/library_ms", "root", "123456");
             }
         } catch (Exception e) {
             e.printStackTrace();
